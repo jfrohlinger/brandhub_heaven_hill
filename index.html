@@ -94,10 +94,10 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 
 /* ── WHO WE ARE ── */
 #who-we-are{background:var(--bg)}
-.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.who-grid{display:grid;grid-template-columns:3fr 2fr;gap:48px;align-items:center}
 .who-story{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:24px}
 .who-story b{color:var(--text)}
-.trust-badge{display:inline-block;font-size:13px;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 16px;margin:4px 4px 4px 0}
+.trust-badge{display:inline-block;font-size:13px;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 11px;margin:4px 4px 4px 0;white-space:nowrap}
 .who-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .who-stat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px;text-align:center}
 .who-stat-num{font-size:34px;font-weight:900;letter-spacing:-1px;margin-bottom:4px;line-height:1}
@@ -171,7 +171,7 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 
 /* ── MODULAR PLATFORM ── */
 #platform{background:var(--surface)}
-.modules-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px}
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
 .module-group{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px 28px}
 .module-group-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:14px}
 .tag-included{color:var(--blue);background:var(--blue-dim)}
@@ -220,14 +220,33 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 .ck{color:#28C840;font-weight:700;font-size:16px}.xx{color:var(--red);font-weight:700;font-size:16px}.pa{color:var(--orange);font-weight:700;font-size:16px}
 
 /* ── HOW IT WORKS ── */
-#how-it-works{background:var(--bg)}
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;position:relative}
-.step-num{font-size:48px;font-weight:900;color:var(--muted2);line-height:1;margin-bottom:10px}
-.step-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:10px}
-.step-items{list-style:none;display:flex;flex-direction:column;gap:6px}
-.step-items li{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:flex-start}
-.step-items li::before{content:"·";color:var(--blue);font-size:18px;line-height:14px}
+#how-it-works{background:var(--bg);overflow:hidden;position:relative}
+#how-it-works::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(48,180,230,.07) 0%,transparent 70%);pointer-events:none}
+.steps-flow{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr 32px 1fr;align-items:stretch;gap:0;margin-top:48px}
+.step-arrow{display:flex;align-items:center;justify-content:center;padding-top:0;color:var(--muted);font-size:20px;opacity:.4}
+.step-card{border-radius:20px;padding:0;overflow:hidden;position:relative;transition:transform .3s,box-shadow .3s;border:none;display:flex;flex-direction:column}
+.step-card:hover{transform:translateY(-6px);box-shadow:0 28px 64px rgba(0,0,0,.4)}
+.step-header{padding:26px 22px 18px;position:relative;flex-shrink:0}
+.step-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.step-badge{position:absolute;top:18px;right:18px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-family:monospace}
+.step-title{font-size:24px;font-weight:900;color:#fff;margin-bottom:4px;letter-spacing:-.4px}
+.step-sub{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;opacity:.7;color:#fff;line-height:1.4}
+.step-body{background:var(--card);padding:18px 22px 22px;flex:1}
+.step-items{list-style:none;display:flex;flex-direction:column;gap:9px}
+.step-items li{font-size:12.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start;line-height:1.5}
+.step-items li .si{width:20px;height:20px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;margin-top:1px}
+.step-plan .step-header{background:linear-gradient(140deg,#0d3d5e 0%,#1565a0 100%)}
+.step-plan .step-icon-wrap{background:rgba(48,180,230,.3)}
+.step-plan .si{background:rgba(48,180,230,.18);color:#30B4E6}
+.step-build .step-header{background:linear-gradient(140deg,#1a2d50 0%,#2a5ba0 100%)}
+.step-build .step-icon-wrap{background:rgba(86,200,240,.28)}
+.step-build .si{background:rgba(86,200,240,.18);color:#56c8f0}
+.step-execute .step-header{background:linear-gradient(140deg,#4a2000 0%,#9a4800 100%)}
+.step-execute .step-icon-wrap{background:rgba(255,145,25,.28)}
+.step-execute .si{background:rgba(255,145,25,.18);color:#FF9119}
+.step-measure .step-header{background:linear-gradient(140deg,#0a3018 0%,#186030 100%)}
+.step-measure .step-icon-wrap{background:rgba(40,200,64,.28)}
+.step-measure .si{background:rgba(40,200,64,.18);color:#28C840}
 
 /* ── AI FEATURES ── */
 #ai-features{background:var(--surface)}
@@ -252,7 +271,7 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 .app-card.atlas .app-metric .amn{color:#28C864}
 .btn-app.atlas{background:#28C864;color:#0A0D1A}
 .btn-app.atlas:hover{background:#3ddf7a;box-shadow:0 6px 24px rgba(40,200,100,.4);transform:translateY(-1px)}
-.atlas-preview{background:linear-gradient(160deg,#0a1a12,#0d2218);min-height:160px;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+.atlas-preview{background:linear-gradient(160deg,#0a1a12,#0d2218);height:180px;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
 .atlas-map-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#28C864}
 .atlas-pulse{position:absolute;border-radius:50%;border:2px solid rgba(40,200,100,.5);animation:atlas-ping 2s ease-out infinite}
 @keyframes atlas-ping{0%{width:10px;height:10px;opacity:.9}100%{width:60px;height:60px;opacity:0}}
@@ -275,12 +294,12 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 .mock-mini-bars{display:flex;flex-direction:column;gap:6px}
 .mock-mini-bar-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)}
 .mock-mini-bar-fill{height:6px;border-radius:3px}
-.app-card-body{padding:24px 28px 28px}
+.app-card-body{padding:24px 28px 28px;display:flex;flex-direction:column;flex:1}
 .app-card-eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .app-card.price .app-card-eyebrow{color:var(--orange)}
 .app-card.order .app-card-eyebrow{color:var(--blue)}
 .app-card-title{font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;line-height:1.2;color:var(--text)}
-.app-card-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.app-card-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;flex:1}
 .app-metrics{display:flex;gap:20px;margin-bottom:20px}
 .app-metric .amn{font-size:20px;font-weight:900}
 .app-card.price .app-metric .amn{color:var(--orange)}
@@ -294,19 +313,32 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 
 /* ── CASE STUDIES ── */
 #case-studies{background:var(--bg)}
-.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.case-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:transform .3s,box-shadow .3s}
-.case-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(48,180,230,.1)}
-.case-hero-num{font-size:56px;font-weight:900;letter-spacing:-2px;color:var(--orange);line-height:1;margin-bottom:4px}
-.case-hero-lbl{font-size:14px;color:var(--text);font-weight:700;line-height:1.3}
-.case-tag{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px}
-.case-divider{height:1px;background:var(--border);margin:4px 0}
-.case-challenge-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.case-challenge{font-size:12px;color:var(--muted);line-height:1.65}
-.case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.case-metric{text-align:center;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 6px}
-.case-metric-num{font-size:18px;font-weight:900;color:var(--blue);line-height:1}
-.case-metric-lbl{font-size:10px;color:var(--muted);margin-top:2px}
+.cs-card{background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;margin-bottom:28px}
+.cs-card:last-child{margin-bottom:0}
+.cs-header{display:grid;grid-template-columns:360px 1fr}
+.cs-header-left{padding:36px 40px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:11px}
+.cs-header-right{padding:36px 44px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.14)}
+.cs-eyebrow{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+.cs-big-num{font-size:clamp(58px,5.5vw,84px);font-weight:900;line-height:1;letter-spacing:-3px}
+.cs-big-lbl{font-size:15px;color:var(--muted);font-weight:600;line-height:1.35;max-width:260px}
+.cs-co-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:5px 12px}
+.cs-body{display:grid;grid-template-columns:1fr 1.1fr 0.9fr;border-top:1px solid var(--border)}
+.cs-col{padding:28px 30px;border-right:1px solid var(--border)}
+.cs-col:last-child{border-right:none}
+.cs-col-lbl{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:13px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.05)}
+.cs-text{font-size:13px;color:var(--muted);line-height:1.75}
+.cs-callout{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:12px;color:var(--muted);line-height:1.55}
+.cs-steps{display:flex;flex-direction:column;gap:13px}
+.cs-step{display:flex;gap:10px;align-items:flex-start}
+.cs-step-n{width:21px;height:21px;border-radius:50%;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.cs-step-t{font-size:12px;color:var(--muted);line-height:1.65}
+.cs-results{display:flex;flex-direction:column}
+.cs-res{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.cs-res:last-child{border-bottom:none;padding-bottom:0}
+.cs-res-n{font-size:28px;font-weight:900;letter-spacing:-1px}
+.cs-res-l{font-size:11px;color:var(--muted);text-align:right;line-height:1.4;max-width:120px}
+.cs-footer{padding:20px 40px;background:rgba(255,255,255,.015);border-top:1px solid var(--border);font-size:13px;font-style:italic;color:var(--muted);display:flex;align-items:flex-start;gap:14px;line-height:1.65}
+.cs-footer-q{font-size:40px;font-style:normal;font-weight:900;line-height:1;flex-shrink:0;opacity:.45;margin-top:-2px}
 
 /* ── DEMO CTA ── */
 #demo{background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(48,180,230,.12) 0%,transparent 70%),var(--bg);text-align:center;padding:100px 40px}
@@ -342,6 +374,8 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 
 @media(max-width:900px){
   .agenda-grid,.who-grid,.persona-grid,.tq-grid,.steps-grid,.case-grid,.ns-grid,.exist-grid,.modules-grid,.apps-grid{grid-template-columns:1fr}
+  .steps-flow{grid-template-columns:1fr;gap:12px}
+  .step-arrow{display:none}
   .disco-grid{grid-template-columns:1fr}
   .guarantee-inner{grid-template-columns:1fr}
   .problem-stats{grid-template-columns:1fr}
@@ -404,7 +438,8 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 <nav>
   <a href="#hero"><img src="data:image/png;base64,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" alt="brandhub" style="height:26px;width:auto"></a>
   <div class="nav-links">
-    <a href="#agenda" class="nav-a">Agenda</a>
+    <a href="#hero" class="btn-nav" style="margin-left:0;margin-right:4px;background:rgba(255,255,255,0.08);color:var(--muted)">↑ Top</a>
+  <a href="#agenda" class="nav-a">Agenda</a>
     <a href="#who-we-are" class="nav-a">Who We Are</a>
     <a href="#discovery" class="nav-a">Questions</a>
     <a href="#why-exist" class="nav-a">Where We Fit</a>
@@ -413,7 +448,6 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
     <a href="#calculator" class="nav-a">Cost</a>
     <a href="#case-studies" class="nav-a">Case Studies</a>
     <a href="#next-steps" class="nav-a">Next Steps</a>
-    <a href="https://jfrohlinger.github.io/brandhub_heaven_hill/" target="_blank" class="btn-nav">Full Demo →</a>
   </div>
 </nav>
 
@@ -561,11 +595,12 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
           <span class="trust-badge">Gallo</span>
           <span class="trust-badge">Tito's Vodka</span>
           <span class="trust-badge">New Belgium</span>
-          <span class="trust-badge">750+ brands & distributors</span>
+          <span class="trust-badge">500+ brands</span>
+          <span class="trust-badge">250+ distributors</span>
         </div>
         <div class="fade-up" style="margin-top:16px">
           <div style="font-size:12px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Awarded</div>
-          <div style="font-size:13px;color:var(--text)">Most Likely to Recommend &nbsp;·&nbsp; Highest On-Time Delivery &nbsp;·&nbsp; Most Reliable &nbsp;·&nbsp; Lowest Admin Burden</div>
+          <div style="font-size:13px;color:var(--text);white-space:nowrap">Most Likely to Recommend &nbsp;·&nbsp; Highest On-Time Delivery &nbsp;·&nbsp; Most Reliable &nbsp;·&nbsp; Lowest Admin Burden</div>
         </div>
       </div>
       <div class="who-stats fade-up" style="transition-delay:.15s">
@@ -597,9 +632,6 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
     <div class="disco-intro">
       <h2 class="sec-title fade-up">Before we show you anything —<br><span style="color:var(--blue)">we want to understand your world.</span></h2>
       <p class="sec-sub fade-up" style="margin-bottom:0">Four questions that shape everything we show you next. There are no wrong answers. The more honest you are, the more useful the next 20 minutes will be.</p>
-    </div>
-    <div class="fade-up" style="margin-top:24px;background:var(--blue-dim);border:1px solid rgba(48,180,230,.2);border-radius:14px;padding:20px 28px;font-size:14px;color:var(--muted);max-width:700px">
-      💡 <b style="color:var(--text)">Your answers become the through-line.</b> We use them to decide which parts of the platform to show — and which to skip. Helps us show you what's most relevant, not a generic demo.
     </div>
     <div class="disco-grid">
       <div class="disco-card fade-up">
@@ -680,6 +712,8 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
           <li><span>Team resource required</span> <span class="attr-bad">High</span></li>
           <li><span>Intelligence & AI</span> <span class="attr-bad">None</span></li>
           <li><span>Price benchmarking</span> <span class="attr-bad">None</span></li>
+          <li><span>Distributor integration</span> <span class="attr-bad">None</span></li>
+          <li><span>Asset Tracking Technology</span> <span class="attr-bad">None</span></li>
         </ul>
       </div>
       <div class="exist-card old2 fade-up" style="transition-delay:.1s">
@@ -689,10 +723,12 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
         <ul class="exist-attrs">
           <li><span>Cost</span> <span class="attr-bad">High</span></li>
           <li><span>Visibility</span> <span class="attr-bad">Low</span></li>
-          <li><span>Creativity</span> <span class="attr-warn">Low</span></li>
+          <li><span>Waste</span> <span class="attr-bad">High</span></li>
           <li><span>Team resource required</span> <span class="attr-warn">Low</span></li>
           <li><span>Intelligence & AI</span> <span class="attr-bad">None</span></li>
+          <li><span>Price benchmarking</span> <span class="attr-bad">None</span></li>
           <li><span>Distributor integration</span> <span class="attr-bad">None</span></li>
+          <li><span>Asset Tracking Technology</span> <span class="attr-bad">None</span></li>
         </ul>
       </div>
       <div class="exist-card new fade-up" style="transition-delay:.2s">
@@ -706,9 +742,12 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
           <li><span>Team resource required</span> <span class="attr-good">Minimal</span></li>
           <li><span>Intelligence & AI</span> <span class="attr-good">Built In</span></li>
           <li><span>Price benchmarking</span> <span class="attr-good">$100M+ data</span></li>
+          <li><span>Distributor integration</span> <span class="attr-good">Built In</span></li>
+          <li><span>Asset Tracking Technology</span> <span class="attr-good">Available</span></li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -769,15 +808,110 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="wrap">
+    <div class="label fade-up">Trade Marketer's View</div>
+    <h2 class="sec-title fade-up">How it works:<br><span style="color:var(--blue)">The brandhub operating system.</span></h2>
+    <p class="sec-sub fade-up">Four connected phases — one platform. No spreadsheets. No gaps. No guessing.</p>
+
+    <div class="steps-flow">
+
+      <!-- PLAN -->
+      <div class="step-card step-plan fade-up">
+        <div class="step-header">
+          <div class="step-badge">01</div>
+          <div class="step-icon-wrap">📋</div>
+          <div class="step-title">Plan</div>
+          <div class="step-sub">Develop programs in a connected platform</div>
+        </div>
+        <div class="step-body">
+          <ul class="step-items">
+            <li><span class="si">✦</span>Centralized campaign planning</li>
+            <li><span class="si">✦</span>POS material database</li>
+            <li><span class="si">✦</span>Customizable branding & workflows</li>
+            <li><span class="si">✦</span>Budget controls & approvals</li>
+            <li><span class="si">✦</span>AI-assisted demand planning</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-arrow fade-up" style="transition-delay:.05s">→</div>
+
+      <!-- BUILD -->
+      <div class="step-card step-build fade-up" style="transition-delay:.1s">
+        <div class="step-header">
+          <div class="step-badge">02</div>
+          <div class="step-icon-wrap">🛠️</div>
+          <div class="step-title">Build</div>
+          <div class="step-sub">Create & manage orders seamlessly</div>
+        </div>
+        <div class="step-body">
+          <ul class="step-items">
+            <li><span class="si">✦</span>Asset design & creation</li>
+            <li><span class="si">✦</span>Online ordering catalog</li>
+            <li><span class="si">✦</span>Multi-address order forms</li>
+            <li><span class="si">✦</span>User-specific authorizations</li>
+            <li><span class="si">✦</span>Real-time order tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-arrow fade-up" style="transition-delay:.15s">→</div>
+
+      <!-- EXECUTE -->
+      <div class="step-card step-execute fade-up" style="transition-delay:.2s">
+        <div class="step-header">
+          <div class="step-badge">03</div>
+          <div class="step-icon-wrap">⚡</div>
+          <div class="step-title">Execute</div>
+          <div class="step-sub">Manage vendors & orders easily</div>
+        </div>
+        <div class="step-body">
+          <ul class="step-items">
+            <li><span class="si">✦</span>Multi-vendor bidding portals</li>
+            <li><span class="si">✦</span>RFQ and pricing controls</li>
+            <li><span class="si">✦</span>Live production & inventory tracking</li>
+            <li><span class="si">✦</span>Automated delivery updates</li>
+            <li><span class="si">✦</span>System integrations & APIs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-arrow fade-up" style="transition-delay:.25s">→</div>
+
+      <!-- MEASURE -->
+      <div class="step-card step-measure fade-up" style="transition-delay:.3s">
+        <div class="step-header">
+          <div class="step-badge">04</div>
+          <div class="step-icon-wrap">📊</div>
+          <div class="step-title">Measure</div>
+          <div class="step-sub">Analyze & identify strengths & opportunities</div>
+        </div>
+        <div class="step-body">
+          <ul class="step-items">
+            <li><span class="si">✦</span>Real-time dashboards & KPIs</li>
+            <li><span class="si">✦</span>Budget reconciliation & analysis</li>
+            <li><span class="si">✦</span>Order analytics by market & brand</li>
+            <li><span class="si">✦</span>Forecasting & reporting tools</li>
+            <li><span class="si">✦</span>Performance tracking</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /steps-flow -->
+  </div>
+</section>
+
 <!-- AI FEATURES & LIVE APPS COMBINED -->
 <section id="ai-features" style="background:var(--bg)">
   <div class="wrap">
     <div class="label fade-up">AI-Powered Tools</div>
     <h2 class="sec-title fade-up">AI-powered tools.<br><span style="color:var(--blue)">Built for alc bev.</span></h2>
-    <p class="sec-sub fade-up">Three tools are live and available for demo today. The rest are in active development.</p>
+    <p class="sec-sub fade-up" style="max-width:900px">Four tools are live and available for demo today. The rest are in active development.</p>
     <div class="apps-grid">
       <!-- PRICECHECK - LIVE DEMO -->
-      <div class="app-card price fade-up">
+      <div class="app-card price fade-up" style="position:relative">
         <div style="position:absolute;top:12px;right:12px;background:#28C840;color:#0A0D1A;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">● LIVE DEMO</div>
         <div class="app-browser">
           <div class="app-browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
@@ -808,7 +942,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
         </div>
       </div>
       <!-- DEMANDIQ - LIVE DEMO -->
-      <div class="app-card order fade-up" style="transition-delay:.12s">
+      <div class="app-card order fade-up" style="transition-delay:.12s;position:relative">
         <div style="position:absolute;top:12px;right:12px;background:#28C840;color:#0A0D1A;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">● LIVE DEMO</div>
         <div class="app-browser">
           <div class="app-browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
@@ -837,7 +971,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
         </div>
       </div>
       <!-- ATLAS - LIVE DEMO -->
-      <div class="app-card atlas fade-up" style="transition-delay:.24s">
+      <div class="app-card atlas fade-up" style="transition-delay:.24s;position:relative">
         <div style="position:absolute;top:12px;right:12px;background:#28C840;color:#0A0D1A;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">● LIVE DEMO</div>
         <div class="app-browser">
           <div class="app-browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
@@ -905,27 +1039,9 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
           <button style="width:100%;background:rgba(48,180,230,0.1);border:1px solid rgba(48,180,230,0.2);color:var(--muted);border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:not-allowed;opacity:0.6">Coming in Q3 2026</button>
         </div>
       </div>
-      <!-- FIELDPULSE - IN DEVELOPMENT -->
-      <div class="app-card fade-up" style="transition-delay:.24s;position:relative">
-        <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);color:var(--muted);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">In Development</div>
-        <div class="app-browser">
-          <div class="app-browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
-          <div class="app-browser-url">brandhub-fieldpulse.app</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.02);width:100%;height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:48px">📍</div>
-        <div class="app-card-body">
-          <div class="app-card-eyebrow">brandhub FieldPulse</div>
-          <div class="app-card-title">Field intelligence at your fingertips</div>
-          <div class="app-card-desc">Real-time field team updates, compliance checks, and market feedback — all in one mobile-first interface. Get visibility into what's actually happening at shelf.</div>
-          <div class="app-metrics">
-            <div class="app-metric"><div class="amn">Real-time</div><div class="aml">field updates</div></div>
-          </div>
-          <button style="width:100%;background:rgba(48,180,230,0.1);border:1px solid rgba(48,180,230,0.2);color:var(--muted);border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:not-allowed;opacity:0.6">Coming in Q4 2026</button>
-        </div>
-      </div>
-      <!-- DISTRIBUTOR INTELLIGENCE - IN DEVELOPMENT -->
-      <div class="app-card fade-up" style="transition-delay:.32s;position:relative">
-        <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);color:var(--muted);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">In Development</div>
+      <!-- DISTRIBUTOR INTELLIGENCE - LIVE -->
+      <div class="app-card fade-up" style="transition-delay:.24s;position:relative;border-color:rgba(40,200,64,.3)">
+        <div style="position:absolute;top:12px;right:12px;background:rgba(40,200,64,.15);color:#28C840;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">● Live Now</div>
         <div class="app-browser">
           <div class="app-browser-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
           <div class="app-browser-url">brandhub-distributor.app</div>
@@ -938,91 +1054,13 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
           <div class="app-metrics">
             <div class="app-metric"><div class="amn">250+</div><div class="aml">distributor connections</div></div>
           </div>
-          <button style="width:100%;background:rgba(48,180,230,0.1);border:1px solid rgba(48,180,230,0.2);color:var(--muted);border-radius:8px;padding:10px;font-size:13px;font-weight:600;cursor:not-allowed;opacity:0.6">Rolling out Q1 2026+</button>
+          <button style="width:100%;background:rgba(40,200,64,.12);border:1px solid rgba(40,200,64,.35);color:#28C840;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer">Request Live Demo →</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THREE QUESTIONS -->
-<section id="three-questions" style="background:var(--surface)">
-  <div class="wrap">
-    <div class="label fade-up">Why Not Just Use What You Have?</div>
-    <h2 class="sec-title fade-up">Three questions your current solution<br><span style="color:var(--blue)">can't answer.</span></h2>
-    <p class="sec-sub fade-up">Every competitor can execute. Only brandhub can tell you what's actually happening.</p>
-    <div class="tq-grid">
-      <div class="tq-card fade-up">
-        <div class="tq-num">1</div>
-        <div class="tq-q">Did you overpay?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">Without $100M+ in verified transaction data, you're guessing. Your vendor quotes a price — you have no idea if it's fair.</div>
-        <div class="tq-competitor-row">
-          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">No data at all</span></div>
-          <div class="tq-row"><span class="tq-brand">HH Global / Halo</span><span class="tq-x">They set the price</span></div>
-          <div class="tq-row"><span class="tq-brand">Coupa / Ariba</span><span class="tq-x">No alc bev benchmark</span></div>
-        </div>
-        <div class="tq-bh-row">brandhub: Item-level benchmarking vs. $100M+ in real transactions. See market median before you order.</div>
-      </div>
-      <div class="tq-card fade-up" style="transition-delay:.1s">
-        <div class="tq-num">2</div>
-        <div class="tq-q">Is your display actually in market?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">You shipped 500 displays. 30% end up in dumpsters. Without embedded tracking, you have no proof of placement — just a delivery confirmation.</div>
-        <div class="tq-competitor-row">
-          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">No visibility</span></div>
-          <div class="tq-row"><span class="tq-brand">HH Global / Halo</span><span class="tq-x">No production control</span></div>
-          <div class="tq-row"><span class="tq-brand">Other platforms</span><span class="tq-x">No tracking tech</span></div>
-        </div>
-        <div class="tq-bh-row">brandhub Atlas: Beacons embedded at production. Real-time GPS/Bluetooth shows exactly where every display is.</div>
-      </div>
-      <div class="tq-card fade-up" style="transition-delay:.2s">
-        <div class="tq-num">3</div>
-        <div class="tq-q">Did your distributor get the order right?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">The three-tier system means your POS touches brands, distributors, and retailers. No generic tool is wired into that chain.</div>
-        <div class="tq-competitor-row">
-          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">Manual reconciliation</span></div>
-          <div class="tq-row"><span class="tq-brand">Coupa / Ariba</span><span class="tq-x">No distributor APIs</span></div>
-          <div class="tq-row"><span class="tq-brand">Other platforms</span><span class="tq-x">Not built for 3-tier</span></div>
-        </div>
-        <div class="tq-bh-row">brandhub: Direct API integrations with distributors. Orders, allocations, and compliance flow automatically.</div>
-      </div>
-    </div>
-    <div class="fade-up" style="margin-top:24px;text-align:center;font-size:15px;font-weight:700;color:var(--muted);padding:20px">
-      "If your current solution can't answer all three — <span style="color:var(--text)">you don't have visibility. You have hope.</span>"
-    </div>
-  </div>
-</section>
-
-<!-- MODULAR PLATFORM / NO ONE SIZE FITS ALL -->
-<section id="comparison" style="background:var(--bg)">
-  <div class="wrap">
-    <div class="label fade-up">Platform Comparison</div>
-    <h2 class="sec-title fade-up">brandhub is different.<br><span style="color:var(--blue)">Purpose-built for alc bev.</span></h2>
-    <p class="sec-sub fade-up">The only platform built for the US alc bev three-tier system — not adapted from a generic tool.</p>
-    <div class="fade-up" style="overflow-x:auto">
-    <table class="comp-table">
-      <thead><tr>
-        <th style="min-width:200px">Capability</th>
-        <th>Spreadsheets</th>
-        <th>HH Global / Halo</th>
-        <th>Coupa / Ariba</th>
-        <th>Other Platforms</th>
-        <th class="bh">brandhub</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>Built for alc bev 3-tier</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>Price benchmarking ($100M+ data)</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>Distributor API integration</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>Multi-vendor bidding & RFQ</td><td><span class="xx">✗</span></td><td><span class="pa">~</span></td><td><span class="pa">~</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>Beacon / GPS tracking in POS</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>You own your data & vendor relationships</td><td><span class="ck">✓</span></td><td><span class="xx">✗</span></td><td><span class="pa">~</span></td><td><span class="pa">~</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-        <tr><td>Alc bev compliance & allocations</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
-      </tbody>
-    </table>
-    </div>
-    <div class="fade-up" style="font-size:12px;color:var(--muted);margin-top:-16px;margin-bottom:24px">✓ Built-in &nbsp;·&nbsp; ~ Partial/workaround &nbsp;·&nbsp; ✗ Not available</div>
-
-  </div>
-</section>
 
 <!-- COST CALCULATOR -->
 <section id="calculator" style="background:var(--surface)">
@@ -1076,88 +1114,272 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
     <div class="label fade-up">The Pattern Repeats</div>
     <h2 class="sec-title fade-up">Different companies. Different problems.<br><span style="color:var(--orange)">Same result: brandhub finds the money.</span></h2>
     <p class="sec-sub fade-up">Every one of these outcomes started with a single question: what does your data actually show?</p>
-    <div class="case-grid">
-      <div class="case-card fade-up">
-        <div>
-          <div class="case-hero-num">48%</div>
-          <div class="case-hero-lbl">more product for the same spend</div>
-          <div class="case-tag" style="margin-top:6px">Top-5 global wine & spirits company</div>
+
+    <!-- ── CASE 1: CONSOLIDATION ── -->
+    <div class="cs-card fade-up">
+      <div class="cs-header">
+        <div class="cs-header-left">
+          <div class="cs-eyebrow">Case Study 01 &nbsp;·&nbsp; Consolidation &amp; Scale</div>
+          <div class="cs-big-num" style="color:var(--orange)">48%</div>
+          <div class="cs-big-lbl">more product delivered for the same budget</div>
+          <div class="cs-co-tag">🏆 Top-5 Global Wine &amp; Spirits Company</div>
         </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">Challenge</div>
-          <div class="case-challenge">12 brands ordering neon signs from 4 different vendors — separately. Economies of scale sacrificed on every order. No one knew their counterparts were making identical investments.</div>
-        </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">What brandhub did</div>
-          <div class="case-challenge">Consolidated orders across all 12 brands, triggered bulk pricing, eliminated duplicate shipping costs.</div>
-        </div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="case-metric-num">48%</div><div class="case-metric-lbl">more units, same budget</div></div>
-          <div class="case-metric"><div class="case-metric-num">0</div><div class="case-metric-lbl">shipping delays</div></div>
-          <div class="case-metric"><div class="case-metric-num">100%</div><div class="case-metric-lbl">signs reached market</div></div>
+        <div class="cs-header-right">
+          <!-- Before/After fragmentation diagram -->
+          <div style="width:100%;max-width:500px">
+            <div style="display:grid;grid-template-columns:1fr 28px 1fr;gap:14px;align-items:center">
+              <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF5C5C;text-align:center;margin-bottom:10px">Before brandhub</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:10px">
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR1</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR2</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR3</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR4</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR5</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR6</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR7</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR8</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">BR9</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">B10</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">B11</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,92,92,.14);border:1px solid rgba(255,92,92,.35);font-size:6px;font-weight:800;color:#FF8080;display:flex;align-items:center;justify-content:center">B12</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,92,92,.2);padding-top:9px;display:flex;gap:5px;justify-content:center;flex-wrap:wrap">
+                  <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:8px;font-weight:700;color:var(--muted)">Vendor 1</div>
+                  <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:8px;font-weight:700;color:var(--muted)">Vendor 2</div>
+                  <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:8px;font-weight:700;color:var(--muted)">Vendor 3</div>
+                  <div style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:8px;font-weight:700;color:var(--muted)">Vendor 4</div>
+                </div>
+                <div style="text-align:center;margin-top:7px;font-size:10px;color:#FF5C5C;font-weight:700">48+ fragmented orders / year</div>
+              </div>
+              <div style="text-align:center;font-size:22px;font-weight:900;color:var(--orange)">→</div>
+              <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#28C840;text-align:center;margin-bottom:10px">After brandhub</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:8px">
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR1</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR2</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR3</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR4</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR5</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR6</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR7</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR8</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">BR9</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">B10</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">B11</div>
+                  <div style="width:26px;height:26px;border-radius:50%;background:rgba(40,200,64,.14);border:1px solid rgba(40,200,64,.35);font-size:6px;font-weight:800;color:#5ae07a;display:flex;align-items:center;justify-content:center">B12</div>
+                </div>
+                <div style="text-align:center;margin:6px 0">
+                  <div style="background:var(--orange);color:#0A0D1A;font-size:9px;font-weight:900;letter-spacing:.5px;padding:4px 14px;border-radius:20px;display:inline-block">brandhub hub</div>
+                </div>
+                <div style="border-top:1px solid rgba(40,200,64,.2);padding-top:9px;display:flex;justify-content:center">
+                  <div style="background:rgba(40,200,64,.12);border:1px solid rgba(40,200,64,.3);border-radius:5px;padding:3px 16px;font-size:8px;font-weight:800;color:#28C840">1 Consolidated Vendor</div>
+                </div>
+                <div style="text-align:center;margin-top:7px;font-size:10px;color:#28C840;font-weight:700">1 bulk order · 48% more units</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="case-card fade-up" style="transition-delay:.1s">
-        <div>
-          <div class="case-hero-num">33%</div>
-          <div class="case-hero-lbl">cost savings in 6 months</div>
-          <div class="case-tag" style="margin-top:6px">Leading premium carbonated mixer brand</div>
+      <div class="cs-body">
+        <div class="cs-col">
+          <div class="cs-col-lbl">The Problem</div>
+          <div class="cs-text">12 brands within the same company were each independently ordering identical neon signs — from 4 different vendors. Nobody knew their counterparts were placing the same orders. Economies of scale were sacrificed on every single purchase.</div>
+          <div class="cs-callout" style="background:rgba(255,92,92,.06);border:1px solid rgba(255,92,92,.15)"><span style="color:#FF5C5C;font-weight:700">Hidden cost:</span> Same vendor, same product — but 12× higher unit cost than necessary. The savings were always there, invisible.</div>
         </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">Challenge</div>
-          <div class="case-challenge">A longstanding single-vendor relationship had become comfortable — and expensive. No competition meant no leverage, no innovation, and no way to know if the price was fair.</div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">What brandhub Did</div>
+          <div class="cs-steps">
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(255,145,25,.2);color:var(--orange)">1</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Surfaced the overlap.</b> Cross-brand spend analytics revealed 12 brands ordering identical SKUs from the same vendors — completely uncoordinated.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(255,145,25,.2);color:var(--orange)">2</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Consolidated into a single purchase event.</b> Combined all 12 brand orders, unlocking bulk pricing tiers that none could access individually.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(255,145,25,.2);color:var(--orange)">3</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Eliminated duplicate shipping.</b> One logistics event. One shipment. Zero redundant freight fees across all 12 brands.</div>
+            </div>
+          </div>
         </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">What brandhub did</div>
-          <div class="case-challenge">Introduced multi-vendor bidding. Four vendors competed. The winning bid came in 33% below the incumbent's quote.</div>
-        </div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="case-metric-num">33%</div><div class="case-metric-lbl">product savings</div></div>
-          <div class="case-metric"><div class="case-metric-num">4</div><div class="case-metric-lbl">vendors competing</div></div>
-          <div class="case-metric"><div class="case-metric-num">#1</div><div class="case-metric-lbl">vendor pool built</div></div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">Results</div>
+          <div class="cs-results">
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--orange)">48%</div><div class="cs-res-l">more units delivered, same budget</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:#28C840">0</div><div class="cs-res-l">shipping delays across all 12 brands</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--blue)">100%</div><div class="cs-res-l">of signs reached market on schedule</div></div>
+          </div>
         </div>
       </div>
-      <div class="case-card fade-up" style="transition-delay:.2s">
-        <div>
-          <div class="case-hero-num">15%</div>
-          <div class="case-hero-lbl">storage cost reduction + 99.7% on-time delivery</div>
-          <div class="case-tag" style="margin-top:6px">Top-5 global wine & spirits company</div>
-        </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">Challenge</div>
-          <div class="case-challenge">Warehouses full of unused, inactive, out-of-date POS. Storage fees compounding. Capital tied up in materials that would never reach market. Nobody had visibility.</div>
-        </div>
-        <div class="case-divider"></div>
-        <div>
-          <div class="case-challenge-lbl">What brandhub did</div>
-          <div class="case-challenge">SKU-level analytics flagged dead inventory, recommended right-sized future orders, redistributed usable assets before expiry.</div>
-        </div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="case-metric-num">15%</div><div class="case-metric-lbl">storage cost reduction</div></div>
-          <div class="case-metric"><div class="case-metric-num">100%</div><div class="case-metric-lbl">inventory visibility</div></div>
-          <div class="case-metric"><div class="case-metric-num">0</div><div class="case-metric-lbl">spreadsheets used</div></div>
-        </div>
+      <div class="cs-footer">
+        <div class="cs-footer-q" style="color:var(--orange)">"</div>
+        <div>The data was always there. brandhub was the first system that actually showed us what we were doing to ourselves. We left hundreds of thousands of dollars on the table every year — and it was completely invisible.</div>
       </div>
     </div>
+
+    <!-- ── CASE 2: COMPETITIVE BIDDING ── -->
+    <div class="cs-card fade-up" style="transition-delay:.1s">
+      <div class="cs-header">
+        <div class="cs-header-left">
+          <div class="cs-eyebrow">Case Study 02 &nbsp;·&nbsp; Competitive Bidding</div>
+          <div class="cs-big-num" style="color:var(--blue)">33%</div>
+          <div class="cs-big-lbl">cost savings on the same product in under 6 months</div>
+          <div class="cs-co-tag">🥤 Leading Premium Carbonated Mixer Brand</div>
+        </div>
+        <div class="cs-header-right">
+          <!-- Competitive bid bar chart -->
+          <div style="width:100%;max-width:440px">
+            <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Live bid comparison — same product spec</div>
+            <div style="margin-bottom:11px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px"><span style="font-weight:600">Incumbent (prior locked price)</span><span style="color:#FF5C5C;font-weight:700">Baseline</span></div>
+              <div style="height:30px;width:100%;background:rgba(255,92,92,.13);border:1px solid rgba(255,92,92,.3);border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:11px;color:#FF5C5C;font-weight:700">100% — unchallenged for 3 years</div>
+            </div>
+            <div style="margin-bottom:11px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px"><span style="font-weight:600">Vendor 2</span><span>−11%</span></div>
+              <div style="height:28px;width:89%;background:rgba(255,145,25,.1);border:1px solid rgba(255,145,25,.22);border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:11px;color:var(--orange);font-weight:600">89%</div>
+            </div>
+            <div style="margin-bottom:11px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px"><span style="font-weight:600">Vendor 3</span><span>−18%</span></div>
+              <div style="height:28px;width:82%;background:rgba(255,145,25,.07);border:1px solid rgba(255,145,25,.16);border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:11px;color:var(--orange);font-weight:600">82%</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:5px"><span style="color:#28C840;font-weight:700">✓ Winning bid — awarded</span><span style="color:#28C840;font-weight:700">−33%</span></div>
+              <div style="height:34px;width:67%;background:rgba(40,200,64,.15);border:2px solid rgba(40,200,64,.45);border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:12px;color:#28C840;font-weight:900;gap:8px">67% <span style="font-size:9px;opacity:.75;font-weight:600">of original price</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-col">
+          <div class="cs-col-lbl">The Problem</div>
+          <div class="cs-text">A longstanding single-vendor relationship had become comfortable — and expensive. No competition meant no leverage, no innovation, and no way to know if the price was fair. The vendor had zero incentive to sharpen their pencil.</div>
+          <div class="cs-callout" style="background:rgba(255,92,92,.06);border:1px solid rgba(255,92,92,.15)"><span style="color:#FF5C5C;font-weight:700">Hidden cost:</span> Years of loyalty to one vendor = years of overpaying at rates that were never challenged.</div>
+        </div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">What brandhub Did</div>
+          <div class="cs-steps">
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(48,180,230,.2);color:var(--blue)">1</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Benchmarked the incumbent's price</b> against $100M+ in verified transaction data. Overpayment flagged immediately.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(48,180,230,.2);color:var(--blue)">2</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Ran a structured multi-vendor RFQ.</b> Four pre-qualified vendors submitted blind competitive bids through the brandhub platform.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(48,180,230,.2);color:var(--blue)">3</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Awarded to the winning bid</b> — 33% below the incumbent's quote, same specs, same quality, faster lead time.</div>
+            </div>
+          </div>
+        </div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">Results</div>
+          <div class="cs-results">
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--blue)">33%</div><div class="cs-res-l">cost reduction on identical product</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--orange)">4</div><div class="cs-res-l">competing vendors engaged in RFQ</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:#28C840">#1</div><div class="cs-res-l">approved vendor pool built for future use</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <div class="cs-footer-q" style="color:var(--blue)">"</div>
+        <div>We didn't know we were overpaying because we'd never had anything to compare against. The first time we ran a competitive bid on brandhub, the savings paid for our entire first year on the platform.</div>
+      </div>
+    </div>
+
+    <!-- ── CASE 3: INVENTORY VISIBILITY ── -->
+    <div class="cs-card fade-up" style="transition-delay:.2s">
+      <div class="cs-header">
+        <div class="cs-header-left">
+          <div class="cs-eyebrow">Case Study 03 &nbsp;·&nbsp; Inventory Visibility</div>
+          <div class="cs-big-num" style="color:#28C864">15%</div>
+          <div class="cs-big-lbl">storage cost reduction + 99.7% on-time delivery</div>
+          <div class="cs-co-tag">🏆 Top-5 Global Wine &amp; Spirits Company</div>
+        </div>
+        <div class="cs-header-right">
+          <!-- Inventory health before/after -->
+          <div style="width:100%;max-width:460px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FF5C5C;margin-bottom:10px">Before brandhub</div>
+                <div style="background:rgba(255,92,92,.05);border:1px solid rgba(255,92,92,.2);border-radius:12px;overflow:hidden;font-size:11px">
+                  <div style="padding:10px 12px;border-bottom:1px solid rgba(255,92,92,.15)">
+                    <div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">SKU Status</div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>NEON-A402</span><span style="color:#FF5C5C">⚠ Inactive</span></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>PROMO-BB11</span><span style="color:#FF5C5C">⚠ Inactive</span></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>DISP-2024</span><span style="color:#FF5C5C">⚠ Expired</span></div>
+                    <div style="display:flex;justify-content:space-between;color:var(--muted)"><span>GLNG-POS1</span><span style="color:#28C840">✓ Active</span></div>
+                  </div>
+                  <div style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+                    <div style="color:#FF5C5C;font-weight:700">📦 Dead stock: 42%</div>
+                    <div style="color:var(--muted)">💸 Storage fees: mounting</div>
+                    <div style="color:var(--muted)">👁 Visibility: none</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#28C840;margin-bottom:10px">After brandhub</div>
+                <div style="background:rgba(40,200,64,.05);border:1px solid rgba(40,200,64,.22);border-radius:12px;overflow:hidden;font-size:11px">
+                  <div style="padding:10px 12px;border-bottom:1px solid rgba(40,200,64,.15)">
+                    <div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">SKU Status</div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>NEON-A402</span><span style="color:#28C840">✓ Deployed</span></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>PROMO-BB11</span><span style="color:#28C840">✓ Right-sized</span></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;color:var(--muted)"><span>DISP-2024</span><span style="color:#28C840">✓ Cleared</span></div>
+                    <div style="display:flex;justify-content:space-between;color:var(--muted)"><span>GLNG-POS1</span><span style="color:#28C840">✓ Active</span></div>
+                  </div>
+                  <div style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+                    <div style="color:#28C840;font-weight:700">✓ Dead stock: 0%</div>
+                    <div style="color:var(--muted)">📉 Storage fees: −15%</div>
+                    <div style="color:#28C840">🚚 On-time delivery: 99.7%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-col">
+          <div class="cs-col-lbl">The Problem</div>
+          <div class="cs-text">Warehouses full of unused, inactive, out-of-date POS. Storage fees compounding month after month. Capital locked in materials that would never reach market. The team was ordering more while existing inventory rotted — because nobody had visibility into what was already there.</div>
+          <div class="cs-callout" style="background:rgba(255,92,92,.06);border:1px solid rgba(255,92,92,.15)"><span style="color:#FF5C5C;font-weight:700">Hidden cost:</span> Every new order added to a warehouse already full of waste. The bleeding was silent and continuous.</div>
+        </div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">What brandhub Did</div>
+          <div class="cs-steps">
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(40,200,64,.2);color:#28C864">1</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Full SKU-level inventory audit.</b> Every item in every warehouse catalogued, tagged with status: active, aging, expired, or redistributable.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(40,200,64,.2);color:#28C864">2</div>
+              <div class="cs-step-t"><b style="color:var(--text)">Dead inventory flagged and actioned.</b> Usable assets redistributed to markets before expiry. Expired stock cleared. Storage footprint reduced immediately.</div>
+            </div>
+            <div class="cs-step">
+              <div class="cs-step-n" style="background:rgba(40,200,64,.2);color:#28C864">3</div>
+              <div class="cs-step-t"><b style="color:var(--text)">AI demand planning engaged.</b> Right-sized future orders based on actual historical consumption — eliminating overstock at source.</div>
+            </div>
+          </div>
+        </div>
+        <div class="cs-col">
+          <div class="cs-col-lbl">Results</div>
+          <div class="cs-results">
+            <div class="cs-res"><div class="cs-res-n" style="color:#28C864">15%</div><div class="cs-res-l">reduction in storage costs</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--blue)">99.7%</div><div class="cs-res-l">on-time delivery rate achieved</div></div>
+            <div class="cs-res"><div class="cs-res-n" style="color:var(--orange)">100%</div><div class="cs-res-l">inventory visibility across all warehouses</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <div class="cs-footer-q" style="color:#28C864">"</div>
+        <div>We were ordering new product while warehouses were full of product we'd already paid for. brandhub showed us the hole we were pouring money into — and then sealed it.</div>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- DEMO CTA -->
-<div id="demo">
-  <div class="wrap" style="text-align:center">
-    <div class="label fade-up" style="justify-content:center;display:flex">See It In Action</div>
-    <h2 class="sec-title fade-up" style="margin:0 auto 16px">Ready to see brandhub<br>in your world?</h2>
-    <p class="sec-sub fade-up" style="margin:0 auto 36px">Walk through the platform using your category, your markets, and your typical programs.</p>
-    <div class="fade-up">
-      <a href="https://jfrohlinger.github.io/brandhub_heaven_hill/" target="_blank" class="btn-primary" style="font-size:17px;padding:18px 44px">🚀 Launch Live Demo</a>
-    </div>
-  </div>
-</div>
 
 <!-- NEXT STEPS -->
 <section id="next-steps" style="background:var(--surface)">
@@ -1217,6 +1439,54 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
   <details>
     <summary style="font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:16px 0;">▼ Appendix — Additional Detail</summary>
     <div id="appendix-content">
+
+<!-- APPENDIX: WHY NOT JUST USE WHAT YOU HAVE -->
+<section style="background:var(--bg);padding:80px 0">
+  <div class="wrap">
+    <div class="label fade-up">Why Not Just Use What You Have?</div>
+    <h2 class="sec-title fade-up">Three questions your current solution<br><span style="color:var(--blue)">can't answer.</span></h2>
+    <p class="sec-sub fade-up">Every competitor can execute. Only brandhub can tell you what's actually happening.</p>
+    <div class="tq-grid">
+      <div class="tq-card fade-up">
+        <div class="tq-num">1</div>
+        <div class="tq-q">Did you overpay?</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">Without $100M+ in verified transaction data, you're guessing. Your vendor quotes a price — you have no idea if it's fair.</div>
+        <div class="tq-competitor-row">
+          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">No data at all</span></div>
+          <div class="tq-row"><span class="tq-brand">HH Global / Halo</span><span class="tq-x">They set the price</span></div>
+          <div class="tq-row"><span class="tq-brand">Coupa / Ariba</span><span class="tq-x">No alc bev benchmark</span></div>
+        </div>
+        <div class="tq-bh-row">brandhub: Item-level benchmarking vs. $100M+ in real transactions. See market median before you order.</div>
+      </div>
+      <div class="tq-card fade-up" style="transition-delay:.1s">
+        <div class="tq-num">2</div>
+        <div class="tq-q">Is your display actually in market?</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">You shipped 500 displays. 30% end up in dumpsters. Without embedded tracking, you have no proof of placement — just a delivery confirmation.</div>
+        <div class="tq-competitor-row">
+          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">No visibility</span></div>
+          <div class="tq-row"><span class="tq-brand">HH Global / Halo</span><span class="tq-x">No production control</span></div>
+          <div class="tq-row"><span class="tq-brand">Other platforms</span><span class="tq-x">No tracking tech</span></div>
+        </div>
+        <div class="tq-bh-row">brandhub Atlas: Beacons embedded at production. Real-time GPS/Bluetooth shows exactly where every display is.</div>
+      </div>
+      <div class="tq-card fade-up" style="transition-delay:.2s">
+        <div class="tq-num">3</div>
+        <div class="tq-q">Did your distributor get the order right?</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px">The three-tier system means your POS touches brands, distributors, and retailers. No generic tool is wired into that chain.</div>
+        <div class="tq-competitor-row">
+          <div class="tq-row"><span class="tq-brand">Spreadsheets</span><span class="tq-x">Manual reconciliation</span></div>
+          <div class="tq-row"><span class="tq-brand">Coupa / Ariba</span><span class="tq-x">No distributor APIs</span></div>
+          <div class="tq-row"><span class="tq-brand">Other platforms</span><span class="tq-x">Not built for 3-tier</span></div>
+        </div>
+        <div class="tq-bh-row">brandhub: Direct API integrations with distributors. Orders, allocations, and compliance flow automatically.</div>
+      </div>
+    </div>
+    <div class="fade-up" style="margin-top:24px;text-align:center;font-size:15px;font-weight:700;color:var(--muted);padding:20px">
+      "If your current solution can't answer all three — <span style="color:var(--text)">you don't have visibility. You have hope.</span>"
+    </div>
+  </div>
+</section>
+
 <section id="ecosystem" style="background:var(--surface);overflow:hidden">
   <div class="wrap">
     <div class="label fade-up">The Platform</div>
@@ -1393,61 +1663,6 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works" style="background:var(--surface)">
-  <div class="wrap">
-    <div class="label fade-up">How It Works</div>
-    <h2 class="sec-title fade-up">One platform. Every partner.<br><span style="color:var(--blue)">Zero gaps.</span></h2>
-    <p class="sec-sub fade-up">Plan, build, execute, and measure — all in a single connected system.</p>
-    <div class="steps-grid">
-      <div class="step-card fade-up">
-        <div class="step-num">1</div>
-        <div class="step-title">Plan</div>
-        <ul class="step-items">
-          <li>Centralized campaign planning</li>
-          <li>Customizable branding & workflows</li>
-          <li>Budget controls & approvals</li>
-          <li>AI-assisted demand planning</li>
-          <li>Develop programs in a connected platform</li>
-        </ul>
-      </div>
-      <div class="step-card fade-up" style="transition-delay:.1s">
-        <div class="step-num">2</div>
-        <div class="step-title">Build</div>
-        <ul class="step-items">
-          <li>Asset design & creation</li>
-          <li>POS material database</li>
-          <li>Online ordering catalog</li>
-          <li>Multi-address order forms</li>
-          <li>Create & manage orders seamlessly</li>
-        </ul>
-      </div>
-      <div class="step-card fade-up" style="transition-delay:.2s">
-        <div class="step-num">3</div>
-        <div class="step-title">Execute</div>
-        <ul class="step-items">
-          <li>Multi-vendor bidding portals</li>
-          <li>RFQ and pricing controls</li>
-          <li>Live production & inventory tracking</li>
-          <li>Automated delivery updates</li>
-          <li>System integrations & APIs</li>
-        </ul>
-      </div>
-      <div class="step-card fade-up" style="transition-delay:.3s">
-        <div class="step-num">4</div>
-        <div class="step-title">Measure</div>
-        <ul class="step-items">
-          <li>Real-time dashboards</li>
-          <li>Budget reconciliation & analysis</li>
-          <li>Order analytics & KPIs</li>
-          <li>Forecasting & reporting tools</li>
-          <li>Performance tracking by market & brand</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- GUARANTEE -->
 <section id="guarantee">
   <div class="wrap">
@@ -1468,7 +1683,39 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
   </div>
 </section>
 
-<!-- NEXT STEPS -->
+<!-- PLATFORM COMPARISON (END) -->
+<section id="comparison" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="label fade-up">Platform Comparison</div>
+    <h2 class="sec-title fade-up">brandhub is different.<br><span style="color:var(--blue)">Purpose-built for alc bev.</span></h2>
+    <p class="sec-sub fade-up">The only platform built for the US alc bev three-tier system — not adapted from a generic tool.</p>
+    <div class="fade-up" style="overflow-x:auto">
+    <table class="comp-table">
+      <thead><tr>
+        <th style="min-width:200px">Capability</th>
+        <th>Spreadsheets</th>
+        <th>HH Global / Halo / IMS</th>
+        <th>Other Platforms</th>
+        <th class="bh">brandhub</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Built for alc bev 3-tier</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>Price benchmarking ($100M+ data)</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>Distributor API integration</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>Multi-vendor bidding & RFQ</td><td><span class="xx">✗</span></td><td><span class="pa">~</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>Beacon / GPS tracking in POS</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>You own your data & vendor relationships</td><td><span class="ck">✓</span></td><td><span class="xx">✗</span></td><td><span class="pa">~</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+        <tr><td>Alc bev compliance & allocations</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="fade-up" style="font-size:12px;color:var(--muted);margin-top:-16px;margin-bottom:32px">✓ Built-in &nbsp;·&nbsp; ~ Partial/workaround &nbsp;·&nbsp; ✗ Not available</div>
+    <div class="fade-up" style="text-align:center">
+      <a href="comparison.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#0A0D1A;font-size:13px;font-weight:800;letter-spacing:.5px;padding:12px 28px;border-radius:12px;text-decoration:none;transition:all .2s" onmouseover="this.style.background='#56c8f0'" onmouseout="this.style.background='var(--blue)'">📋 &nbsp;Share as 1-Pager</a>
+      <div style="font-size:11px;color:var(--muted);margin-top:10px;opacity:.7">Opens a standalone comparison page you can email or link directly</div>
+    </div>
+  </div>
+</section>
 
     </div>
   </details>
