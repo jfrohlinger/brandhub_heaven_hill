@@ -373,19 +373,59 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .footer-contact a{color:var(--blue);text-decoration:none}
 
 @media(max-width:900px){
-  .agenda-grid,.who-grid,.persona-grid,.tq-grid,.steps-grid,.case-grid,.ns-grid,.exist-grid,.modules-grid,.apps-grid{grid-template-columns:1fr}
+  /* Grids → single column */
+  .agenda-grid,.who-grid,.persona-grid,.tq-grid,.steps-grid,.case-grid,.ns-grid,.exist-grid,.modules-grid,.apps-grid,.ai-grid{grid-template-columns:1fr}
+  .who-stats{grid-template-columns:1fr 1fr}
   .steps-flow{grid-template-columns:1fr;gap:12px}
   .step-arrow{display:none}
   .disco-grid{grid-template-columns:1fr}
   .guarantee-inner{grid-template-columns:1fr}
   .problem-stats{grid-template-columns:1fr}
+  /* Case studies */
+  .cs-header{grid-template-columns:1fr;min-height:unset}
+  .cs-body{grid-template-columns:1fr}
+  .cs-col{border-right:none;border-bottom:1px solid var(--border)}
+  /* Nav */
   nav .nav-links{display:none}
+  nav{padding:0 16px}
+  /* Comparison table */
   .comp-table{font-size:11px}
-  .comp-table td,.comp-table th{padding:10px 10px}
+  .comp-table td,.comp-table th{padding:10px 8px}
+  /* Hero */
   .hero-3col{grid-template-columns:1fr;gap:0}
-  .hero-col-left,.hero-col-right{border:none;padding:32px 24px}
-  .hero-col-mid{padding:32px 24px}
+  .hero-col-left,.hero-col-right{border:none;padding:32px 20px}
+  .hero-col-mid{padding:32px 20px}
   .hero-tiles-grid{grid-template-columns:repeat(2,1fr)}
+  /* Spacing */
+  .wrap{padding:0 20px}
+  section{padding:60px 0}
+}
+@media(max-width:600px){
+  /* Single column everything */
+  .who-stats,.hero-tiles-grid,.mock-stat-boxes{grid-template-columns:1fr}
+  /* Readable section padding */
+  section{padding:48px 0}
+  .wrap{padding:0 16px}
+  /* Shrink oversized headings slightly */
+  .sec-title{font-size:clamp(22px,7vw,36px)}
+  .hero-h1{font-size:clamp(20px,6vw,34px)}
+  p.sec-sub{font-size:14px}
+  /* Case study visual panels - shrink */
+  .cs-viz{min-height:180px}
+  /* Step cards full width */
+  .steps-flow{gap:10px}
+  /* Apps grid */
+  .apps-grid{grid-template-columns:1fr}
+  /* Comp table horizontal scroll */
+  .comp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .comp-table{min-width:520px}
+  /* Hide hero right/left col decorative panels */
+  .hero-col-left,.hero-col-right{display:none}
+  .hero-3col{grid-template-columns:1fr}
+  /* Modules grid */
+  .modules-grid{grid-template-columns:1fr 1fr}
+  /* Calculator */
+  .calc-wrap{padding:24px 16px}
 }
 
 /* ─── HERO 3-COLUMN LAYOUT ─── */
@@ -1690,7 +1730,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
     <h2 class="sec-title fade-up">brandhub is different.<br><span style="color:var(--blue)">Purpose-built for alc bev.</span></h2>
     <p class="sec-sub fade-up">The only platform built for the US alc bev three-tier system — not adapted from a generic tool.</p>
     <div class="fade-up" style="overflow-x:auto">
-    <table class="comp-table">
+    <div class="comp-table-wrap"><table class="comp-table">
       <thead><tr>
         <th style="min-width:200px">Capability</th>
         <th>Spreadsheets</th>
@@ -1707,7 +1747,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
         <tr><td>You own your data & vendor relationships</td><td><span class="ck">✓</span></td><td><span class="xx">✗</span></td><td><span class="pa">~</span></td><td class="bh"><span class="ck">✓</span></td></tr>
         <tr><td>Alc bev compliance & allocations</td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td><span class="xx">✗</span></td><td class="bh"><span class="ck">✓</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     </div>
     <div class="fade-up" style="font-size:12px;color:var(--muted);margin-top:-16px;margin-bottom:32px">✓ Built-in &nbsp;·&nbsp; ~ Partial/workaround &nbsp;·&nbsp; ✗ Not available</div>
     <div class="fade-up" style="text-align:center">
