@@ -118,7 +118,7 @@ nav{position:fixed;top:0;left:0;bottom:0;width:124px;z-index:1000;background:rgb
 .exist-card.old1 .exist-tag{color:var(--red);background:var(--red-dim)}
 .exist-card.old2 .exist-tag{color:var(--orange);background:var(--org-dim)}
 .exist-card.new .exist-tag{color:var(--blue);background:var(--blue-dim)}
-.exist-title{font-size:18px;font-weight:800;margin-bottom:12px;line-height:1.2}
+.exist-title{font-size:18px;font-weight:800;margin-bottom:12px;line-height:1.2;min-height:44px;display:flex;align-items:flex-start}
 .exist-card.old1 .exist-title{color:var(--red)}
 .exist-card.old2 .exist-title{color:var(--orange)}
 .exist-card.new .exist-title{color:var(--blue)}
@@ -509,7 +509,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 /* Flywheel (condensed for main site) */
 .fw-grid{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:stretch;gap:0;margin-top:40px}
 .fw-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px;opacity:.4}
-.fw-step{border-radius:16px;overflow:hidden}
+.fw-step{border-radius:16px;overflow:hidden;display:flex;flex-direction:column;height:100%}
 .fw-hdr{padding:20px 18px 14px}
 .fw-hdr.ingest{background:linear-gradient(140deg,#0d3d5e,#1565a0)}
 .fw-hdr.compare{background:linear-gradient(140deg,#4a2000,#9a4800)}
@@ -517,7 +517,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .fw-icon{font-size:22px;margin-bottom:8px}
 .fw-title{font-size:16px;font-weight:900;color:#fff;margin-bottom:2px}
 .fw-sub{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;opacity:.7;color:#fff}
-.fw-bdy{background:var(--card);padding:14px 18px 18px}
+.fw-bdy{background:var(--card);padding:14px 18px 18px;flex:1}
 .fw-pts{list-style:none;display:flex;flex-direction:column;gap:7px}
 .fw-pts li{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.45}
 .fw-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px}
@@ -552,11 +552,11 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
 .sh-val{font-size:28px;font-weight:900;color:var(--green);letter-spacing:-1px}
 .calc-note{font-size:12px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6}
 .breakdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.bd-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+.bd-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column}
 .bd-num{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:2px;margin-bottom:4px}
-.bd-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+.bd-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3;min-height:32px;display:flex;align-items:flex-start}
 .bd-spend{font-size:11px;color:var(--muted);margin-bottom:6px}
-.bd-savings{font-size:13px;font-weight:800;color:var(--green)}
+.bd-savings{font-size:13px;font-weight:800;color:var(--green);margin-top:auto}
 @media(max-width:900px){
   .pos-grid{grid-template-columns:1fr}
   .fw-grid{grid-template-columns:1fr;gap:16px}
@@ -570,26 +570,28 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
 .print-calc-hdr{text-align:center;margin-bottom:28px}
 .print-calc-hdr h4{font-size:clamp(17px,2vw,24px);font-weight:900;letter-spacing:-0.5px;margin:6px 0 6px}
 .print-calc-hdr p{font-size:13.5px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.65}
-.print-calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start}
-.pc-col{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.print-calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:stretch}
+.pc-col{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
 .pc-col.brandhub{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
 .pc-col-hdr{padding:14px 18px;border-bottom:1px solid var(--border)}
 .pc-tag{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
 .pc-col.brandhub .pc-col-hdr{background:rgba(48,180,230,0.07)}
 .pc-col.brandhub .pc-tag{color:var(--blue)}
 .pc-col-title{font-size:15px;font-weight:800}
-.pc-col-body{padding:14px 18px}
+.pc-col-body{padding:14px 18px;flex:1;display:flex;flex-direction:column}
 .pc-irow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
 .pc-irow:last-of-type{border-bottom:none}
-.pc-lbl{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:5px}
+.pc-col:first-child .pc-irow{flex-direction:column;align-items:flex-start;padding:11px 0;gap:4px}
+.pc-col:first-child .pc-irow:last-of-type{border-bottom:none}
+.pc-lbl{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
 .pc-badge{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 5px;border-radius:4px}
 .pc-badge.orange{background:rgba(255,145,25,.18);color:var(--orange)}
 .pc-badge.green{background:rgba(40,200,100,.16);color:var(--green)}
 .pc-badge.blue{background:rgba(48,180,230,.16);color:var(--blue)}
 .pc-val{font-size:13.5px;font-weight:700;text-align:right}
-.pc-input{background:var(--card2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:13px;font-weight:700;padding:4px 9px;width:84px;text-align:right;-moz-appearance:textfield}
+.pc-input{background:transparent;border:none;border-bottom:2px solid var(--border-s);color:var(--blue);font-size:28px;font-weight:900;letter-spacing:-1px;padding:2px 0;width:100%;text-align:left;-moz-appearance:textfield}
 .pc-input::-webkit-outer-spin-button,.pc-input::-webkit-inner-spin-button{-webkit-appearance:none}
-.pc-input:focus{outline:none;border-color:var(--blue)}
+.pc-input:focus{outline:none;border-bottom-color:var(--blue)}
 .pc-divider{border:none;border-top:1px solid var(--border);margin:11px 0}
 .pc-br{margin-top:0}
 .pc-br-row{display:flex;justify-content:space-between;font-size:11.5px;padding:3px 0}
@@ -1575,15 +1577,15 @@ const CLIENT = {
         <div class="calc-inputs">
           <div class="input-group">
             <label>Annual POS Budget</label>
-            <div class="input-display" id="spend-disp">$2,000,000</div>
-            <input type="range" id="calc-slider" min="500000" max="75000000" step="500000" value="2000000">
+            <div class="input-display" id="spend-disp">$20.0M</div>
+            <input type="range" id="calc-slider" min="500000" max="75000000" step="500000" value="20000000">
             <div class="range-row"><span>$500K</span><span>$75M</span></div>
           </div>
           <div class="input-group">
             <label>Current Markup / Fee %</label>
             <div class="input-display orange" id="markup-disp">15%</div>
-            <input type="range" id="markup-slider" min="5" max="30" step="1" value="15" class="orange-slider">
-            <div class="range-row"><span>5%</span><span>30%</span></div>
+            <input type="range" id="markup-slider" min="0" max="30" step="1" value="15" class="orange-slider">
+            <div class="range-row"><span>0%</span><span>30%</span></div>
           </div>
         </div>
         <div class="calc-output">
@@ -2489,10 +2491,10 @@ function fmtS(n) {
   return '$' + n;
 }
 const calcCats = [
-  { num: '01', name: 'Permanent Retail Fixtures', shareLow: .30, shareHigh: .35, savingsLow: .15, savingsHigh: .25 },
-  { num: '02', name: 'Printed POS Materials',      shareLow: .20, shareHigh: .25, savingsLow: .10, savingsHigh: .20 },
-  { num: '03', name: 'Promotional & Event',         shareLow: .12, shareHigh: .18, savingsLow: .10, savingsHigh: .15 },
-  { num: '04', name: 'Branded Merchandise',         shareLow: .10, shareHigh: .15, savingsLow: .08, savingsHigh: .15 },
+  { num: '01', name: 'Permanent Retail Fixtures', shareLow: .30, shareHigh: .35, savingsLow: .22, savingsHigh: .38 },
+  { num: '02', name: 'Printed POS Materials',      shareLow: .20, shareHigh: .25, savingsLow: .06, savingsHigh: .12 },
+  { num: '03', name: 'Promotional & Event',         shareLow: .12, shareHigh: .18, savingsLow: .14, savingsHigh: .24 },
+  { num: '04', name: 'Branded Merchandise',         shareLow: .10, shareHigh: .15, savingsLow: .18, savingsHigh: .32 },
 ];
 function calcUpdate() {
   const spend  = +sliderB.value;
