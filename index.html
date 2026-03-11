@@ -428,9 +428,9 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 }
 
 /* ─── HERO: TOP BAR + 2-COLUMN LAYOUT ─── */
-#hero{padding:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(48,180,230,.12) 0%,transparent 70%),var(--bg);display:flex;flex-direction:column;height:100vh;max-height:100vh;overflow:hidden}
-.hero-top{border-bottom:1px solid var(--border-s);padding:70px 64px 20px;display:flex;align-items:center;justify-content:center;background:transparent;flex-shrink:0}
-.hero-2col{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto 1fr 1fr 1fr;flex:1;min-height:0}
+#hero{padding:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(48,180,230,.12) 0%,transparent 70%),var(--bg);display:grid;grid-template-rows:auto 1fr;height:100vh;max-height:100vh;overflow:hidden}
+.hero-top{border-bottom:1px solid var(--border-s);padding:70px 64px 20px;display:flex;align-items:center;justify-content:center;background:transparent}
+.hero-2col{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto 1fr 1fr 1fr;overflow:hidden}
 
 /* ── HERO FLAT-GRID CELLS ── */
 .hero-cell{overflow:hidden}
@@ -442,7 +442,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .hero-cell.no-border{border-bottom:none}
 .hero-bh-logo{max-height:44px;width:auto;max-width:160px;object-fit:contain;flex-shrink:0}
 .hero-ks-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.hero-ks-num{font-size:clamp(46px,4vw,72px);font-weight:900;letter-spacing:-2px;line-height:1}
+.hero-ks-num{font-size:clamp(32px,min(4vw,6vh),68px);font-weight:900;letter-spacing:-2px;line-height:1}
 .hero-ks-lbl{font-size:clamp(13px,1.4vw,17px);color:var(--text);font-weight:700;margin-top:6px;letter-spacing:.2px;opacity:0.9}
 .hh-logo-wrap{text-align:center;background:#fff;border-radius:10px;padding:8px 14px;display:flex;align-items:center;justify-content:center;max-width:200px}
 .hh-logo-wrap img{max-height:44px;max-width:140px;width:auto;height:auto;object-fit:contain;display:block}
@@ -450,11 +450,12 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .hh-logo-wrap>div{max-width:100%}
 /* Override any inline styles on injected logos */
 .hero-cell.logo-row img{max-height:44px!important;height:auto!important;width:auto!important;max-width:180px!important}
-/* Priority cells — centered, bigger */
-.hero-cell.stat-row .priority-icon{font-size:30px;display:block;margin-bottom:10px;text-align:center}
-.hero-cell.stat-row .priority-title{font-size:clamp(18px,2vw,26px);text-align:center;line-height:1.2;margin-bottom:10px}
-.hero-cell.stat-row .priority-links{display:flex;flex-direction:column;align-items:center;gap:4px}
-.hero-cell.stat-row .priority-link{font-size:clamp(11px,1.1vw,14px);text-align:center;justify-content:center}
+/* Priority cells — centered; suppress global cascades & fix double-arrow */
+.hero-cell.stat-row .priority-icon{font-size:32px!important;display:block!important;margin-bottom:12px!important;text-align:center!important}
+.hero-cell.stat-row .priority-title{font-size:clamp(18px,2vw,26px)!important;font-weight:900!important;text-align:center!important;line-height:1.2!important;margin-bottom:10px!important;color:var(--text)!important}
+.hero-cell.stat-row .priority-links{display:flex!important;flex-direction:column!important;align-items:center!important;gap:6px!important}
+.hero-cell.stat-row .priority-link{display:inline-block!important;font-size:clamp(11px,1.1vw,13px)!important;text-align:center!important;color:var(--blue)!important;font-weight:600!important;text-decoration:none!important;opacity:.85!important;padding:2px 0!important}
+.hero-cell.stat-row .priority-link::before{content:none!important}
 .hh-emblem{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#8B0000,#C41E3A);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:-1px;box-shadow:0 4px 20px rgba(139,0,0,.4)}
 .hh-name{font-size:15px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-top:8px}
 .hh-sub{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);opacity:.6;margin-top:3px}
@@ -642,7 +643,7 @@ const CLIENT = {
     <div class="label fade-up">Who We Are</div>
     <div class="who-grid">
       <div>
-        <h2 class="sec-title fade-up">Good teams fail because of<br><span style="color:var(--blue)">average tools and minimal data.</span></h2>
+        <h2 class="sec-title fade-up">We built brandhub because<br><span style="color:var(--blue)">good teams fail because of average tools and minimal data.</span></h2>
         <p class="who-story fade-up">
           Select has spent <b>35 years designing, engineering, and producing</b> trade marketing materials for the world's leading alc bev and CPG brands. We sat in your distributor meetings. We saw the spreadsheets. We watched millions of dollars of POS end up in dumpsters.
         </p>
@@ -694,8 +695,8 @@ const CLIENT = {
   <div class="wrap">
     <div class="label fade-up">Your World</div>
     <div class="disco-intro">
-      <h2 class="sec-title fade-up">Before we show you anything —<br><span style="color:var(--blue)">we want to understand your world.</span></h2>
-      <p class="sec-sub fade-up" style="margin-bottom:0">Six questions that shape everything we show you next. There are no wrong answers. The more honest you are, the more useful the next 20 minutes will be.</p>
+      <h2 class="sec-title fade-up">Before we show you anything — <span style="color:var(--blue);white-space:nowrap">we want to understand your world.</span></h2>
+      <p class="sec-sub fade-up" style="margin-bottom:0;white-space:nowrap">Six questions that shape everything we show you next. There are no wrong answers.</p>
     </div>
     <div class="disco-grid">
       <div class="disco-card fade-up">
@@ -783,7 +784,7 @@ const CLIENT = {
         <div class="disco-q">When you think about the entire trade marketing process — from developing the program all the way to the last order being delivered — what’s the one thing you’d most want to see improve?</div>
         <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Your answer</div>
         <div class="disco-answers">
-          <textarea placeholder="Share your thoughts..." style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:14px;outline:none;resize:vertical;min-height:80px;font-family:inherit;line-height:1.6"></textarea>
+          <textarea id="disco-q6-open" placeholder="Share your thoughts..." style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:14px;outline:none;resize:vertical;min-height:80px;font-family:inherit;line-height:1.6"></textarea>
         </div>
       </div>
     </div>
@@ -1220,7 +1221,7 @@ const CLIENT = {
 <section id="case-studies" style="background:var(--bg)">
   <div class="wrap">
     <div class="label fade-up">The Pattern Repeats</div>
-    <h2 class="sec-title fade-up">Different partners. Different problems.<br><span style="color:var(--orange)">Same result: brandhub delivers savings and efficiency.</span></h2>
+    <h2 class="sec-title fade-up">Different partners. Different problems.<br><span style="color:var(--orange);white-space:nowrap">Same result: brandhub delivers savings and efficiency.</span></h2>
     <p class="sec-sub fade-up" style="max-width:900px;white-space:nowrap">Every one of these outcomes started with a single question: what does your data actually show?</p>
 
     <!-- ── CASE 1: CONSOLIDATION ── -->
@@ -2012,15 +2013,29 @@ document.querySelectorAll('[data-count]').forEach(el => {
 // DISCOVERY ANSWERS
 function saveDiscoAnswers() {
   const cards = document.querySelectorAll('.disco-card');
-  const results = {};
+  const lines = [];
+
   cards.forEach((card, i) => {
-    const q = card.querySelector('.disco-q')?.textContent || ('Q' + (i+1));
-    const selected = [...card.querySelectorAll('.disco-chip.selected:not(.other-toggle)')].map(c => c.textContent);
+    const qText = card.querySelector('.disco-q')?.textContent?.trim() || ('Q' + (i+1));
+    const selected = [...card.querySelectorAll('.disco-chip.selected:not(.other-toggle)')].map(c => c.textContent.trim());
     const otherVal = card.querySelector('.disco-other-input')?.value?.trim();
     if (otherVal) selected.push('Other: ' + otherVal);
-    results[q] = selected;
+    // Q6 open textarea
+    const openVal = card.querySelector('textarea')?.value?.trim();
+    if (openVal) selected.push(openVal);
+    lines.push('Q' + (i+1) + ': ' + qText);
+    lines.push('→ ' + (selected.length ? selected.join(', ') : '(no answer)'));
+    lines.push('');
   });
-  try { localStorage.setItem('brandhub_discovery', JSON.stringify(results)); } catch(e) {}
+
+  // Build mailto
+  const clientName = (typeof CLIENT !== 'undefined' && CLIENT.clientName) ? CLIENT.clientName : 'Prospect';
+  const subject = 'brandhub Discovery Answers — ' + clientName;
+  const body = 'Discovery answers captured during the brandhub presentation:\n\n' + lines.join('\n');
+  const mailto = 'mailto:jfrohlinger@selectdesign.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  try { localStorage.setItem('brandhub_discovery', JSON.stringify(lines)); } catch(e) {}
+  window.location.href = mailto;
   document.getElementById('disco-saved-msg').style.display = 'block';
 }
 
