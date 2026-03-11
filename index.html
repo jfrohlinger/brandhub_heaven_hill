@@ -437,11 +437,11 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .hero-cell.left{background:var(--surface);border-right:1px solid var(--border-s)}
 .hero-cell.right{background:var(--surface);border-left:1px solid var(--border-s)}
 .hero-cell.logo-row{padding:18px 44px;border-bottom:1px solid var(--border-s);display:flex;align-items:center;justify-content:center;min-height:72px}
-.hero-cell.label-row{padding:8px 44px 6px;border-bottom:1px solid var(--border-s);text-align:center}
+.hero-cell.label-row{padding:4px 44px 3px;border-bottom:1px solid var(--border-s);text-align:center;display:flex;align-items:center;justify-content:center}
 .hero-cell.stat-row{padding:14px 44px;border-bottom:1px solid var(--border-s);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .hero-cell.no-border{border-bottom:none}
 .hero-bh-logo{max-height:44px;width:auto;max-width:160px;object-fit:contain;flex-shrink:0}
-.hero-ks-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.hero-ks-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0}
 .hero-ks-num{font-size:clamp(32px,min(4vw,6vh),68px);font-weight:900;letter-spacing:-2px;line-height:1}
 .hero-ks-lbl{font-size:clamp(13px,1.4vw,17px);color:var(--text);font-weight:700;margin-top:6px;letter-spacing:.2px;opacity:0.9}
 .hh-logo-wrap{text-align:center;background:#fff;border-radius:10px;padding:8px 14px;display:flex;align-items:center;justify-content:center;max-width:200px}
@@ -450,6 +450,8 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .hh-logo-wrap>div{max-width:100%}
 /* Override any inline styles on injected logos */
 .hero-cell.logo-row img{max-height:44px!important;height:auto!important;width:auto!important;max-width:180px!important}
+/* Priority inner wrapper — groups content as one block so justify-content:center works correctly */
+.priority-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0}
 /* Priority cells — centered; suppress global cascades & fix double-arrow */
 .hero-cell.stat-row .priority-icon{font-size:32px!important;display:block!important;margin-bottom:12px!important;text-align:center!important}
 .hero-cell.stat-row .priority-title{font-size:clamp(18px,2vw,26px)!important;font-weight:900!important;text-align:center!important;line-height:1.2!important;margin-bottom:10px!important;color:var(--text)!important}
@@ -459,7 +461,7 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .hh-emblem{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#8B0000,#C41E3A);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:18px;font-weight:900;color:#FFD700;letter-spacing:-1px;box-shadow:0 4px 20px rgba(139,0,0,.4)}
 .hh-name{font-size:15px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-top:8px}
 .hh-sub{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);opacity:.6;margin-top:3px}
-.priority-section-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.priority-section-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0}
 .priority-card{padding:13px 16px;border-radius:12px;background:var(--card);border:1px solid var(--border);margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);flex-shrink:0}
 .priority-card:last-child{margin-bottom:0}
 .priority-icon{font-size:20px;margin-bottom:4px;display:block}
@@ -2100,9 +2102,11 @@ if (slider) { slider.addEventListener('input', calcUpdate); calcUpdate(); }
             }).join('')
           + '</div>';
       }
-      slot.innerHTML = '<span class="priority-icon">' + (p.icon || '') + '</span>'
+      slot.innerHTML = '<div class="priority-inner">'
+        + '<span class="priority-icon">' + (p.icon || '') + '</span>'
         + '<div class="priority-title">' + p.title + '</div>'
-        + linksHtml;
+        + linksHtml
+        + '</div>';
     });
   }
 
