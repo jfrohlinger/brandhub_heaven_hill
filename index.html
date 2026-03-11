@@ -472,6 +472,95 @@ footer{background:var(--surface);padding:48px 0;border-top:1px solid var(--borde
 .priority-link:hover{opacity:1;text-decoration:underline}
 .priority-link::before{content:'→';opacity:.5}
 .priority-links{display:flex;flex-direction:column;gap:2px}
+
+/* ── POS PRICING INTELLIGENCE ─────────────────────────────────────────────── */
+#pos-pricing{padding:88px 0;background:var(--surface)}
+.pos-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px}
+/* Pareto chart card */
+.pareto-chart-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden}
+.pareto-chart-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--blue))}
+.chart-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.chart-sub{font-size:11px;color:var(--muted);margin-bottom:24px}
+.bars-container{display:flex;align-items:flex-end;gap:10px;height:160px;padding-bottom:4px}
+.bar-item{display:flex;flex-direction:column;align-items:center;flex:1}
+.bar-fill{width:100%;border-radius:4px 4px 0 0;position:relative}
+.bar-fill.big4{background:linear-gradient(180deg,var(--orange),#cc6600)}
+.bar-fill.tail{background:var(--muted2);opacity:.5}
+.bar-label{font-size:10px;font-weight:700;color:var(--muted);margin-top:8px;text-align:center}
+.bar-pct{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:var(--orange);white-space:nowrap}
+.bar-fill.tail .bar-pct{color:var(--muted)}
+.chart-legend-row{display:flex;gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.legend-item2{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.pareto-pct-badge{position:absolute;top:24px;right:24px;text-align:center}
+.pareto-pct-badge .ring-num{font-size:36px;font-weight:900;color:var(--orange);letter-spacing:-1px;line-height:1}
+.pareto-pct-badge .ring-lbl{font-size:10px;color:var(--muted);font-weight:600}
+/* Big 4 cards */
+.big4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.big4-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px}
+.big4-num{width:30px;height:30px;border-radius:8px;background:var(--org-dim);border:1px solid rgba(255,145,25,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--orange);flex-shrink:0}
+.big4-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.big4-items{font-size:10.5px;color:var(--muted);line-height:1.4}
+.big4-spend{font-size:10px;font-weight:700;color:var(--orange);margin-top:5px}
+/* Flywheel (condensed for main site) */
+.fw-grid{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:stretch;gap:0;margin-top:40px}
+.fw-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:20px;opacity:.4}
+.fw-step{border-radius:16px;overflow:hidden}
+.fw-hdr{padding:20px 18px 14px}
+.fw-hdr.ingest{background:linear-gradient(140deg,#0d3d5e,#1565a0)}
+.fw-hdr.compare{background:linear-gradient(140deg,#4a2000,#9a4800)}
+.fw-hdr.optimize{background:linear-gradient(140deg,#0a3018,#186030)}
+.fw-icon{font-size:22px;margin-bottom:8px}
+.fw-title{font-size:16px;font-weight:900;color:#fff;margin-bottom:2px}
+.fw-sub{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;opacity:.7;color:#fff}
+.fw-bdy{background:var(--card);padding:14px 18px 18px}
+.fw-pts{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fw-pts li{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.45}
+.fw-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.fw-dot.blue{background:var(--blue)}.fw-dot.orange{background:var(--orange)}.fw-dot.green{background:var(--green)}
+.fw-stat-row{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:baseline;gap:8px}
+.fw-stat-n{font-size:22px;font-weight:900;letter-spacing:-1px}
+.fw-stat-l{font-size:10px;color:var(--muted)}
+/* Upgraded calculator */
+.calc-wrap{background:transparent!important;border:none!important;padding:0!important;max-width:860px;margin:0 auto}
+.calc-card{background:var(--card);border:1px solid var(--border-s);border-radius:24px;padding:44px}
+.calc-inputs{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:36px}
+.input-group label{display:block;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.input-display{font-size:36px;font-weight:900;color:var(--blue);letter-spacing:-1.5px;margin-bottom:8px}
+.input-display.orange{color:var(--orange)}
+input[type=range]{width:100%;appearance:none;height:5px;border-radius:3px;background:var(--muted2);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--blue);cursor:pointer;box-shadow:0 0 0 4px var(--blue-dim);transition:box-shadow .2s}
+.range-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+.orange-slider::-webkit-slider-thumb{background:var(--orange)!important;box-shadow:0 0 0 4px var(--org-dim)!important}
+.calc-output{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px 32px}
+.output-headline{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.output-label{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.output-total{font-size:44px;font-weight:900;color:var(--green);letter-spacing:-2px}
+.output-rows{display:flex;flex-direction:column;gap:12px}
+.output-row{display:grid;grid-template-columns:1fr 120px 100px;gap:12px;align-items:center;font-size:14px}
+.output-row.header{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:4px}
+.out-bar-wrap{height:7px;background:var(--muted2);border-radius:4px;overflow:hidden}
+.out-bar{height:100%;background:var(--blue);border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.out-bar.orange{background:var(--orange)}.out-bar.green{background:var(--green)}
+.out-amt{font-weight:700;color:var(--text);text-align:right;font-size:15px}
+.savings-highlight{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(40,200,100,.08);border:1px solid rgba(40,200,100,.2);border-radius:12px;margin-top:16px}
+.sh-label{font-size:14px;font-weight:700;color:var(--text)}
+.sh-val{font-size:28px;font-weight:900;color:var(--green);letter-spacing:-1px}
+.calc-note{font-size:12px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6}
+.breakdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bd-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+.bd-num{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:2px;margin-bottom:4px}
+.bd-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+.bd-spend{font-size:11px;color:var(--muted);margin-bottom:6px}
+.bd-savings{font-size:13px;font-weight:800;color:var(--green)}
+@media(max-width:900px){
+  .pos-grid{grid-template-columns:1fr}
+  .fw-grid{grid-template-columns:1fr;gap:16px}
+  .fw-arrow{display:none}
+  .calc-inputs{grid-template-columns:1fr}
+  .big4-grid{grid-template-columns:1fr 1fr}
+  .breakdown-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -552,6 +641,7 @@ const CLIENT = {
     <a href="#why-exist" class="nav-a">Where We Fit</a>
     <a href="#platform" class="nav-a">How It Works</a>
     <a href="#ai-features" class="nav-a">AI + Apps</a>
+    <a href="#pos-pricing" class="nav-a">POS Pricing</a>
     <a href="#calculator" class="nav-a">Cost</a>
     <a href="#case-studies" class="nav-a">Case Studies</a>
     <a href="#next-steps" class="nav-a">Next Steps</a>
@@ -1169,53 +1259,211 @@ const CLIENT = {
   </div>
 </section>
 
+<!-- POS PRICING INTELLIGENCE -->
+<section id="pos-pricing">
+  <div class="wrap">
+    <div class="label fade-up" style="text-align:center">POS Spend Intelligence</div>
+    <h2 class="sec-title fade-up" style="text-align:center">75% of your POS budget<br><span style="color:var(--orange)">lives in just 4 categories.</span></h2>
+    <p class="sec-sub fade-up" style="text-align:center;margin:0 auto 48px">Most brands carry 300–500+ POS line items. But the same concentration pattern appears across every client. Quoting hundreds of items wastes weeks optimizing the least impactful 25% of spend.</p>
+
+    <div class="pos-grid">
+
+      <!-- Left: price type framing -->
+      <div class="fade-up">
+        <div class="card">
+          <div style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px">Price Variance by Item Type</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="padding:14px 16px;background:rgba(40,200,100,.07);border:1px solid rgba(40,200,100,.2);border-radius:12px">
+              <div style="font-size:11px;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px">Print &nbsp;·&nbsp; STANDARD</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6">Low complexity, high volume, quick turnaround. Bring your preferred vendor, or choose from one of our partners. Manage the process through brandhub yourself with ease, or outsource it to us for a <strong style="color:var(--text)">5% fee</strong>.</div>
+            </div>
+            <div style="padding:14px 16px;background:rgba(255,145,25,.07);border:1px solid rgba(255,145,25,.2);border-radius:12px">
+              <div style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px">CUSTOM &nbsp;·&nbsp; Fixtures &amp; Displays</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6">Price variance of <strong style="color:var(--text)">40–60%</strong> based on specs, materials, quantity &amp; tooling. Any quote without full specs is meaningless. We spec it, then quote it.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Pareto chart -->
+      <div class="fade-up" style="transition-delay:.1s">
+        <div class="pareto-chart-card">
+          <div class="pareto-pct-badge">
+            <div class="ring-num">75%</div>
+            <div class="ring-lbl">Top 4 = % of spend</div>
+          </div>
+          <div class="chart-title">POS Portfolio Spend Concentration</div>
+          <div class="chart-sub">Typical beverage / spirits brand · Annual POS budget</div>
+          <div class="bars-container" id="posParetoBars"></div>
+          <div class="chart-legend-row">
+            <div class="legend-item2"><div class="legend-dot" style="background:var(--orange)"></div> The Big 4 (~75% of spend)</div>
+            <div class="legend-item2"><div class="legend-dot" style="background:var(--muted2)"></div> Long tail (300+ items, ~25%)</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pos-grid -->
+
+    <!-- Big 4 tiles — full width, 4 columns -->
+    <div class="big4-grid fade-up" style="margin-top:24px">
+      <div class="big4-card">
+        <div class="big4-num">01</div>
+        <div><div class="big4-name">Permanent Retail Fixtures</div><div class="big4-items">Floor displays · Backbar glorifiers · Cold box units</div><div class="big4-spend">~30–35% of budget</div></div>
+      </div>
+      <div class="big4-card">
+        <div class="big4-num">02</div>
+        <div><div class="big4-name">Printed POS Materials</div><div class="big4-items">Shelf talkers · Posters · Table tents · Case cards</div><div class="big4-spend">~20–25% of budget</div></div>
+      </div>
+      <div class="big4-card">
+        <div class="big4-num">03</div>
+        <div><div class="big4-name">Promotional &amp; Event</div><div class="big4-items">Banners · Tents · Pop-up structures · Signage</div><div class="big4-spend">~12–18% of budget</div></div>
+      </div>
+      <div class="big4-card">
+        <div class="big4-num">04</div>
+        <div><div class="big4-name">Branded Merchandise</div><div class="big4-items">Glassware · Apparel · Accessories</div><div class="big4-spend">~10–15% of budget</div></div>
+      </div>
+    </div>
+
+    <!-- Data Flywheel -->
+    <div style="margin-top:64px">
+      <div class="label fade-up" style="text-align:center">The Brandhub Method</div>
+      <h3 class="fade-up" style="text-align:center;font-size:clamp(20px,2.8vw,34px);font-weight:900;letter-spacing:-1px;margin-bottom:12px">Pricing intelligence, not pricing guesswork</h3>
+      <p class="fade-up" style="text-align:center;font-size:15px;color:var(--muted);max-width:560px;margin:0 auto 8px;line-height:1.7">We collect millions of data points annually — so you're never relying on a single vendor's quote or last year's prices.</p>
+      <div class="fw-grid fade-up">
+        <div class="fw-step">
+          <div class="fw-hdr ingest">
+            <div class="fw-icon">📥</div>
+            <div class="fw-title">Ingest</div>
+            <div class="fw-sub">Continuous data collection</div>
+          </div>
+          <div class="fw-bdy">
+            <ul class="fw-pts">
+              <li><div class="fw-dot blue"></div>Millions of pricing data points collected annually across all POS categories</li>
+              <li><div class="fw-dot blue"></div>Multi-vendor network spanning 100+ suppliers in alc-bev &amp; CPG</li>
+              <li><div class="fw-dot blue"></div>Real transaction data — not catalog prices or list rates</li>
+            </ul>
+            <div class="fw-stat-row">
+              <div class="fw-stat-n" style="color:var(--blue)">$100M+</div>
+              <div class="fw-stat-l">in verified pricing data analyzed</div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">
+          <div class="fw-hdr compare">
+            <div class="fw-icon">⚖️</div>
+            <div class="fw-title">Compare</div>
+            <div class="fw-sub">AI-powered vendor analysis</div>
+          </div>
+          <div class="fw-bdy">
+            <ul class="fw-pts">
+              <li><div class="fw-dot orange"></div>AI engine shortlists Top 3 vendors per item category</li>
+              <li><div class="fw-dot orange"></div>Price, quality score, lead time &amp; fill rate all weighted</li>
+              <li><div class="fw-dot orange"></div>Benchmarked against your actual spend profile, not averages</li>
+            </ul>
+            <div class="fw-stat-row">
+              <div class="fw-stat-n" style="color:var(--orange)">3</div>
+              <div class="fw-stat-l">top vendors surfaced per category, not just one</div>
+            </div>
+          </div>
+        </div>
+        <div class="fw-arrow">→</div>
+        <div class="fw-step">
+          <div class="fw-hdr optimize">
+            <div class="fw-icon">🎯</div>
+            <div class="fw-title">Optimize</div>
+            <div class="fw-sub">Best price locked in</div>
+          </div>
+          <div class="fw-bdy">
+            <ul class="fw-pts">
+              <li><div class="fw-dot green"></div>Pricing review conducted directly with shortlisted vendors</li>
+              <li><div class="fw-dot green"></div>Best price &amp; quality confirmed — not assumed</li>
+              <li><div class="fw-dot green"></div>No 3rd-party markup layer — orders managed through brandhub</li>
+            </ul>
+            <div class="fw-stat-row">
+              <div class="fw-stat-n" style="color:var(--green)">10–20%</div>
+              <div class="fw-stat-l">average Year-1 total POS savings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- COST CALCULATOR -->
 <section id="calculator" style="background:var(--surface)">
   <div class="wrap">
-  <div class="ticker-wrap fade-up" style="margin-bottom:32px">
-    <div class="ticker-label">💸 Value leaving on the table right now</div>
-    <div class="ticker-amt" id="ticker-amt">$0.00</div>
-    <div style="font-size:11px;color:var(--red);opacity:.6;margin-top:4px">Based on $50M avg annual POS spend · running since this morning</div>
-  </div>
-    <div class="label fade-up" style="text-align:center">The Cost of Waiting</div>
-    <h2 class="sec-title fade-up" style="text-align:center">Every month you wait<br><span style="color:var(--orange)">has a price tag.</span></h2>
-    <p class="sec-sub fade-up" style="text-align:center;margin:0 auto 40px">Move the slider to see how much recoverable value you're leaving on the table.</p>
+    <div class="ticker-wrap fade-up" style="margin-bottom:32px">
+      <div class="ticker-label">💸 Value leaving on the table right now</div>
+      <div class="ticker-amt" id="ticker-amt">$0.00</div>
+      <div style="font-size:11px;color:var(--red);opacity:.6;margin-top:4px">Based on $50M avg annual POS spend · running since this morning</div>
+    </div>
+    <div class="label fade-up" style="text-align:center">Cost Savings Calculator</div>
+    <h2 class="sec-title fade-up" style="text-align:center">See what you'd recover<br><span style="color:var(--orange)">with brandhub.</span></h2>
+    <p class="sec-sub fade-up" style="text-align:center;margin:0 auto 40px">Adjust your annual POS budget and current markup rate to estimate your recoverable value.</p>
     <div class="calc-wrap fade-up">
-      <div class="calc-display">
-        <div style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px">Annual POS Spend</div>
-        <div class="calc-spend" id="spend-disp">$30,000,000</div>
-      </div>
-      <div class="slider-wrap">
-        <div class="slider-row">
-          <span>$0</span><span>$20M</span><span>$37.5M</span><span>$55M</span><span>$75M</span>
+      <div class="calc-card">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label>Annual POS Budget</label>
+            <div class="input-display" id="spend-disp">$2,000,000</div>
+            <input type="range" id="calc-slider" min="500000" max="75000000" step="500000" value="2000000">
+            <div class="range-row"><span>$500K</span><span>$75M</span></div>
+          </div>
+          <div class="input-group">
+            <label>Current Markup / Fee %</label>
+            <div class="input-display orange" id="markup-disp">15%</div>
+            <input type="range" id="markup-slider" min="5" max="30" step="1" value="15" class="orange-slider">
+            <div class="range-row"><span>5%</span><span>30%</span></div>
+          </div>
         </div>
-        <input type="range" id="calc-slider" min="0" max="75000000" step="1000000" value="30000000">
-      </div>
-      <div class="calc-rows">
-        <div class="calc-row">
-          <div class="calc-label">Vendor overpayment (10% avg)</div>
-          <div class="calc-bar-wrap"><div class="calc-bar" id="bar1" style="width:60%"></div></div>
-          <div class="calc-amt" id="amt1">$200,000</div>
+        <div class="calc-output">
+          <div class="output-headline">
+            <div>
+              <div class="output-label">Estimated Annual Savings with brandhub</div>
+              <div class="output-total" id="total-v">$0</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">% of budget recovered</div>
+              <div style="font-size:28px;font-weight:900;color:var(--blue)" id="savings-pct">0%</div>
+            </div>
+          </div>
+          <div class="output-rows">
+            <div class="output-row header">
+              <span>Cost Component</span><span style="text-align:right">Est. Savings</span><span style="text-align:right">Impact</span>
+            </div>
+            <div class="output-row">
+              <span style="color:var(--muted)">Markup elimination (no 3rd-party fee)</span>
+              <div><div class="out-bar-wrap"><div class="out-bar orange" id="bar1" style="width:60%"></div></div></div>
+              <span class="out-amt" id="amt1">—</span>
+            </div>
+            <div class="output-row">
+              <span style="color:var(--muted)">Smart ordering / waste reduction</span>
+              <div><div class="out-bar-wrap"><div class="out-bar" id="bar2" style="width:30%"></div></div></div>
+              <span class="out-amt" id="amt2">—</span>
+            </div>
+            <div class="output-row">
+              <span style="color:var(--muted)">Vendor consolidation &amp; negotiation</span>
+              <div><div class="out-bar-wrap"><div class="out-bar green" id="bar3" style="width:20%"></div></div></div>
+              <span class="out-amt" id="amt3">—</span>
+            </div>
+          </div>
+          <hr class="calc-divider">
+          <div class="savings-highlight">
+            <div>
+              <div class="sh-label">More POS materials in-market for the same budget</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">More shelf presence, more brand impact, zero additional spend</div>
+            </div>
+            <div class="sh-val" id="mo-v">+$0</div>
+          </div>
+          <div class="calc-note">Estimates based on brandhub client averages. Actual results vary. Gallo Winery achieved 17.5% total savings. <a href="https://price-benchmark-guwsdbgwzwwmwt9nliupyv.streamlit.app/" style="color:var(--blue);text-decoration:none" target="_blank">Run a real PriceCheck analysis →</a></div>
         </div>
-        <div class="calc-row">
-          <div class="calc-label">POS waste & smart ordering (15% avg)</div>
-          <div class="calc-bar-wrap"><div class="calc-bar" id="bar2" style="width:72%"></div></div>
-          <div class="calc-amt" id="amt2">$300,000</div>
+        <div style="margin-top:28px">
+          <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Savings Opportunity by Big 4 Category</div>
+          <div class="breakdown-grid" id="breakdown-grid"></div>
         </div>
-        <div class="calc-row">
-          <div class="calc-label">Admin time cost (20% of team hours)</div>
-          <div class="calc-bar-wrap"><div class="calc-bar" id="bar3" style="background:var(--orange);width:40%"></div></div>
-          <div class="calc-amt" id="amt3">$80,000</div>
-        </div>
-      </div>
-      <hr class="calc-divider">
-      <div class="calc-total-row">
-        <div>
-          <div class="calc-total-label">Total recoverable value / year</div>
-          <div class="calc-mo-val" id="mo-v">$48,333 / mo</div>
-        </div>
-        <div class="calc-total-val" id="total-v">$580,000</div>
       </div>
     </div>
   </div>
@@ -2043,32 +2291,78 @@ function saveDiscoAnswers() {
   document.getElementById('disco-saved-msg').style.display = 'block';
 }
 
-// ROI CALCULATOR
-const slider = document.getElementById('calc-slider');
-function fmtD(n) { return '$' + Math.round(n).toLocaleString(); }
-function fmtL(n) {
-  return n >= 1000000
-    ? '$' + (n / 1000000).toFixed(2) + 'M'
-    : '$' + Math.round(n).toLocaleString();
+// UPGRADED ROI CALCULATOR (two sliders: budget + markup%)
+const sliderB = document.getElementById('calc-slider');
+const sliderM = document.getElementById('markup-slider');
+function fmtS(n) {
+  if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return '$' + Math.round(n / 1000) + 'K';
+  return '$' + n;
 }
+const calcCats = [
+  { num: '01', name: 'Permanent Retail Fixtures', shareLow: .30, shareHigh: .35, savingsLow: .15, savingsHigh: .25 },
+  { num: '02', name: 'Printed POS Materials',      shareLow: .20, shareHigh: .25, savingsLow: .10, savingsHigh: .20 },
+  { num: '03', name: 'Promotional & Event',         shareLow: .12, shareHigh: .18, savingsLow: .10, savingsHigh: .15 },
+  { num: '04', name: 'Branded Merchandise',         shareLow: .10, shareHigh: .15, savingsLow: .08, savingsHigh: .15 },
+];
 function calcUpdate() {
-  const spend = parseInt(slider.value);
-  const v1    = spend * 0.10;
-  const v2    = spend * 0.15;
-  const v3    = Math.max(80000, spend * 0.022);
+  const spend  = +sliderB.value;
+  const markup = +sliderM.value / 100;
+  document.getElementById('spend-disp').textContent  = fmtS(spend);
+  document.getElementById('markup-disp').textContent = sliderM.value + '%';
+  const v1    = Math.round(spend * markup * 0.65);
+  const v2    = Math.round(spend * 0.03);
+  const v3    = Math.round(spend * 0.02);
   const total = v1 + v2 + v3;
-  const mo    = total / 12;
-  document.getElementById('spend-disp').textContent  = fmtD(spend);
-  document.getElementById('amt1').textContent        = fmtL(v1);
-  document.getElementById('amt2').textContent        = fmtL(v2);
-  document.getElementById('amt3').textContent        = fmtL(v3);
-  document.getElementById('total-v').textContent     = fmtL(total);
-  document.getElementById('mo-v').textContent        = fmtL(mo) + ' / mo';
-  document.getElementById('bar1').style.width = Math.min(72, v1 / spend * 100 * 4.5) + '%';
-  document.getElementById('bar2').style.width = Math.min(75, v2 / spend * 100 * 4.0) + '%';
-  document.getElementById('bar3').style.width = Math.min(55, v3 / spend * 100 * 5.0) + '%';
+  const pct   = Math.round((total / spend) * 100);
+  document.getElementById('total-v').textContent     = fmtS(total);
+  document.getElementById('savings-pct').textContent = pct + '%';
+  document.getElementById('amt1').textContent        = fmtS(v1);
+  document.getElementById('amt2').textContent        = fmtS(v2);
+  document.getElementById('amt3').textContent        = fmtS(v3);
+  document.getElementById('mo-v').textContent        = '+' + fmtS(total);
+  const mx = Math.max(v1, v2, v3);
+  if (mx > 0) {
+    document.getElementById('bar1').style.width = (v1 / mx * 100) + '%';
+    document.getElementById('bar2').style.width = (v2 / mx * 100) + '%';
+    document.getElementById('bar3').style.width = (v3 / mx * 100) + '%';
+  }
+  const grid = document.getElementById('breakdown-grid');
+  if (grid) {
+    grid.innerHTML = '';
+    calcCats.forEach(function(cat) {
+      const shareMid  = (cat.shareLow + cat.shareHigh) / 2;
+      const catBudget = Math.round(spend * shareMid);
+      const savesMid  = (cat.savingsLow + cat.savingsHigh) / 2;
+      const catSave   = Math.round(catBudget * savesMid);
+      grid.innerHTML += '<div class="bd-card"><div class="bd-num">' + cat.num + '</div><div class="bd-name">' + cat.name + '</div><div class="bd-spend">Est. spend: ' + fmtS(catBudget) + '/yr</div><div class="bd-savings">Save ~' + fmtS(catSave) + '</div></div>';
+    });
+  }
 }
-if (slider) { slider.addEventListener('input', calcUpdate); calcUpdate(); }
+if (sliderB) sliderB.addEventListener('input', calcUpdate);
+if (sliderM) sliderM.addEventListener('input', calcUpdate);
+if (sliderB || sliderM) calcUpdate();
+
+// PARETO CHART
+(function() {
+  var paretoData = [
+    { label: 'Permanent<br>Fixtures', pct: 32, big4: true },
+    { label: 'Printed<br>POS', pct: 23, big4: true },
+    { label: 'Promo &<br>Event', pct: 14, big4: true },
+    { label: 'Branded<br>Merch', pct: 11, big4: true },
+    { label: '300+<br>other items', pct: 20, big4: false },
+  ];
+  var maxPct = 40;
+  var chartEl = document.getElementById('posParetoBars');
+  if (!chartEl) return;
+  paretoData.forEach(function(item) {
+    var barH = Math.round((item.pct / maxPct) * 148);
+    var div = document.createElement('div');
+    div.className = 'bar-item';
+    div.innerHTML = '<div class="bar-fill ' + (item.big4 ? 'big4' : 'tail') + '" style="height:' + barH + 'px;position:relative"><div class="bar-pct">' + item.pct + '%</div></div><div class="bar-label">' + item.label + '</div>';
+    chartEl.appendChild(div);
+  });
+})();
 </script>
 <script>
 /* ── CLIENT CONFIG INJECTOR ──────────────────────────────────────────────
