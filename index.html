@@ -270,6 +270,8 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 .app-card.atlas .app-card-eyebrow{color:#28C864}
 .app-card.atlas .app-metric .amn{color:#28C864}
 .btn-app.atlas{background:#28C864;color:#0A0D1A}
+.btn-app.distrib{background:#28C864;color:#0A0D1A}
+.btn-app.distrib:hover{background:#3ddf7a;box-shadow:0 6px 24px rgba(40,200,100,.4);transform:translateY(-1px)}
 .btn-app.atlas:hover{background:#3ddf7a;box-shadow:0 6px 24px rgba(40,200,100,.4);transform:translateY(-1px)}
 .atlas-preview{background:linear-gradient(160deg,#0a1a12,#0d2218);height:180px;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
 .atlas-map-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#28C864}
@@ -1030,7 +1032,7 @@ const CLIENT = {
           <div class="app-metrics">
             <div class="app-metric"><div class="amn">250+</div><div class="aml">distributor integrations</div></div>
           </div>
-          <button style="width:100%;background:rgba(40,200,64,.12);border:1px solid rgba(40,200,64,.35);color:#28C840;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer">Request Live Demo →</button>
+          <a href="mailto:jfrohlinger@selectdesign.com?subject=brandhub%20Distributor%20Intelligence%20Demo%20Request&body=Hi%20Jack%2C%0A%0AI%27d%20love%20to%20see%20a%20live%20demo%20of%20brandhub%27s%20Distributor%20Intelligence%20tools.%20Can%20we%20find%20a%20time%3F%0A%0AThanks" class="btn-app distrib">🔗 &nbsp;Request Live Demo</a>
         </div>
       </div>
       <!-- PRICECHECK - LIVE DEMO -->
@@ -1123,7 +1125,7 @@ const CLIENT = {
             <div class="app-metric"><div class="amn">30%</div><div class="aml">displays never placed</div></div>
             <div class="app-metric"><div class="amn">100%</div><div class="aml">VIP ping accuracy</div></div>
           </div>
-          <a href="https://brandhub-heaven-hill-brandhubatlas.streamlit.app/" target="_blank" class="btn-app atlas">📡 &nbsp;Launch Atlas Demo</a>
+          <a href="https://brandhub-heaven-hill-brandhubatlas.streamlit.app/" target="_blank" id="atlas-demo-btn" class="btn-app atlas">📡 &nbsp;Launch Atlas Demo</a>
         </div>
       </div>
       <!-- VENDORVIEW - IN DEVELOPMENT -->
@@ -1174,7 +1176,7 @@ const CLIENT = {
   <div class="ticker-wrap fade-up" style="margin-bottom:32px">
     <div class="ticker-label">💸 Value leaving on the table right now</div>
     <div class="ticker-amt" id="ticker-amt">$0.00</div>
-    <div style="font-size:11px;color:var(--red);opacity:.6;margin-top:4px">Based on $5M avg annual POS spend · running since this morning</div>
+    <div style="font-size:11px;color:var(--red);opacity:.6;margin-top:4px">Based on $50M avg annual POS spend · running since this morning</div>
   </div>
     <div class="label fade-up" style="text-align:center">The Cost of Waiting</div>
     <h2 class="sec-title fade-up" style="text-align:center">Every month you wait<br><span style="color:var(--orange)">has a price tag.</span></h2>
@@ -1182,13 +1184,13 @@ const CLIENT = {
     <div class="calc-wrap fade-up">
       <div class="calc-display">
         <div style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px">Annual POS Spend</div>
-        <div class="calc-spend" id="spend-disp">$20,000,000</div>
+        <div class="calc-spend" id="spend-disp">$30,000,000</div>
       </div>
       <div class="slider-wrap">
         <div class="slider-row">
-          <span>$5M</span><span>$15M</span><span>$25M</span><span>$35M</span><span>$50M</span>
+          <span>$0</span><span>$20M</span><span>$37.5M</span><span>$55M</span><span>$75M</span>
         </div>
-        <input type="range" id="calc-slider" min="5000000" max="50000000" step="500000" value="20000000">
+        <input type="range" id="calc-slider" min="0" max="75000000" step="1000000" value="30000000">
       </div>
       <div class="calc-rows">
         <div class="calc-row">
@@ -1846,7 +1848,7 @@ window.addEventListener('scroll', () => {
 
 // COST TICKER — starts 2 hrs "in" so the number is immediately visible
 const loadT  = Date.now() - (2 * 60 * 60 * 1000);
-const perMs  = 277083 / 30 / 24 / 60 / 60 / 1000;
+const perMs  = 2770830 / 30 / 24 / 60 / 60 / 1000;
 const tickEl = document.getElementById('ticker-amt');
 function tickFmt(n) {
   const parts = n.toFixed(2).split('.');
@@ -2111,7 +2113,7 @@ if (slider) { slider.addEventListener('input', calcUpdate); calcUpdate(); }
   }
 
   /* 3 ─ Atlas URL + description */
-  const atlasBtn = document.querySelector('.btn-app.atlas');
+  const atlasBtn = document.getElementById('atlas-demo-btn');
   if (atlasBtn && C.atlasUrl) atlasBtn.href = C.atlasUrl;
   const atlasDesc = document.getElementById('atlas-desc');
   if (atlasDesc && C.atlasDesc) atlasDesc.textContent = C.atlasDesc;
