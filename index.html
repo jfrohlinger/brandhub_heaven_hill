@@ -79,18 +79,21 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:1000;padding:0 40px;background
 .hero-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,145,25,.6),transparent);margin:48px 0 0}
 
 /* ── AGENDA ── */
-#agenda{background:var(--surface)}
+#agenda{background:var(--surface);padding:48px 0 52px}
+#agenda .sec-title{margin-bottom:8px;font-size:clamp(24px,3.2vw,40px)}
+#agenda .sec-sub{margin-bottom:28px;font-size:16px}
+#agenda .label{margin-bottom:6px}
 .agenda-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.agenda-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;position:relative;overflow:hidden}
+.agenda-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 30px;position:relative;overflow:hidden}
 .agenda-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .agenda-card:nth-child(1)::before{background:var(--blue)}
 .agenda-card:nth-child(2)::before{background:var(--orange)}
 .agenda-card:nth-child(3)::before{background:var(--blue)}
 .agenda-card:nth-child(4)::before{background:var(--orange)}
-.agenda-num{font-size:40px;font-weight:900;color:var(--muted2);line-height:1;margin-bottom:8px}
+.agenda-num{font-size:56px;font-weight:900;color:var(--muted2);line-height:1;margin-bottom:10px}
 .agenda-time{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
-.agenda-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:8px}
-.agenda-desc{font-size:13px;color:var(--muted);line-height:1.65}
+.agenda-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px}
+.agenda-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
 
 /* ── WHO WE ARE ── */
 #who-we-are{background:var(--bg)}
@@ -561,6 +564,44 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
   .big4-grid{grid-template-columns:1fr 1fr}
   .breakdown-grid{grid-template-columns:1fr 1fr}
 }
+/* ── PRINT COST CALCULATOR ─────────────────────────────── */
+.print-calc-wrap{margin:56px 0 0;padding:36px 40px 40px;background:var(--card);border:1px solid var(--border);border-radius:24px}
+.print-calc-hdr{text-align:center;margin-bottom:28px}
+.print-calc-hdr h4{font-size:clamp(17px,2vw,24px);font-weight:900;letter-spacing:-0.5px;margin:6px 0 6px}
+.print-calc-hdr p{font-size:13.5px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.65}
+.print-calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start}
+.pc-col{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.pc-col.brandhub{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.pc-col-hdr{padding:14px 18px;border-bottom:1px solid var(--border)}
+.pc-tag{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.pc-col.brandhub .pc-col-hdr{background:rgba(48,180,230,0.07)}
+.pc-col.brandhub .pc-tag{color:var(--blue)}
+.pc-col-title{font-size:15px;font-weight:800}
+.pc-col-body{padding:14px 18px}
+.pc-irow{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.pc-irow:last-of-type{border-bottom:none}
+.pc-lbl{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:5px}
+.pc-badge{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 5px;border-radius:4px}
+.pc-badge.orange{background:rgba(255,145,25,.18);color:var(--orange)}
+.pc-badge.green{background:rgba(40,200,100,.16);color:var(--green)}
+.pc-badge.blue{background:rgba(48,180,230,.16);color:var(--blue)}
+.pc-val{font-size:13.5px;font-weight:700;text-align:right}
+.pc-input{background:var(--card2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:13px;font-weight:700;padding:4px 9px;width:84px;text-align:right;-moz-appearance:textfield}
+.pc-input::-webkit-outer-spin-button,.pc-input::-webkit-inner-spin-button{-webkit-appearance:none}
+.pc-input:focus{outline:none;border-color:var(--blue)}
+.pc-divider{border:none;border-top:1px solid var(--border);margin:11px 0}
+.pc-br{margin-top:0}
+.pc-br-row{display:flex;justify-content:space-between;font-size:11.5px;padding:3px 0}
+.pc-br-lbl{color:var(--muted)}
+.pc-br-val{font-weight:600;color:var(--text)}
+.pc-total-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0 4px;margin-top:4px;border-top:1px solid var(--border)}
+.pc-total-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.pc-total-val{font-size:20px;font-weight:900;letter-spacing:-0.5px}
+.pc-delta{margin-top:8px;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:700;text-align:center}
+.pc-delta.neutral{background:rgba(120,120,120,0.1);color:var(--muted)}
+.pc-delta.saving{background:rgba(40,200,100,0.12);color:var(--green)}
+.pc-delta.small-save{background:rgba(255,145,25,0.1);color:var(--orange)}
+@media(max-width:860px){.print-calc-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1323,6 +1364,130 @@ const CLIENT = {
         <div><div class="big4-name">Branded Merchandise</div><div class="big4-items">Glassware · Apparel · Accessories</div><div class="big4-spend">~10–15% of budget</div></div>
       </div>
     </div>
+
+    <!-- Print Cost Calculator -->
+    <div class="print-calc-wrap fade-up" style="margin-top:40px">
+      <div class="print-calc-hdr">
+        <div class="label" style="justify-content:center;margin-bottom:6px">The Real Comparison</div>
+        <h4>Why per-unit price is the wrong metric for print</h4>
+        <p>Edit your print run details below. See how right-sizing orders and reducing management overhead outperforms chasing a lower per-unit price.</p>
+      </div>
+      <div class="print-calc-grid">
+
+        <!-- LEFT: Current Setup (editable) -->
+        <div class="pc-col">
+          <div class="pc-col-hdr">
+            <div class="pc-tag">Your Current Setup</div>
+            <div class="pc-col-title">Baseline</div>
+          </div>
+          <div class="pc-col-body">
+            <div class="pc-irow">
+              <label class="pc-lbl">Units ordered</label>
+              <input class="pc-input" id="pi-units" type="number" value="10000" min="100" step="500">
+            </div>
+            <div class="pc-irow">
+              <label class="pc-lbl">Price per unit ($)</label>
+              <input class="pc-input" id="pi-price" type="number" value="1.50" min="0.01" step="0.05">
+            </div>
+            <div class="pc-irow">
+              <label class="pc-lbl">Waste / obsolescence %</label>
+              <input class="pc-input" id="pi-waste" type="number" value="30" min="0" max="80" step="5">
+            </div>
+            <div class="pc-irow">
+              <label class="pc-lbl">Managed service fee %</label>
+              <input class="pc-input" id="pi-fee" type="number" value="15" min="0" max="40" step="1">
+            </div>
+            <hr class="pc-divider">
+            <div class="pc-br">
+              <div class="pc-br-row"><span class="pc-br-lbl">Product cost</span><span class="pc-br-val" id="c-prod">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Management fee</span><span class="pc-br-val" id="c-fee">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Units in-market</span><span class="pc-br-val" id="c-inmarket">–</span></div>
+            </div>
+            <div class="pc-total-row">
+              <div class="pc-total-lbl">Total Cost</div>
+              <div class="pc-total-val" id="c-total">–</div>
+            </div>
+            <div class="pc-delta neutral" id="c-delta">Your baseline</div>
+          </div>
+        </div>
+
+        <!-- MIDDLE: Option 1 – Price Shopping -->
+        <div class="pc-col">
+          <div class="pc-col-hdr">
+            <div class="pc-tag">Option 1 — Price Shopping</div>
+            <div class="pc-col-title">Unit Cost −10%</div>
+          </div>
+          <div class="pc-col-body">
+            <div class="pc-irow">
+              <div class="pc-lbl">Units ordered</div>
+              <div class="pc-val" id="p-units">–</div>
+            </div>
+            <div class="pc-irow" style="background:rgba(255,145,25,0.07);margin:0 -18px;padding:7px 18px;border-bottom:1px solid rgba(255,255,255,0.05)">
+              <div class="pc-lbl">Price per unit <span class="pc-badge orange">−10%</span></div>
+              <div class="pc-val" style="color:var(--orange)" id="p-price">–</div>
+            </div>
+            <div class="pc-irow">
+              <div class="pc-lbl">Waste / obsolescence %</div>
+              <div class="pc-val" id="p-waste">–</div>
+            </div>
+            <div class="pc-irow">
+              <div class="pc-lbl">Managed service fee %</div>
+              <div class="pc-val" id="p-fee">–</div>
+            </div>
+            <hr class="pc-divider">
+            <div class="pc-br">
+              <div class="pc-br-row"><span class="pc-br-lbl">Product cost</span><span class="pc-br-val" id="p-prod">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Management fee</span><span class="pc-br-val" id="p-feeval">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Units in-market</span><span class="pc-br-val" id="p-inmarket">–</span></div>
+            </div>
+            <div class="pc-total-row">
+              <div class="pc-total-lbl">Total Cost</div>
+              <div class="pc-total-val" id="p-total">–</div>
+            </div>
+            <div class="pc-delta neutral" id="p-delta">–</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: brandhub -->
+        <div class="pc-col brandhub">
+          <div class="pc-col-hdr">
+            <div class="pc-tag">brandhub Platform</div>
+            <div class="pc-col-title" style="color:var(--blue)">Smart Ordering</div>
+          </div>
+          <div class="pc-col-body">
+            <div class="pc-irow" style="background:rgba(48,180,230,0.07);margin:0 -18px;padding:7px 18px;border-bottom:1px solid rgba(255,255,255,0.05)">
+              <div class="pc-lbl">Units ordered <span class="pc-badge blue">right-sized ↓</span></div>
+              <div class="pc-val" style="color:var(--blue)" id="b-units">–</div>
+            </div>
+            <div class="pc-irow">
+              <div class="pc-lbl">Price per unit</div>
+              <div class="pc-val" id="b-price">–</div>
+            </div>
+            <div class="pc-irow" style="background:rgba(40,200,100,0.07);margin:0 -18px;padding:7px 18px;border-bottom:1px solid rgba(255,255,255,0.05)">
+              <div class="pc-lbl">Waste / obsolescence <span class="pc-badge green">→ 10%</span></div>
+              <div class="pc-val" style="color:var(--green)">10%</div>
+            </div>
+            <div class="pc-irow" style="background:rgba(40,200,100,0.07);margin:0 -18px;padding:7px 18px">
+              <div class="pc-lbl">Managed service fee <span class="pc-badge green">→ 5%</span></div>
+              <div class="pc-val" style="color:var(--green)">5%</div>
+            </div>
+            <hr class="pc-divider">
+            <div class="pc-br">
+              <div class="pc-br-row"><span class="pc-br-lbl">Product cost</span><span class="pc-br-val" id="b-prod">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Management fee</span><span class="pc-br-val" id="b-feeval">–</span></div>
+              <div class="pc-br-row"><span class="pc-br-lbl">Units in-market</span><span class="pc-br-val" id="b-inmarket">–</span></div>
+            </div>
+            <div class="pc-total-row">
+              <div class="pc-total-lbl">Total Cost</div>
+              <div class="pc-total-val" style="color:var(--blue)" id="b-total">–</div>
+            </div>
+            <div class="pc-delta saving" id="b-delta">–</div>
+          </div>
+        </div>
+
+      </div><!-- /print-calc-grid -->
+      <p style="text-align:center;font-size:11.5px;color:var(--muted);margin-top:18px;line-height:1.65">* Waste % = units ordered but never used (over-ordering, version changes, spoilage). brandhub's data-driven ordering typically reduces waste from ~30% to ~10%. Platform tooling reduces management overhead from ~15% to 5%.</p>
+    </div><!-- /print-calc-wrap -->
 
     <!-- Data Flywheel -->
     <div style="margin-top:64px">
@@ -2362,6 +2527,85 @@ if (sliderB || sliderM) calcUpdate();
     div.innerHTML = '<div class="bar-fill ' + (item.big4 ? 'big4' : 'tail') + '" style="height:' + barH + 'px;position:relative"><div class="bar-pct">' + item.pct + '%</div></div><div class="bar-label">' + item.label + '</div>';
     chartEl.appendChild(div);
   });
+})();
+
+// ── PRINT COST CALCULATOR ─────────────────────────────────────────────────
+(function() {
+  function fmtC(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+    if (n >= 1000)    return '$' + (n / 1000).toFixed(1) + 'K';
+    return '$' + n.toFixed(2);
+  }
+  function fmtU(n) { return Math.round(n).toLocaleString(); }
+
+  function updatePrintCalc() {
+    var units = parseFloat(document.getElementById('pi-units').value) || 10000;
+    var price = parseFloat(document.getElementById('pi-price').value) || 1.50;
+    var waste = parseFloat(document.getElementById('pi-waste').value) || 30;
+    var fee   = parseFloat(document.getElementById('pi-fee').value)   || 15;
+
+    // ── Current ──────────────────────────────────────────────────────────
+    var cProd   = units * price;
+    var cFeeAmt = cProd * (fee / 100);
+    var cTotal  = cProd + cFeeAmt;
+    var cInMkt  = Math.round(units * (1 - waste / 100));
+
+    // ── Option 1: price −10%, same waste & fee ───────────────────────────
+    var pPrice  = price * 0.90;
+    var pProd   = units * pPrice;
+    var pFeeAmt = pProd * (fee / 100);
+    var pTotal  = pProd + pFeeAmt;
+    var pInMkt  = cInMkt; // same waste → same in-market
+
+    // ── brandhub: waste=10%, fee=5%, fewer units to hit same in-market ───
+    var bhWaste  = 10;
+    var bhFee    = 5;
+    var bhUnits  = Math.ceil(cInMkt / (1 - bhWaste / 100));
+    var bhProd   = bhUnits * price; // same price/unit
+    var bhFeeAmt = bhProd * (bhFee / 100);
+    var bhTotal  = bhProd + bhFeeAmt;
+    var bhInMkt  = Math.round(bhUnits * (1 - bhWaste / 100));
+
+    // ── Write Current ────────────────────────────────────────────────────
+    document.getElementById('c-prod').textContent     = fmtC(cProd);
+    document.getElementById('c-fee').textContent      = fmtC(cFeeAmt);
+    document.getElementById('c-inmarket').textContent = fmtU(cInMkt) + ' units';
+    document.getElementById('c-total').textContent    = fmtC(cTotal);
+
+    // ── Write Option 1 ───────────────────────────────────────────────────
+    document.getElementById('p-units').textContent    = fmtU(units);
+    document.getElementById('p-price').textContent    = '$' + pPrice.toFixed(2);
+    document.getElementById('p-waste').textContent    = waste + '%';
+    document.getElementById('p-fee').textContent      = fee + '%';
+    document.getElementById('p-prod').textContent     = fmtC(pProd);
+    document.getElementById('p-feeval').textContent   = fmtC(pFeeAmt);
+    document.getElementById('p-inmarket').textContent = fmtU(pInMkt) + ' units';
+    document.getElementById('p-total').textContent    = fmtC(pTotal);
+    var pSave = cTotal - pTotal;
+    var pPct  = Math.round((pSave / cTotal) * 100);
+    var pDel  = document.getElementById('p-delta');
+    pDel.textContent = pSave > 0 ? '↓ Save ' + fmtC(pSave) + ' (' + pPct + '% less)' : 'No savings vs baseline';
+    pDel.className   = 'pc-delta ' + (pSave > 5 ? 'small-save' : 'neutral');
+
+    // ── Write brandhub ────────────────────────────────────────────────────
+    document.getElementById('b-units').textContent    = fmtU(bhUnits);
+    document.getElementById('b-price').textContent    = '$' + price.toFixed(2);
+    document.getElementById('b-prod').textContent     = fmtC(bhProd);
+    document.getElementById('b-feeval').textContent   = fmtC(bhFeeAmt);
+    document.getElementById('b-inmarket').textContent = fmtU(bhInMkt) + ' units';
+    document.getElementById('b-total').textContent    = fmtC(bhTotal);
+    var bSave = cTotal - bhTotal;
+    var bPct  = Math.round((bSave / cTotal) * 100);
+    var bDel  = document.getElementById('b-delta');
+    bDel.textContent = bSave > 0 ? '↓ Save ' + fmtC(bSave) + ' (' + bPct + '% less)' : 'No savings vs baseline';
+    bDel.className   = 'pc-delta ' + (bSave > 5 ? 'saving' : 'neutral');
+  }
+
+  ['pi-units', 'pi-price', 'pi-waste', 'pi-fee'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', updatePrintCalc);
+  });
+  updatePrintCalc();
 })();
 </script>
 <script>
