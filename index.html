@@ -101,7 +101,7 @@ nav{position:fixed;top:0;left:0;bottom:0;width:124px;z-index:1000;background:rgb
 .who-grid{display:grid;grid-template-columns:3fr 2fr;gap:36px;align-items:start;margin-bottom:28px}
 .who-story{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
 .who-story b{color:var(--text)}
-.trust-badge{display:inline-block;font-size:13px;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 11px;margin:4px 4px 4px 0;white-space:nowrap}
+.trust-badge{display:inline-block;font-size:15px;font-weight:700;color:var(--text);background:var(--card);border:1.5px solid var(--border-s);border-radius:10px;padding:7px 14px;margin:4px 4px 4px 0;white-space:nowrap}
 .who-stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
 .who-stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 14px;text-align:center}
 .who-stat-num{font-size:26px;font-weight:900;letter-spacing:-1px;margin-bottom:4px;line-height:1}
@@ -798,25 +798,25 @@ const CLIENT = {
       <div class="agenda-card fade-up">
         <div class="agenda-num">01</div>
         <div class="agenda-time">5 min</div>
-        <div class="agenda-title">Who we are</div>
+        <div class="agenda-title">Intros</div>
         <div class="agenda-desc">Quick intro — why teams like Gallo, Tito's, and New Belgium trust us, and why it matters to you.</div>
       </div>
       <div class="agenda-card fade-up" style="transition-delay:.1s">
         <div class="agenda-num">02</div>
-        <div class="agenda-time">10 min</div>
+        <div class="agenda-time">12 min</div>
         <div class="agenda-title">Your world</div>
         <div class="agenda-desc">We'll ask a few questions. Your answers shape everything that follows — no generic demo.</div>
       </div>
       <div class="agenda-card fade-up" style="transition-delay:.2s">
         <div class="agenda-num">03</div>
-        <div class="agenda-time">12 min</div>
+        <div class="agenda-time">10 min</div>
         <div class="agenda-title">Where brandhub fits</div>
         <div class="agenda-desc">We'll show you what's relevant and skip what isn't. Platform, ROI, live tools.</div>
       </div>
       <div class="agenda-card fade-up" style="transition-delay:.3s">
         <div class="agenda-num">04</div>
         <div class="agenda-time">3 min</div>
-        <div class="agenda-title">Clear next step</div>
+        <div class="agenda-title">Clear next steps</div>
         <div class="agenda-desc">No pressure. We'll leave with something concrete at whatever pace works for your team.</div>
       </div>
     </div>
@@ -837,16 +837,12 @@ const CLIENT = {
           So we built the platform we always wished existed — <b>purpose-built for the three-tier system</b>, by people who understand it from the inside. brandhub isn't a pivot or a side project. It's 35 years of industry knowledge, productized.
         </p>
         <div class="fade-up" style="margin-top:20px">
-          <div style="font-size:12px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Trusted by</div>
-          <span class="trust-badge">Gallo</span>
-          <span class="trust-badge">Tito's Vodka</span>
-          <span class="trust-badge">New Belgium</span>
-          <span class="trust-badge">500+ brands</span>
-          <span class="trust-badge">250+ distributors</span>
+          <div style="font-size:14px;color:var(--text);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;opacity:.75">Trusted by</div>
+          <div style="white-space:nowrap"><span class="trust-badge">Gallo</span><span class="trust-badge">Tito's Vodka</span><span class="trust-badge">New Belgium</span><span class="trust-badge">500+ brands</span><span class="trust-badge">250+ distributors</span></div>
         </div>
         <div class="fade-up" style="margin-top:16px">
-          <div style="font-size:12px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Awarded</div>
-          <div style="font-size:13px;color:var(--text);white-space:nowrap">Most Likely to Recommend &nbsp;·&nbsp; Highest On-Time Delivery &nbsp;·&nbsp; Most Reliable &nbsp;·&nbsp; Lowest Admin Burden</div>
+          <div style="font-size:14px;color:var(--text);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;opacity:.75">Awarded</div>
+          <div style="font-size:15px;font-weight:600;color:var(--text);white-space:nowrap">Most Likely to Recommend &nbsp;·&nbsp; Highest On-Time Delivery &nbsp;·&nbsp; Most Reliable &nbsp;·&nbsp; Lowest Admin Burden</div>
         </div>
       </div>
 
@@ -2142,10 +2138,26 @@ const CLIENT = {
   position:absolute;
   transform:translate(-50%,-50%);
   display:flex; flex-direction:column; align-items:center;
-  gap:5px; cursor:default; z-index:5;
+  gap:0; cursor:default; z-index:5;
   transition:transform .25s;
 }
-.eco-node:hover { transform:translate(-50%,-50%) scale(1.1); }
+.eco-node:hover { transform:translate(-50%,-50%) scale(1.08); }
+/* Label hidden by default, fades in on hover */
+.eco-node .eco-node-label {
+  opacity:0;
+  transition:opacity .2s;
+  pointer-events:none;
+  background:rgba(10,13,28,.92);
+  border:1px solid var(--border-s);
+  border-radius:8px;
+  padding:4px 10px;
+  white-space:nowrap;
+  z-index:20;
+  position:relative;
+  margin-top:6px;
+}
+.eco-node:hover .eco-node-label { opacity:1; }
+.eco-node:hover { z-index:30; }
 .eco-node-bubble {
   width:54px; height:54px;
   border-radius:50%;
@@ -2360,7 +2372,7 @@ if (tickEl) {
     { emoji:'💰', label:'Finance Systems',         color:'#30B4E6', glow:'rgba(48,180,230,0.25)',  deg:  54 },
     { emoji:'🛒', label:'Retailers &\nOn-Premise', color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg:  90 },
     { emoji:'✏️', label:'Design &\nProduction',    color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 126 },
-    { emoji:'🎭', label:'3P Creative\nTeams',      color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 162 },
+    { emoji:'🎭', label:'3P Creative',             color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 162 },
     { emoji:'🔧', label:'External\nVendors',       color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 198 },
     { emoji:'🖨️', label:'Print & POS\nVendors',   color:'#FF9119', glow:'rgba(255,145,25,0.25)',  deg: 234 },
   ];
@@ -2371,11 +2383,11 @@ if (tickEl) {
     sceneEl.style.height   = size + 'px';
 
     const cx = size / 2, cy = size / 2;
-    const outerR = size * 0.38;  // spoke radius to node centers
-    const ringOD = size * 0.84;  // outer dashed ring diameter (encloses nodes)
+    const outerR = size * 0.32;  // spoke radius to node centers
+    const ringOD = size * 0.64;  // outer dashed ring diameter (aligns with node centers)
     const ringID = size * 0.52;  // inner dashed ring diameter (between hub & nodes)
     const hubR   = size * 0.16;  // center hub radius
-    const bubbleR= size * 0.076; // node bubble radius
+    const bubbleR= size * 0.065; // node bubble radius
 
     // Clear existing content
     sceneEl.innerHTML = '';
@@ -2404,8 +2416,12 @@ if (tickEl) {
     const hubSize = hubR * 2;
     const hub = document.createElement('div');
     hub.className = 'eco-center';
-    hub.style.width  = hubSize + 'px';
-    hub.style.height = hubSize + 'px';
+    hub.style.width     = hubSize + 'px';
+    hub.style.height    = hubSize + 'px';
+    hub.style.position  = 'absolute';
+    hub.style.top       = '50%';
+    hub.style.left      = '50%';
+    hub.style.transform = 'translate(-50%,-50%)';
     hub.innerHTML = `
       <div class="eco-center-pulse"></div>
       <div class="eco-center-inner">
@@ -2444,7 +2460,10 @@ if (tickEl) {
       circle.appendChild(anim);
       svg.appendChild(circle);
 
-      // Node div
+      // Node bubble — centered exactly at (nx, ny).
+      // Label lives INSIDE the node so CSS :hover works cleanly;
+      // it is hidden by default and fades in on hover — this is the only
+      // reliable way to avoid overlap with 10 nodes at 36° spacing.
       const bubbleSz = bubbleR * 2;
       const node = document.createElement('div');
       node.className = 'eco-node';
@@ -2454,7 +2473,7 @@ if (tickEl) {
       node.style.setProperty('--node-glow',  n.glow);
       node.innerHTML = `
         <div class="eco-node-bubble" style="width:${bubbleSz}px;height:${bubbleSz}px;font-size:${Math.round(bubbleR*0.7)}px">${n.emoji}</div>
-        <div class="eco-node-label" style="font-size:${Math.round(size*0.017)}px;max-width:${Math.round(bubbleSz*1.4)}px">${n.label.replace(/\n/g,'<br>')}</div>`;
+        <div class="eco-node-label" style="font-size:${Math.round(size*0.030)}px;max-width:${Math.round(bubbleSz*2.2)}px;margin-top:6px">${n.label.replace(/\n/g,'<br>')}</div>`;
       sceneEl.appendChild(node);
     });
   }
