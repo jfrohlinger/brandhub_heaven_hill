@@ -2079,17 +2079,18 @@ const CLIENT = {
 .eco-scene {
   position:relative;
   flex-shrink:0;
+  display:grid;
+  place-items:center;
 }
 .eco-svg {
   position:absolute; top:0; left:0;
   width:100%; height:100%;
   pointer-events:none;
 }
-/* Gear rings */
+/* Gear rings — position/size set via JS with integer pixels */
 .eco-ring {
-  position:absolute; top:50%; left:50%;
+  position:absolute;
   border-radius:50%;
-  transform:translate(-50%,-50%);
   border-style:solid;
   border-color:transparent;
 }
@@ -2107,18 +2108,14 @@ const CLIENT = {
   border-style:dashed;
   animation:eco-spin 25s linear infinite reverse;
 }
-@keyframes eco-spin { to { transform:translate(-50%,-50%) rotate(360deg); } }
+@keyframes eco-spin { to { transform:rotate(360deg); } }
 
-/* Center hub */
+/* Center hub — position/size set via JS with integer pixels */
 .eco-center {
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  width:110px; height:110px;
   border-radius:50%;
   background:linear-gradient(135deg,var(--navy),#0e1830);
   border:2px solid var(--blue);
   display:flex; align-items:center; justify-content:center;
-  z-index:10;
   box-shadow:0 0 0 8px rgba(48,180,230,0.07), 0 0 40px rgba(48,180,230,0.25);
 }
 .eco-center-pulse {
@@ -2133,17 +2130,20 @@ const CLIENT = {
 }
 .eco-center-inner { text-align:center; z-index:1 }
 
-/* Nodes */
+/* Nodes — size is just the bubble, label floats outside via absolute position */
 .eco-node {
   position:absolute;
   transform:translate(-50%,-50%);
-  display:flex; flex-direction:column; align-items:center;
-  gap:0; cursor:default; z-index:5;
+  cursor:default; z-index:5;
   transition:transform .25s;
 }
-.eco-node:hover { transform:translate(-50%,-50%) scale(1.08); }
-/* Label hidden by default, fades in on hover */
+.eco-node:hover { transform:translate(-50%,-50%) scale(1.08); z-index:30; }
+/* Label absolutely positioned below bubble — doesn't affect node size/centering */
 .eco-node .eco-node-label {
+  position:absolute;
+  top:calc(100% + 5px);
+  left:50%;
+  transform:translateX(-50%);
   opacity:0;
   transition:opacity .2s;
   pointer-events:none;
@@ -2153,11 +2153,8 @@ const CLIENT = {
   padding:4px 10px;
   white-space:nowrap;
   z-index:20;
-  position:relative;
-  margin-top:6px;
 }
 .eco-node:hover .eco-node-label { opacity:1; }
-.eco-node:hover { z-index:30; }
 .eco-node-bubble {
   width:54px; height:54px;
   border-radius:50%;
@@ -2383,11 +2380,12 @@ if (tickEl) {
     sceneEl.style.height   = size + 'px';
 
     const cx = size / 2, cy = size / 2;
-    const outerR = size * 0.32;  // spoke radius to node centers
-    const ringOD = size * 0.64;  // outer dashed ring diameter (aligns with node centers)
-    const ringID = size * 0.52;  // inner dashed ring diameter (between hub & nodes)
-    const hubR   = size * 0.16;  // center hub radius
-    const bubbleR= size * 0.065; // node bubble radius
+    const outerR  = size * 0.32;           // spoke radius to node centers
+    const ringOD  = Math.round(size * 0.64); // outer dashed ring diameter
+    const ringID  = Math.round(size * 0.52); // inner dashed ring diameter
+    const hubSize = Math.round(size * 0.32); // center hub diameter (integer pixels)
+    const hubR    = hubSize / 2;             // center hub radius
+    const bubbleR = size * 0.065;            // node bubble radius
 
     // Clear existing content
     sceneEl.innerHTML = '';
@@ -2399,29 +2397,38 @@ if (tickEl) {
     svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
     sceneEl.appendChild(svg);
 
-    // Gear rings
+    // Compute exact pixel offsets — pure integers, no percentages
+    const ringOuterOffset = Math.round((size - ringOD) / 2);
+    const ringMidOffset   = Math.round((size - ringID) / 2);
+    const hubOffset       = Math.round((size - hubSize) / 2);
+
+    // Gear rings — absolute pixel positioning
     const ringOuter = document.createElement('div');
     ringOuter.className = 'eco-ring eco-ring-outer';
     ringOuter.style.width  = ringOD + 'px';
     ringOuter.style.height = ringOD + 'px';
+    ringOuter.style.top    = ringOuterOffset + 'px';
+    ringOuter.style.left   = ringOuterOffset + 'px';
+    ringOuter.style.transform = '';
     sceneEl.appendChild(ringOuter);
 
     const ringMid = document.createElement('div');
     ringMid.className = 'eco-ring eco-ring-mid';
     ringMid.style.width  = ringID + 'px';
     ringMid.style.height = ringID + 'px';
+    ringMid.style.top    = ringMidOffset + 'px';
+    ringMid.style.left   = ringMidOffset + 'px';
+    ringMid.style.transform = '';
     sceneEl.appendChild(ringMid);
 
-    // Center hub
-    const hubSize = hubR * 2;
+    // Center hub — position:relative inside display:grid scene, grid places it dead center
     const hub = document.createElement('div');
     hub.className = 'eco-center';
     hub.style.width     = hubSize + 'px';
     hub.style.height    = hubSize + 'px';
-    hub.style.position  = 'absolute';
-    hub.style.top       = '50%';
-    hub.style.left      = '50%';
-    hub.style.transform = 'translate(-50%,-50%)';
+    hub.style.position  = 'relative';
+    hub.style.zIndex    = '10';
+    hub.style.flexShrink = '0';
     hub.innerHTML = `
       <div class="eco-center-pulse"></div>
       <div class="eco-center-inner">
@@ -2473,7 +2480,7 @@ if (tickEl) {
       node.style.setProperty('--node-glow',  n.glow);
       node.innerHTML = `
         <div class="eco-node-bubble" style="width:${bubbleSz}px;height:${bubbleSz}px;font-size:${Math.round(bubbleR*0.7)}px">${n.emoji}</div>
-        <div class="eco-node-label" style="font-size:${Math.round(size*0.030)}px;max-width:${Math.round(bubbleSz*2.2)}px;margin-top:6px">${n.label.replace(/\n/g,'<br>')}</div>`;
+        <div class="eco-node-label" style="font-size:${Math.round(size*0.030)}px;max-width:${Math.round(bubbleSz*2.2)}px">${n.label.replace(/\n/g,'<br>')}</div>`;
       sceneEl.appendChild(node);
     });
   }
