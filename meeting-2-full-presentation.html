@@ -3622,7 +3622,7 @@ const CLIENT = {
     <p class="sec-sub fade-up" style="text-align:left;margin-left:0;max-width:780px">Start with the Platform Base and add only what you need — or choose a bundle for the best rate. No per-seat surprises. No hidden fees.</p>
 
     <div class="rc-toggle-bar fade-up">
-      <div style="font-size:13px;color:var(--muted)">Platform Base &nbsp;·&nbsp; 4 modules &nbsp;·&nbsp; 4 bundles</div>
+      <div style="font-size:13px;color:var(--muted)">Platform Base &nbsp;·&nbsp; 3 modules &nbsp;·&nbsp; 2 bundles</div>
       <button class="rc-toggle-btn" id="rc-toggle-btn" onclick="togglePricing()" aria-expanded="false">
         <span>View full rate card</span>
         <span class="rc-arrow">&#9660;</span>
@@ -3634,8 +3634,8 @@ const CLIENT = {
       <div class="rc-base-pill">PLATFORM BASE &nbsp;·&nbsp; REQUIRED FOR ALL MODULES &amp; BUNDLES</div>
       <div style="display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-top:8px">
         <div style="flex-shrink:0">
-          <div class="rc-base-price">$24,000<span>/year</span></div>
-          <div style="font-size:12.5px;color:var(--muted);margin-top:6px">100 users &nbsp;·&nbsp; 500 SKUs &nbsp;·&nbsp; order management included</div>
+          <div class="rc-base-price">$48,000<span>/year</span></div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:6px">100 users &nbsp;·&nbsp; 500 SKUs &nbsp;·&nbsp; distributor portal included</div>
         </div>
         <div style="flex:1;min-width:280px">
           <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;text-transform:uppercase">What's included</div>
@@ -3645,6 +3645,7 @@ const CLIENT = {
             <div class="rc-include-item"><div class="rc-include-dot"></div>SAM ordering &amp; approvals</div>
             <div class="rc-include-item"><div class="rc-include-dot"></div>Reporting &amp; analytics</div>
             <div class="rc-include-item"><div class="rc-include-dot"></div>Product portfolio management</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>Distributor Portal</div>
             <div class="rc-include-item"><div class="rc-include-dot"></div>Onboarding &amp; setup</div>
           </div>
         </div>
@@ -3653,16 +3654,8 @@ const CLIENT = {
 
     <!-- MODULES -->
     <div class="rc-section-label fade-up">&agrave; la carte modules &nbsp;&mdash;&nbsp; add to Platform Base</div>
-    <div class="rc-modules-grid fade-up">
+    <div class="rc-modules-grid fade-up" style="grid-template-columns:repeat(3,1fr)">
 
-      <div class="rc-module-card">
-        <div class="rc-module-bar" style="background:#00C896"></div>
-        <div class="rc-module-name">Distributor Portal</div>
-        <div class="rc-module-price" style="color:#00C896">$18,000<span class="rc-module-yr">/yr</span></div>
-        <div class="rc-module-desc">Real-time distributor order visibility, inventory sync, and field team alignment across all markets.</div>
-        <span class="rc-tag" style="color:#00C896;border-color:rgba(0,200,150,.25);background:rgba(0,200,150,.07)">Distributor Sync</span>
-        <span class="rc-tag" style="color:#00C896;border-color:rgba(0,200,150,.25);background:rgba(0,200,150,.07)">Field Ops</span>
-      </div>
 
       <div class="rc-module-card">
         <div class="rc-module-bar" style="background:var(--blue)"></div>
@@ -3695,22 +3688,13 @@ const CLIENT = {
 
     <!-- BUNDLES -->
     <div class="rc-section-label fade-up">Pre-built bundles &nbsp;&mdash;&nbsp; save 20% vs. individual · Base required</div>
-    <div class="rc-bundles-grid fade-up">
+    <div class="rc-bundles-grid fade-up" style="grid-template-columns:repeat(2,1fr)">
 
-      <div class="rc-bundle-card">
-        <div class="rc-bundle-name">Field Ops</div>
-        <div class="rc-bundle-price" style="color:#00C896">$38,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(0,200,150,.1);color:#00C896">Save $4K/yr</span>
-        <div class="rc-bundle-includes">Includes</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:#00C896"></div>Platform Base</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:#00C896"></div>Distributor Portal</div>
-        <div class="rc-bundle-best">Best for: field teams &amp; distributor alignment</div>
-      </div>
 
       <div class="rc-bundle-card">
         <div class="rc-bundle-name">Procurement</div>
-        <div class="rc-bundle-price" style="color:var(--blue)">$48,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(48,180,230,.1);color:var(--blue)">Save $4K/yr</span>
+        <div class="rc-bundle-price" style="color:var(--blue)">$62,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(48,180,230,.1);color:var(--blue)">Save $16K/yr</span>
         <div class="rc-bundle-includes">Includes</div>
         <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>Platform Base</div>
         <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>PriceCheck</div>
@@ -3721,8 +3705,8 @@ const CLIENT = {
       <div class="rc-bundle-card rc-featured">
         <div class="rc-bundle-pop" style="background:var(--purple);color:#fff">MOST POPULAR</div>
         <div class="rc-bundle-name">brandhubAI</div>
-        <div class="rc-bundle-price" style="color:var(--purple)">$64,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(155,111,232,.12);color:var(--purple)">Save $8K/yr</span>
+        <div class="rc-bundle-price" style="color:var(--purple)">$78,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(155,111,232,.12);color:var(--purple)">Save $20K/yr</span>
         <div class="rc-bundle-includes">Includes</div>
         <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>Platform Base</div>
         <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>PriceCheck</div>
@@ -3731,14 +3715,6 @@ const CLIENT = {
         <div class="rc-bundle-best">Best for: full intelligence stack</div>
       </div>
 
-      <div class="rc-bundle-card">
-        <div class="rc-bundle-name">Full Platform</div>
-        <div class="rc-bundle-price" style="color:var(--orange)">$78,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(255,145,25,.1);color:var(--orange)">Save $6K/yr</span>
-        <div class="rc-bundle-includes">Includes</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--orange)"></div>All modules included</div>
-        <div class="rc-bundle-best">Best for: complete deployment</div>
-      </div>
 
     </div>
 
