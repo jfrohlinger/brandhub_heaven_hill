@@ -1118,6 +1118,55 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
 .phase-measure .phase-head { background:linear-gradient(140deg,#260a3d,#5a1a8a); }
 .phase-measure .phase-bullet { background:rgba(147,112,219,.2); color:#9370db; }
 .phase-measure .phase-num, .phase-measure .phase-tagline { color:rgba(210,170,255,.7); }
+
+  /* ── Pricing / Rate Card section ── */
+  #pricing{background:var(--surface)}
+  .rc-base-card{background:#0F1A2E;border:1.5px solid var(--blue);border-radius:14px;padding:36px 36px 30px;position:relative;margin-bottom:30px}
+  .rc-base-pill{position:relative;top:0;left:0;display:inline-block;background:var(--blue);color:#fff;font-size:10.5px;font-weight:800;padding:4px 15px;border-radius:20px;letter-spacing:.07em;white-space:nowrap;margin-bottom:20px}
+  .rc-base-price{font-size:46px;font-weight:900;color:var(--text);letter-spacing:-2.5px;line-height:1}
+  .rc-base-price span{font-size:15px;font-weight:400;color:var(--muted);margin-left:6px;letter-spacing:0}
+  .rc-includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px 32px;flex:1;min-width:280px}
+  .rc-include-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(238,242,248,.82)}
+  .rc-include-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+  .rc-section-label{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:16px;text-transform:uppercase}
+  .rc-modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+  .rc-module-card{background:#0B1120;border-radius:10px;padding:22px 20px 18px;position:relative;overflow:hidden}
+  .rc-module-bar{position:absolute;top:0;left:0;width:100%;height:3px}
+  .rc-module-name{font-size:14.5px;font-weight:800;color:var(--text);margin:10px 0 7px}
+  .rc-module-price{font-size:26px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:4px}
+  .rc-module-yr{font-size:11px;font-weight:400;color:var(--muted)}
+  .rc-module-desc{font-size:11.5px;color:var(--muted);line-height:1.55;margin-bottom:10px}
+  .rc-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;margin:2px 2px 0 0;border:1px solid transparent}
+  .rc-bundles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  .rc-bundle-card{background:#0B1120;border-radius:10px;padding:20px 18px 16px;border:1px solid #1F2D45;position:relative}
+  .rc-bundle-card.rc-featured{border-color:var(--purple);background:#0E0B1A}
+  .rc-bundle-pop{position:absolute;top:-11px;right:14px;font-size:9.5px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:.05em}
+  .rc-bundle-name{font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px}
+  .rc-bundle-price{font-size:24px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:3px}
+  .rc-bundle-savings{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:10px}
+  .rc-bundle-includes{font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .rc-bundle-item{font-size:11.5px;color:rgba(238,242,248,.75);display:flex;align-items:center;gap:6px;margin-bottom:4px}
+  .rc-bundle-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+  .rc-bundle-best{font-size:10.5px;color:var(--muted);font-style:italic;margin-top:8px}
+  .rc-addons-strip{background:#0B1225;border:1px solid #1F2D45;border-radius:10px;padding:18px 28px;display:flex;gap:0;align-items:stretch}
+  .rc-addon-block{flex:1;padding:0 24px}
+  .rc-addon-block:first-child{padding-left:0}
+  .rc-addon-divider{width:1px;background:#1F2D45;flex-shrink:0}
+  .rc-addon-label{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-bottom:6px}
+  .rc-addon-val{font-size:14.5px;font-weight:800;color:var(--text)}
+  .rc-addon-desc{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .rc-required-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:6px}
+  @media(max-width:900px){.rc-modules-grid,.rc-bundles-grid{grid-template-columns:repeat(2,1fr)}.rc-includes-grid{grid-template-columns:1fr}.rc-addons-strip{flex-direction:column;gap:16px}.rc-addon-divider{display:none}.rc-addon-block{padding:0}}
+  @media(max-width:600px){.rc-modules-grid,.rc-bundles-grid{grid-template-columns:1fr}}
+
+  /* ── Pricing collapse / expand ── */
+  .rc-toggle-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+  .rc-toggle-btn{display:inline-flex;align-items:center;gap:8px;background:#0F1A2E;border:1px solid var(--blue);color:var(--blue);font-size:12px;font-weight:700;padding:9px 20px;border-radius:30px;cursor:pointer;transition:background .2s,color .2s;letter-spacing:.04em;white-space:nowrap}
+  .rc-toggle-btn:hover{background:var(--blue);color:#fff}
+  .rc-toggle-btn .rc-arrow{display:inline-block;transition:transform .35s cubic-bezier(.4,0,.2,1);font-size:11px}
+  .rc-toggle-btn.open .rc-arrow{transform:rotate(180deg)}
+  .rc-pricing-body{overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;max-height:0;opacity:0}
+  .rc-pricing-body.open{max-height:3000px;opacity:1}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
@@ -1230,6 +1279,7 @@ const CLIENT = {
     <a href="#calculator" class="nav-a">Per-Unit Calculator</a>
     <a href="#roi-calculator" class="nav-a">ROI Calculator</a>
     <a href="#case-studies" class="nav-a">Case Studies</a>
+    <a href="#pricing" class="nav-a">Pricing</a>
     <a href="#next-steps" class="nav-a">Next Steps</a>
   </div>
 </nav>
@@ -1569,7 +1619,7 @@ const CLIENT = {
       <div style="background:var(--card);border:1px solid rgba(0,200,150,.15);border-radius:16px;padding:24px 22px">
         <div style="font-size:28px;font-weight:900;color:#00c896;margin-bottom:10px;letter-spacing:-1px">02</div>
         <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3">The SAM buy-out problem has a solution.</div>
-        <div style="font-size:12.5px;color:var(--muted);line-height:1.6">A brand-approved catalog SAMs can actually order from quickly means the workaround disappears. The incentive to go around the process goes away when the process is easier than the shortcut.</div>
+        <div style="font-size:12.5px;color:var(--muted);line-height:1.6">A brand-approved product portfolio SAMs can actually order from quickly means the workaround disappears. The incentive to go around the process goes away when the process is easier than the shortcut.</div>
       </div>
 
       <div style="background:var(--card);border:1px solid rgba(255,145,25,.15);border-radius:16px;padding:24px 22px">
@@ -1733,7 +1783,7 @@ const CLIENT = {
         <div class="phase-body">
           <ul class="phase-items">
             <li><span class="phase-bullet">✦</span><span><strong>Programs</strong> — brand team gets its own program with goals, items &amp; channel rules</span></li>
-            <li><span class="phase-bullet">✦</span><span><strong>Item Admin</strong> — POS catalog with SKUs, MOQs, lead times, variants &amp; supplier assignments</span></li>
+            <li><span class="phase-bullet">✦</span><span><strong>Item Admin</strong> — POS product portfolio with SKUs, MOQs, lead times, variants &amp; supplier assignments</span></li>
             <li><span class="phase-bullet">✦</span><span><strong>Order Windows</strong> — time-gated purchasing periods with territory &amp; channel controls</span></li>
             <li><span class="phase-bullet">✦</span><span><strong>Demand Planning</strong> — distributor-level quantity forecasting before orders open</span></li>
           </ul>
@@ -1748,7 +1798,7 @@ const CLIENT = {
         <div class="phase-head">
           <div class="phase-num">02 &nbsp;/&nbsp; ORDER</div>
           <div class="phase-name">Order</div>
-          <div class="phase-tagline">Sales teams place orders from a brand-approved catalog</div>
+          <div class="phase-tagline">Sales teams place orders from a brand-approved product portfolio</div>
         </div>
         <div class="phase-screen">
           <div class="phase-screen-bar">
@@ -1887,14 +1937,14 @@ const CLIENT = {
 <section id="sales-portal">
   <div class="wrap">
     <div class="label fade-up" style="text-align:left">The Trade Marketing Solution</div>
-    <h2 class="sec-title fade-up">Sales moves at their speed.<br><span style="color:var(--blue)">Procurement stays in control.</span></h2>
-    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;margin-bottom:20px;max-width:860px">A brand-approved catalog your reps can easily and directly place orders from — no emails, no need for bypasses. Every order is accounted for and tracked. Here's exactly what they'll see.</p>
+    <h2 class="sec-title fade-up">Sales moves as sales moves.<br><span style="color:var(--blue)">You stay in control.</span></h2>
+    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;margin-bottom:20px;max-width:860px">A brand-approved product portfolio your reps can easily and directly place orders from — no emails, no need for bypasses. Every order is accounted for and tracked. Here's exactly what they'll see.</p>
 
     <!-- Step indicator -->
     <div class="sp-step-bar fade-up">
       <div class="sp-step active" id="sp-tab-1" onclick="spGoTo(1)">
         <div class="sp-step-dot">1</div>
-        <div class="sp-step-label">Browse Catalog</div>
+        <div class="sp-step-label">Browse Portfolio</div>
         <div class="sp-step-sub">Sales rep sees brand-approved items</div>
       </div>
       <div class="sp-step" id="sp-tab-2" onclick="spGoTo(2)">
@@ -3467,7 +3517,7 @@ const CLIENT = {
       </div>
       <div class="cs-footer">
         <div class="cs-footer-q" style="color:#00C896">"</div>
-        <div>We set up training sessions, office hours, a dedicated email, a phone number, a support contact. Almost nobody came. They didn't need to. Within two months our field teams and distributor reps had placed over 1,500 orders across 48 states — completely on their own. The adoption rate on every other system we've tried was our biggest problem. This one, it wasn't even a conversation.</div>
+        <div>The brandhub team held training sessions, office hours, had a dedicated email, a phone number, a support contact. But it turns out, they didn't need to. One training, 30 minutes was all it took. Within two months our field teams and distributor reps had placed over 1,500 orders across 48 states — completely on their own. The adoption rate on every other system we've tried was our biggest problem. This one, it wasn't even a conversation.</div>
       </div>
     </div>
 
@@ -3540,7 +3590,7 @@ const CLIENT = {
           <div class="tl-dot blue"></div>
           <div class="tl-period">Weeks 3–4</div>
           <div class="tl-title">Data migration &amp; first programs</div>
-          <div class="tl-desc">SRS order history imported into Order History. POS catalog built into Item Admin with SKUs, MOQs, lead times. One brand team (e.g., Elijah Craig) gets its first Program configured with items assigned and an Order Window opened.</div>
+          <div class="tl-desc">SRS order history imported into Order History. POS product portfolio built into Item Admin with SKUs, MOQs, lead times. One brand team (e.g., Elijah Craig) gets its first Program configured with items assigned and an Order Window opened.</div>
         </div>
         <div class="tl-step">
           <div class="tl-dot blue"></div>
@@ -3561,6 +3611,156 @@ const CLIENT = {
 
 </div>
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- PRICING RATE CARD -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="label fade-up">Pricing</div>
+    <h2 class="sec-title fade-up">Modular pricing.<br><span style="color:var(--blue)">Built around how you actually work.</span></h2>
+    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;max-width:780px">Start with the Platform Base and add only what you need — or choose a bundle for the best rate. No per-seat surprises. No hidden fees.</p>
+
+    <div class="rc-toggle-bar fade-up">
+      <div style="font-size:13px;color:var(--muted)">Platform Base &nbsp;·&nbsp; 4 modules &nbsp;·&nbsp; 4 bundles</div>
+      <button class="rc-toggle-btn" id="rc-toggle-btn" onclick="togglePricing()" aria-expanded="false">
+        <span>View full rate card</span>
+        <span class="rc-arrow">&#9660;</span>
+      </button>
+    </div>
+    <div class="rc-pricing-body" id="rc-pricing-body">
+    <!-- PLATFORM BASE -->
+    <div class="rc-base-card fade-up">
+      <div class="rc-base-pill">PLATFORM BASE &nbsp;·&nbsp; REQUIRED FOR ALL MODULES &amp; BUNDLES</div>
+      <div style="display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-top:8px">
+        <div style="flex-shrink:0">
+          <div class="rc-base-price">$24,000<span>/year</span></div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:6px">100 users &nbsp;·&nbsp; 500 SKUs &nbsp;·&nbsp; order management included</div>
+        </div>
+        <div style="flex:1;min-width:280px">
+          <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;text-transform:uppercase">What's included</div>
+          <div class="rc-includes-grid">
+            <div class="rc-include-item"><div class="rc-include-dot"></div>Order Windows &amp; programs</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>POs &amp; invoicing</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>SAM ordering &amp; approvals</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>Reporting &amp; analytics</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>Product portfolio management</div>
+            <div class="rc-include-item"><div class="rc-include-dot"></div>Onboarding &amp; setup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULES -->
+    <div class="rc-section-label fade-up">&agrave; la carte modules &nbsp;&mdash;&nbsp; add to Platform Base</div>
+    <div class="rc-modules-grid fade-up">
+
+      <div class="rc-module-card">
+        <div class="rc-module-bar" style="background:#00C896"></div>
+        <div class="rc-module-name">Distributor Portal</div>
+        <div class="rc-module-price" style="color:#00C896">$18,000<span class="rc-module-yr">/yr</span></div>
+        <div class="rc-module-desc">Real-time distributor order visibility, inventory sync, and field team alignment across all markets.</div>
+        <span class="rc-tag" style="color:#00C896;border-color:rgba(0,200,150,.25);background:rgba(0,200,150,.07)">Distributor Sync</span>
+        <span class="rc-tag" style="color:#00C896;border-color:rgba(0,200,150,.25);background:rgba(0,200,150,.07)">Field Ops</span>
+      </div>
+
+      <div class="rc-module-card">
+        <div class="rc-module-bar" style="background:var(--blue)"></div>
+        <div class="rc-module-name">PriceCheck</div>
+        <div class="rc-module-price" style="color:var(--blue)">$20,000<span class="rc-module-yr">/yr</span></div>
+        <div class="rc-module-desc">AI-powered POS asset classification and competitive price benchmarking for smarter sourcing decisions.</div>
+        <span class="rc-tag" style="color:var(--blue);border-color:rgba(48,180,230,.25);background:rgba(48,180,230,.07)">Price Intel</span>
+        <span class="rc-tag" style="color:var(--blue);border-color:rgba(48,180,230,.25);background:rgba(48,180,230,.07)">AI Classification</span>
+      </div>
+
+      <div class="rc-module-card">
+        <div class="rc-module-bar" style="background:var(--orange)"></div>
+        <div class="rc-module-name">RFQ Management</div>
+        <div class="rc-module-price" style="color:var(--orange)">$10,000<span class="rc-module-yr">/yr</span></div>
+        <div class="rc-module-desc">Streamlined vendor RFQ workflows, bid comparison, and award tracking — all in one place.</div>
+        <span class="rc-tag" style="color:var(--orange);border-color:rgba(255,145,25,.25);background:rgba(255,145,25,.07)">Vendor Bids</span>
+        <span class="rc-tag" style="color:var(--orange);border-color:rgba(255,145,25,.25);background:rgba(255,145,25,.07)">Procurement</span>
+      </div>
+
+      <div class="rc-module-card">
+        <div class="rc-module-bar" style="background:var(--purple)"></div>
+        <div class="rc-module-name">DemandIQ</div>
+        <div class="rc-module-price" style="color:var(--purple)">$20,000<span class="rc-module-yr">/yr</span></div>
+        <div class="rc-module-desc">Predictive demand intelligence using field signals and historical patterns to right-size production orders.</div>
+        <span class="rc-tag" style="color:var(--purple);border-color:rgba(155,111,232,.25);background:rgba(155,111,232,.07)">Forecasting</span>
+        <span class="rc-tag" style="color:var(--purple);border-color:rgba(155,111,232,.25);background:rgba(155,111,232,.07)">Demand Signals</span>
+      </div>
+
+    </div>
+
+    <!-- BUNDLES -->
+    <div class="rc-section-label fade-up">Pre-built bundles &nbsp;&mdash;&nbsp; save 20% vs. individual · Base required</div>
+    <div class="rc-bundles-grid fade-up">
+
+      <div class="rc-bundle-card">
+        <div class="rc-bundle-name">Field Ops</div>
+        <div class="rc-bundle-price" style="color:#00C896">$38,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(0,200,150,.1);color:#00C896">Save $4K/yr</span>
+        <div class="rc-bundle-includes">Includes</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:#00C896"></div>Platform Base</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:#00C896"></div>Distributor Portal</div>
+        <div class="rc-bundle-best">Best for: field teams &amp; distributor alignment</div>
+      </div>
+
+      <div class="rc-bundle-card">
+        <div class="rc-bundle-name">Procurement</div>
+        <div class="rc-bundle-price" style="color:var(--blue)">$48,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(48,180,230,.1);color:var(--blue)">Save $4K/yr</span>
+        <div class="rc-bundle-includes">Includes</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>Platform Base</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>PriceCheck</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>RFQ Management</div>
+        <div class="rc-bundle-best">Best for: sourcing &amp; vendor teams</div>
+      </div>
+
+      <div class="rc-bundle-card rc-featured">
+        <div class="rc-bundle-pop" style="background:var(--purple);color:#fff">MOST POPULAR</div>
+        <div class="rc-bundle-name">brandhubAI</div>
+        <div class="rc-bundle-price" style="color:var(--purple)">$64,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(155,111,232,.12);color:var(--purple)">Save $8K/yr</span>
+        <div class="rc-bundle-includes">Includes</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>Platform Base</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>PriceCheck</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>RFQ Management</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>DemandIQ</div>
+        <div class="rc-bundle-best">Best for: full intelligence stack</div>
+      </div>
+
+      <div class="rc-bundle-card">
+        <div class="rc-bundle-name">Full Platform</div>
+        <div class="rc-bundle-price" style="color:var(--orange)">$78,000</div>
+        <span class="rc-bundle-savings" style="background:rgba(255,145,25,.1);color:var(--orange)">Save $6K/yr</span>
+        <div class="rc-bundle-includes">Includes</div>
+        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--orange)"></div>All modules included</div>
+        <div class="rc-bundle-best">Best for: complete deployment</div>
+      </div>
+
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="rc-addons-strip fade-up">
+      <div class="rc-addon-block">
+        <div class="rc-addon-label">Add-on &nbsp;·&nbsp; User Expansion</div>
+        <div class="rc-addon-val">+$6,000 / year</div>
+        <div class="rc-addon-desc">Per additional 100 users beyond the base 100</div>
+      </div>
+      <div class="rc-addon-divider"></div>
+      <div class="rc-addon-block">
+        <div class="rc-addon-label">Select Production Credit</div>
+        <div class="rc-addon-val">$12K &ndash; $24K credit</div>
+        <div class="rc-addon-desc">$12,000 credit at $400K+ production through Select &nbsp;&nbsp;&bull;&nbsp;&nbsp; $24,000 credit at $800K+ production</div>
+      </div>
+    </div>
+
+
+    </div><!-- /rc-pricing-body -->
+  </div>
+</section>
 
 <!-- NEXT STEPS --><section id="next-steps" style="background:var(--surface)">
   <div class="wrap">
@@ -3594,7 +3794,7 @@ const CLIENT = {
       <div class="ns-card fade-up" style="transition-delay:.2s;border-color:rgba(255,140,0,.35)">
         <div class="ns-step">Option C</div>
         <div class="ns-title">See what we actually make — POS examples</div>
-        <div class="ns-desc">brandhub is built on select's production capabilities. We can show you a catalog of spirits-specific POS — shelf talkers, glorifiers, display pieces, on-premise — across different vendors and price tiers. Sometimes seeing the product makes the platform click.</div>
+        <div class="ns-desc">brandhub is built on select's production capabilities. We can show you a portfolio of spirits-specific POS — shelf talkers, glorifiers, display pieces, on-premise — across different vendors and price tiers. Sometimes seeing the product makes the platform click.</div>
         <div class="ns-meta">
           <span class="ns-time">⏱ 30 minutes</span>
           <span class="ns-effort">None — we'll bring the samples</span>
@@ -3947,7 +4147,7 @@ const CLIENT = {
             <ul class="fw-pts">
               <li><div class="fw-dot blue"></div>Millions of pricing data points collected annually across all POS categories</li>
               <li><div class="fw-dot blue"></div>Multi-vendor network spanning 100+ suppliers in alc-bev &amp; CPG</li>
-              <li><div class="fw-dot blue"></div>Real transaction data — not catalog prices or list rates</li>
+              <li><div class="fw-dot blue"></div>Real transaction data — not listed prices or list rates</li>
             </ul>
             <div class="fw-stat-row">
               <div class="fw-stat-n" style="color:var(--blue)">$100M+</div>
@@ -5010,6 +5210,16 @@ function spGoTo(n) {
     next.disabled = (n === 3);
   }
 }
+
+  function togglePricing() {
+    var body = document.getElementById('rc-pricing-body');
+    var btn  = document.getElementById('rc-toggle-btn');
+    var open = body.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    btn.querySelector('span:first-child').textContent = open ? 'Collapse rate card' : 'View full rate card';
+  }
+
 </script>
 </body>
 </html>
