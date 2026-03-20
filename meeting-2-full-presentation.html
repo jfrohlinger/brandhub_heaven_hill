@@ -1165,7 +1165,7 @@ const CLIENT = {
     {
       icon: "🗺️", title: "National vs. Local Governance",
       links: [
-        { href: "#the-problem", label: "Stop the SAM budget black hole →" },
+        { href: "#cs-adoption", label: "See how 400 field users adopted it with zero training →" },
         { href: "#calculator", label: "See what untracked local spend is really costing →" }
       ]
     },
@@ -1534,7 +1534,7 @@ const CLIENT = {
         </ul>
       </div>
       <div class="module-group fade-up" style="transition-delay:.2s">
-        <div class="module-group-tag tag-addon">brandhubAI</div>
+        <div class="module-group-tag tag-included">brandhubAI</div>
         <div class="module-group-title">Advanced Analytics & AI</div>
         <ul class="module-list">
           <li>brandhub PriceCheck — compare vs. $100M+</li>
@@ -2539,7 +2539,7 @@ const CLIENT = {
             <div class="app-metric"><div class="amn">10–20%</div><div class="aml">typical savings</div></div>
             <div class="app-metric"><div class="amn">$100M+</div><div class="aml">verified data</div></div>
           </div>
-          <a href="https://price-benchmark-7ewyxtjpc8cgcxs2hpneen.streamlit.app/" target="_blank" class="btn-app price">💵 &nbsp;Launch PriceCheck Demo</a>
+          <a href="https://pos-asset-classifier-kzweznrgxw46rshuqqji5n.streamlit.app/" target="_blank" class="btn-app price">💵 &nbsp;Launch PriceCheck Demo</a>
         </div>
       </div>
       <!-- DEMANDIQ - LIVE DEMO -->
@@ -2796,7 +2796,7 @@ const CLIENT = {
               <div class="range-row"><span>$0.25</span><span>$10</span></div>
             </div>
             <div class="bucket-input-card" style="margin:0">
-              <div class="bucket-input-label cop" style="margin-bottom:8px;font-size:11px">Waste / obsolescence %</div>
+              <div class="bucket-input-label cop" style="margin-bottom:8px;font-size:11px">Waste %</div>
               <div class="bucket-input-disp cop" id="rc-waste-disp" style="font-size:28px">30%</div>
               <input type="range" id="rc-waste" min="0" max="60" step="5" value="30" oninput="updateRC()">
               <div class="range-row"><span>0%</span><span>60%</span></div>
@@ -2882,7 +2882,7 @@ const CLIENT = {
                 <span id="p2-ppu" style="font-weight:700">$1.50</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Waste <span style="color:#30E682;font-size:11px">→ 10%</span></span>
+                <span style="color:var(--muted)">Waste <span id="p2-waste-arrow" style="color:#30E682;font-size:11px">→ 10%</span></span>
                 <span id="p2-waste" style="font-weight:700;color:#30E682">10%</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
@@ -2890,7 +2890,7 @@ const CLIENT = {
                 <span id="p2-prod" style="font-weight:700">$11.7K</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Managed service fee <span style="color:#30E682;font-size:11px">→ 5%</span></span>
+                <span style="color:var(--muted)">Managed service fee <span id="p2-mgmt-arrow" style="color:#30E682;font-size:11px">→ 5%</span></span>
                 <span id="p2-mgmt" style="font-weight:700;color:#30E682">$583</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
@@ -2964,25 +2964,39 @@ const CLIENT = {
     document.getElementById('p1-inmarket').textContent = fmtU(bInmarket) + ' units';
     document.getElementById('p1-save').textContent = '↓ Save ' + fmtK(p1Saving) + ' (' + p1Pct + '% less)';
 
-    // Option 2: brandhub — right-sized order (waste → 10%), same ppu, mgmt → 5%
-    var p2WastePct = 0.10;
-    var p2MgmtPct = 0.05;
-    // Right-sized: order exactly enough so that (1 - 10%) * order = bInmarket
-    var p2Units = Math.ceil(bInmarket / (1 - p2WastePct));
+    // Option 2: brandhub — right-sized order (waste → max 10%), same ppu, mgmt → max 5%
+    // brandhub only improves waste/mgmt — never makes them worse
+    var p2WastePct = Math.min(wastePct, 0.10);
+    var p2MgmtPct = Math.min(mgmtPct, 0.05);
+    // Right-sized: order exactly enough so that (1 - p2WastePct) * order = bInmarket
+    var p2Units = (p2WastePct < 1) ? Math.ceil(bInmarket / (1 - p2WastePct)) : units;
     var p2Prod = p2Units * ppu;
     var p2Mgmt = p2Prod * p2MgmtPct;
     var p2Total = p2Prod + p2Mgmt;
     var p2Saving = bTotal - p2Total;
     var p2Pct = Math.round((p2Saving / bTotal) * 100);
+    var p2WasteLabel = Math.round(p2WastePct * 100) + '%';
+    var p2MgmtLabel = Math.round(p2MgmtPct * 100) + '%';
 
     document.getElementById('p2-units').textContent = fmtU(p2Units);
     document.getElementById('p2-ppu').textContent = '$' + ppu.toFixed(2);
-    document.getElementById('p2-waste').textContent = '10%';
+    document.getElementById('p2-waste').textContent = p2WasteLabel;
     document.getElementById('p2-prod').textContent = fmtK(p2Prod);
     document.getElementById('p2-mgmt').textContent = fmtK(p2Mgmt);
     document.getElementById('p2-total').textContent = fmtK(p2Total);
     document.getElementById('p2-inmarket').textContent = fmtU(bInmarket) + ' units';
-    document.getElementById('p2-save').textContent = '↓ Save ' + fmtK(p2Saving) + ' (' + p2Pct + '% less)';
+    // Update arrow labels dynamically
+    var wEl = document.getElementById('p2-waste-arrow');
+    var mEl = document.getElementById('p2-mgmt-arrow');
+    if(wEl) wEl.textContent = '→ ' + p2WasteLabel;
+    if(mEl) mEl.textContent = '→ ' + p2MgmtLabel;
+    if(p2Saving >= 0){
+      document.getElementById('p2-save').textContent = '↓ Save ' + fmtK(p2Saving) + ' (' + p2Pct + '% less)';
+      document.getElementById('p2-save').style.color = '#30E682';
+    } else {
+      document.getElementById('p2-save').textContent = '↑ Costs ' + fmtK(-p2Saving) + ' more (' + (-p2Pct) + '% more)';
+      document.getElementById('p2-save').style.color = '#FF8080';
+    }
   };
   updateRC();
 })();
@@ -3371,7 +3385,7 @@ const CLIENT = {
     </div>
 
     <!-- ── CASE 4: FIELD ADOPTION ── -->
-    <div class="cs-card fade-up" style="transition-delay:.3s">
+    <div id="cs-adoption" class="cs-card fade-up" style="transition-delay:.3s">
       <div class="cs-header">
         <div class="cs-header-left">
           <div class="cs-eyebrow">Case Study 04 &nbsp;·&nbsp; Platform Adoption &amp; Simplicity</div>
@@ -3818,7 +3832,7 @@ const CLIENT = {
               <input class="pc-input" id="pi-price" type="number" value="1.50" min="0.01" step="0.05">
             </div>
             <div class="pc-irow">
-              <label class="pc-lbl">Waste / obsolescence %</label>
+              <label class="pc-lbl">Waste %</label>
               <input class="pc-input" id="pi-waste" type="number" value="30" min="0" max="80" step="5">
             </div>
             <div class="pc-irow">
@@ -3855,7 +3869,7 @@ const CLIENT = {
               <div class="pc-val" style="color:var(--orange)" id="p-price">–</div>
             </div>
             <div class="pc-irow">
-              <div class="pc-lbl">Waste / obsolescence %</div>
+              <div class="pc-lbl">Waste %</div>
               <div class="pc-val" id="p-waste">–</div>
             </div>
             <div class="pc-irow">
