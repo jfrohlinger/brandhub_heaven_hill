@@ -1167,6 +1167,13 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;b
   .rc-toggle-btn.open .rc-arrow{transform:rotate(180deg)}
   .rc-pricing-body{overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;max-height:0;opacity:0}
   .rc-pricing-body.open{max-height:3000px;opacity:1}
+
+  /* ── Act 3 collapsible toggle ── */
+  .act-break--toggle{cursor:pointer;user-select:none;position:relative}
+  .act-break--toggle:hover{opacity:.88}
+  .act3-caret{position:absolute;right:44px;top:50%;transform:translateY(-50%) rotate(180deg);font-size:18px;color:rgba(255,255,255,.35);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+  #act3-content{transition:none}
+
 </style>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
@@ -1275,12 +1282,9 @@ const CLIENT = {
 
     <div class="nav-act-label">RECAP</div>
     <a href="#vendor-competition" class="nav-a">Vendor Leverage</a>
-    <a href="#srs-transition" class="nav-a">SRS Transition</a>
     <a href="#calculator" class="nav-a">Per-Unit Calculator</a>
     <a href="#roi-calculator" class="nav-a">ROI Calculator</a>
-    <a href="#case-studies" class="nav-a">Case Studies</a>
     <a href="#pricing" class="nav-a">Pricing</a>
-    <a href="#next-steps" class="nav-a">Next Steps</a>
   </div>
 </nav>
 <div id="mobile-nav">
@@ -1296,7 +1300,6 @@ const CLIENT = {
     <a href="#how-it-works" class="mn-a">How It Works</a>
     <a href="#ai-features" class="mn-a">AI + Tools</a>
     <a href="#calculator" class="mn-a">Cost</a>
-    <a href="#next-steps" class="mn-a">Next Steps</a>
   </div>
 </div>
 
@@ -1686,78 +1689,13 @@ const CLIENT = {
   </div>
 </div>
 
-
-<section id="spend-layers">
-  <div class="wrap">
-    <div class="label fade-up" style="text-align:left">Your Spend Reality</div>
-    <h2 class="sec-title fade-up">The money isn't gone.<br><span style="color:var(--orange)">It's just invisible.</span></h2>
-    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;max-width:900px;white-space:nowrap">You have three separate buckets of trade spend — and today only one of them is visible. brandhub connects all three.</p>
-    <div class="bucket-grid fade-up">
-
-      <!-- Bucket 1: Brand A&P -->
-      <div class="bucket-card">
-        <div class="bucket-hdr dark1">
-          <div class="bucket-tag known">Tracked</div>
-          <div class="bucket-title">Brand A&amp;P Nationals</div>
-          <div class="bucket-subtitle">Managed by Lynn's procurement team</div>
-          <div class="bucket-amt known">Known spend</div>
-        </div>
-        <div class="bucket-body">
-          <div class="bucket-item"><span class="bucket-ck">✓</span><span>Multi-bid process in place</span></div>
-          <div class="bucket-item"><span class="bucket-ck">✓</span><span>Runs through SRS / procurement</span></div>
-          <div class="bucket-item"><span class="bucket-ck">✓</span><span>National brand standards applied</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No benchmark vs. market — pricing taken on faith on one-offs</span></div>
-        </div>
-      </div>
-
-      <!-- Bucket 2: SAM Local -->
-      <div class="bucket-card">
-        <div class="bucket-hdr dark2">
-          <div class="bucket-tag dark">Untracked ⚠</div>
-          <div class="bucket-title">Local SAM Buys</div>
-          <div class="bucket-subtitle">Sales teams, local budgets, no visibility</div>
-          <div class="bucket-amt unknown">$??? dark spend</div>
-        </div>
-        <div class="bucket-body">
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Sales bypasses procurement when they hear "no"</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Locally produced materials, no brand standards</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Charged to SAM budgets, never recapped</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No visibility for Lynn's team or brand directors</span></div>
-        </div>
-      </div>
-
-      <!-- Bucket 3: Distributor Co-op -->
-      <div class="bucket-card">
-        <div class="bucket-hdr dark3">
-          <div class="bucket-tag dark">Unmonitored ⚠</div>
-          <div class="bucket-title">Distributor Co-op</div>
-          <div class="bucket-subtitle">Third-party funding, zero reconciliation</div>
-          <div class="bucket-amt unknown">$??? third layer</div>
-        </div>
-        <div class="bucket-body">
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Co-op dollars activated without central tracking</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No reconciliation against brand goals</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Disconnected from national program reporting</span></div>
-          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Nobody owns the consolidated view</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Connector -->
-    <div class="bucket-connector fade-up">
-      <div style="background:var(--blue);color:#0A0D1A;font-size:12px;font-weight:800;padding:8px 24px;border-radius:20px;position:relative;z-index:1;letter-spacing:.5px">brandhub unifies all three</div>
-    </div>
-
-  </div>
-</section>
-
 <!-- ORDER ACTIVITY MAP -->
 
 
 
 <section id="how-it-works">
   <div class="wrap">
-    <div class="label fade-up">Trade Marketer's View</div>
+    <div class="label fade-up">the Marketer's View</div>
     <h2 class="sec-title fade-up">How it works:<br><span style="color:var(--blue)">The brandhub operating system.</span></h2>
     <p class="sec-sub fade-up" style="margin-bottom:0">Four connected phases — one platform. No spreadsheets. No gaps. No guessing.</p>
 
@@ -2541,7 +2479,7 @@ const CLIENT = {
   <div class="wrap">
     <div class="label fade-up">AI-Powered Tools</div>
     <h2 class="sec-title fade-up">AI-powered tools.<br><span style="color:var(--blue)">Built for alc bev.</span></h2>
-    <p class="sec-sub fade-up" style="max-width:900px">Five tools are live and available for demo today. The rest are in active development.</p>
+    <p class="sec-sub fade-up" style="max-width:900px">Four tools are live and available for demo today. The rest are in active development.</p>
     <div class="apps-grid">
       <!-- DISTRIBUTOR INTELLIGENCE - LIVE -->
       <div class="app-card fade-up" style="position:relative;border-color:rgba(40,200,64,.4);box-shadow:0 0 0 1px rgba(40,200,64,.25),0 8px 32px rgba(40,200,64,.1)">
@@ -2810,360 +2748,6 @@ const CLIENT = {
 
 <!-- COST CALCULATOR -->
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!-- ACT 3 BREAK -->
-<div class="act-break act-break--dark" id="act3-break">
-  <div class="act-break-inner">
-    <div class="act-break-num">ACT 3</div>
-    <div class="act-break-title">Your Numbers</div>
-    <div class="act-break-sub">ROI, real stories, and what happens next</div>
-  </div>
-</div>
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
-<section id="calculator" style="background:var(--surface)">
-  <div class="wrap">
-    <div class="label fade-up" style="text-align:center">The Real Comparison</div>
-    <h2 class="sec-title fade-up" style="text-align:center">Why per-unit price is the wrong metric.<br><span style="color:var(--orange)">See how right-sizing orders and reducing management overhead outperforms chasing a lower per-unit price.</span></h2>
-
-    <div class="calc-wrap fade-up">
-      <div class="calc-card" style="padding:0;overflow:hidden">
-
-        <!-- Baseline inputs -->
-        <div style="background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);padding:32px 40px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px">Your Current Setup &nbsp;·&nbsp; Baseline</div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
-            <div class="bucket-input-card" style="margin:0">
-              <div class="bucket-input-label ap" style="margin-bottom:8px;font-size:11px">Units ordered</div>
-              <div class="bucket-input-disp ap" id="rc-units-disp" style="font-size:28px">10,000</div>
-              <input type="range" id="rc-units" min="1000" max="50000" step="500" value="10000" oninput="updateRC()">
-              <div class="range-row"><span>1K</span><span>50K</span></div>
-            </div>
-            <div class="bucket-input-card" style="margin:0">
-              <div class="bucket-input-label sam" style="margin-bottom:8px;font-size:11px">Price per unit ($)</div>
-              <div class="bucket-input-disp sam" id="rc-ppu-disp" style="font-size:28px">$1.50</div>
-              <input type="range" id="rc-ppu" min="25" max="1000" step="5" value="150" oninput="updateRC()">
-              <div class="range-row"><span>$0.25</span><span>$10</span></div>
-            </div>
-            <div class="bucket-input-card" style="margin:0">
-              <div class="bucket-input-label cop" style="margin-bottom:8px;font-size:11px">Waste %</div>
-              <div class="bucket-input-disp cop" id="rc-waste-disp" style="font-size:28px">30%</div>
-              <input type="range" id="rc-waste" min="0" max="60" step="5" value="30" oninput="updateRC()">
-              <div class="range-row"><span>0%</span><span>60%</span></div>
-            </div>
-            <div class="bucket-input-card" style="margin:0">
-              <div class="bucket-input-label" style="margin-bottom:8px;font-size:11px;color:var(--blue)">Managed service fee %</div>
-              <div class="bucket-input-disp" id="rc-mgmt-disp" style="font-size:28px;color:var(--blue)">15%</div>
-              <input type="range" id="rc-mgmt" min="0" max="30" step="1" value="15" oninput="updateRC()">
-              <div class="range-row"><span>0%</span><span>30%</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Three columns comparison -->
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
-
-          <!-- Baseline result -->
-          <div style="padding:32px 32px 36px;border-right:1px solid rgba(255,255,255,.07)">
-            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px">Baseline</div>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Product cost</span>
-                <span id="b-prod" style="font-weight:700">$15.0K</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Management fee</span>
-                <span id="b-mgmt" style="font-weight:700">$2.3K</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Units in-market</span>
-                <span id="b-inmarket" style="font-weight:700">7,000 units</span>
-              </div>
-            </div>
-            <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:16px 20px">
-              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
-              <div id="b-total" style="font-size:32px;font-weight:900;color:var(--text)">$17.3K</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:4px">Your baseline</div>
-            </div>
-          </div>
-
-          <!-- Option 1: Price Shopping -->
-          <div style="padding:32px 32px 36px;border-right:1px solid rgba(255,255,255,.07);background:rgba(255,80,80,.03)">
-            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FF6060;margin-bottom:18px">Option 1 — Price Shopping &nbsp;·&nbsp; Unit Cost −10%</div>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Units ordered</span>
-                <span id="p1-units" style="font-weight:700">10,000</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Price per unit −10%</span>
-                <span id="p1-ppu" style="font-weight:700;color:#FF8080">$1.35</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Product cost</span>
-                <span id="p1-prod" style="font-weight:700">$13.5K</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Management fee</span>
-                <span id="p1-mgmt" style="font-weight:700">$2.0K</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Units in-market</span>
-                <span id="p1-inmarket" style="font-weight:700">7,000 units</span>
-              </div>
-            </div>
-            <div style="background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:10px;padding:16px 20px">
-              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
-              <div id="p1-total" style="font-size:32px;font-weight:900;color:var(--text)">$15.5K</div>
-              <div id="p1-save" style="font-size:12px;color:#FF8080;margin-top:4px">↓ Save $1.7K (10% less)</div>
-            </div>
-          </div>
-
-          <!-- Option 2: brandhub -->
-          <div style="padding:32px 32px 36px;background:rgba(48,230,130,.03)">
-            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#30E682;margin-bottom:18px">brandhub Platform &nbsp;·&nbsp; Smart Ordering</div>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Units ordered <span style="color:#30E682;font-size:11px">right-sized ↓</span></span>
-                <span id="p2-units" style="font-weight:700">7,778</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Price per unit</span>
-                <span id="p2-ppu" style="font-weight:700">$1.50</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Waste <span id="p2-waste-arrow" style="color:#30E682;font-size:11px">→ 10%</span></span>
-                <span id="p2-waste" style="font-weight:700;color:#30E682">10%</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Product cost</span>
-                <span id="p2-prod" style="font-weight:700">$11.7K</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Managed service fee <span id="p2-mgmt-arrow" style="color:#30E682;font-size:11px">→ 5%</span></span>
-                <span id="p2-mgmt" style="font-weight:700;color:#30E682">$583</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
-                <span style="color:var(--muted)">Units in-market</span>
-                <span id="p2-inmarket" style="font-weight:700">7,000 units</span>
-              </div>
-            </div>
-            <div style="background:rgba(48,230,130,.08);border:1px solid rgba(48,230,130,.25);border-radius:10px;padding:16px 20px">
-              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
-              <div id="p2-total" style="font-size:32px;font-weight:900;color:#30E682">$12.3K</div>
-              <div id="p2-save" style="font-size:12px;color:#30E682;margin-top:4px">↓ Save $5.0K (29% less)</div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Footer note -->
-        <div style="padding:20px 40px;background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06)">
-          <div class="calc-note" style="margin:0">brandhub's smart ordering targets 10% waste through demand forecasting + right-sized runs. Management overhead drops from ~15% to ~5% when ordering is centralized and automated. Same units in-market — dramatically lower total cost.</div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  function fmtK(v){
-    if(v>=1000) return '$'+(v/1000).toFixed(1)+'K';
-    return '$'+Math.round(v);
-  }
-  function fmtU(v){ return Math.round(v).toLocaleString(); }
-
-  window.updateRC = function(){
-    var units = parseInt(document.getElementById('rc-units').value);
-    var ppuCents = parseInt(document.getElementById('rc-ppu').value);
-    var ppu = ppuCents / 100;
-    var wastePct = parseInt(document.getElementById('rc-waste').value) / 100;
-    var mgmtPct = parseInt(document.getElementById('rc-mgmt').value) / 100;
-
-    document.getElementById('rc-units-disp').textContent = units.toLocaleString();
-    document.getElementById('rc-ppu-disp').textContent = '$' + ppu.toFixed(2);
-    document.getElementById('rc-waste-disp').textContent = Math.round(wastePct*100) + '%';
-    document.getElementById('rc-mgmt-disp').textContent = Math.round(mgmtPct*100) + '%';
-
-    // Baseline
-    var bProd = units * ppu;
-    var bMgmt = bProd * mgmtPct;
-    var bTotal = bProd + bMgmt;
-    var bInmarket = Math.round(units * (1 - wastePct));
-
-    document.getElementById('b-prod').textContent = fmtK(bProd);
-    document.getElementById('b-mgmt').textContent = fmtK(bMgmt);
-    document.getElementById('b-total').textContent = fmtK(bTotal);
-    document.getElementById('b-inmarket').textContent = fmtU(bInmarket) + ' units';
-
-    // Option 1: price shopping — same order qty, -10% ppu, same waste & mgmt
-    var p1Ppu = ppu * 0.90;
-    var p1Prod = units * p1Ppu;
-    var p1Mgmt = p1Prod * mgmtPct;
-    var p1Total = p1Prod + p1Mgmt;
-    var p1Saving = bTotal - p1Total;
-    var p1Pct = Math.round((p1Saving / bTotal) * 100);
-
-    document.getElementById('p1-units').textContent = fmtU(units);
-    document.getElementById('p1-ppu').textContent = '$' + p1Ppu.toFixed(2);
-    document.getElementById('p1-prod').textContent = fmtK(p1Prod);
-    document.getElementById('p1-mgmt').textContent = fmtK(p1Mgmt);
-    document.getElementById('p1-total').textContent = fmtK(p1Total);
-    document.getElementById('p1-inmarket').textContent = fmtU(bInmarket) + ' units';
-    document.getElementById('p1-save').textContent = '↓ Save ' + fmtK(p1Saving) + ' (' + p1Pct + '% less)';
-
-    // Option 2: brandhub — right-sized order (waste → max 10%), same ppu, mgmt → max 5%
-    // brandhub only improves waste/mgmt — never makes them worse
-    var p2WastePct = Math.min(wastePct, 0.10);
-    var p2MgmtPct = Math.min(mgmtPct, 0.05);
-    // Right-sized: order exactly enough so that (1 - p2WastePct) * order = bInmarket
-    var p2Units = (p2WastePct < 1) ? Math.ceil(bInmarket / (1 - p2WastePct)) : units;
-    var p2Prod = p2Units * ppu;
-    var p2Mgmt = p2Prod * p2MgmtPct;
-    var p2Total = p2Prod + p2Mgmt;
-    var p2Saving = bTotal - p2Total;
-    var p2Pct = Math.round((p2Saving / bTotal) * 100);
-    var p2WasteLabel = Math.round(p2WastePct * 100) + '%';
-    var p2MgmtLabel = Math.round(p2MgmtPct * 100) + '%';
-
-    document.getElementById('p2-units').textContent = fmtU(p2Units);
-    document.getElementById('p2-ppu').textContent = '$' + ppu.toFixed(2);
-    document.getElementById('p2-waste').textContent = p2WasteLabel;
-    document.getElementById('p2-prod').textContent = fmtK(p2Prod);
-    document.getElementById('p2-mgmt').textContent = fmtK(p2Mgmt);
-    document.getElementById('p2-total').textContent = fmtK(p2Total);
-    document.getElementById('p2-inmarket').textContent = fmtU(bInmarket) + ' units';
-    // Update arrow labels dynamically
-    var wEl = document.getElementById('p2-waste-arrow');
-    var mEl = document.getElementById('p2-mgmt-arrow');
-    if(wEl) wEl.textContent = '→ ' + p2WasteLabel;
-    if(mEl) mEl.textContent = '→ ' + p2MgmtLabel;
-    if(p2Saving >= 0){
-      document.getElementById('p2-save').textContent = '↓ Save ' + fmtK(p2Saving) + ' (' + p2Pct + '% less)';
-      document.getElementById('p2-save').style.color = '#30E682';
-    } else {
-      document.getElementById('p2-save').textContent = '↑ Costs ' + fmtK(-p2Saving) + ' more (' + (-p2Pct) + '% more)';
-      document.getElementById('p2-save').style.color = '#FF8080';
-    }
-  };
-  updateRC();
-})();
-</script>
-<!-- THREE BUCKET ROI CALCULATOR -->
-<section id="roi-calculator" style="background:var(--bg)">
-  <div class="wrap">
-    <div class="label fade-up" style="text-align:center">Your Three-Bucket ROI</div>
-    <h2 class="sec-title fade-up" style="text-align:center">How much are you leaving<br><span style="color:var(--orange)">across all three spend layers?</span></h2>
-    <p class="sec-sub fade-up" style="text-align:center;margin:0 auto 40px">Enter your estimated spend across each bucket. We'll show you what brandhub recovers from each — including the SAM spend that's currently completely dark.</p>
-    <div class="calc-wrap fade-up">
-      <div class="calc-card">
-        <div class="bucket-calc-grid">
-          <div class="bucket-input-card">
-            <div class="bucket-input-label ap">Brand A&amp;P POS Spend</div>
-            <div class="bucket-input-disp ap" id="ap-disp">$15.0M</div>
-            <input type="range" id="ap-slider" min="500000" max="50000000" step="500000" value="15000000" oninput="updateROI()">
-            <div class="range-row"><span>$500K</span><span>$50M</span></div>
-            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">National programs through procurement</div>
-          </div>
-          <div class="bucket-input-card">
-            <div class="bucket-input-label sam">Estimated SAM Local Spend</div>
-            <div class="bucket-input-disp sam" id="sam-disp">$3.0M</div>
-            <input type="range" id="sam-slider" min="100000" max="15000000" step="100000" value="3000000" class="sam-slider" oninput="updateROI()">
-            <div class="range-row"><span>$100K</span><span>$15M</span></div>
-            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">Local sales activation — currently untracked</div>
-          </div>
-          <div class="bucket-input-card">
-            <div class="bucket-input-label cop">Distributor Co-op Spend</div>
-            <div class="bucket-input-disp cop" id="cop-disp">$1.5M</div>
-            <input type="range" id="cop-slider" min="100000" max="10000000" step="100000" value="1500000" class="cop-slider" oninput="updateROI()">
-            <div class="range-row"><span>$100K</span><span>$10M</span></div>
-            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">Co-op activations — currently unmonitored</div>
-          </div>
-        </div>
-        <div class="sam-recovery-banner">
-          <div>
-            <div class="srb-label">SAM Budget Recovery</div>
-            <div class="srb-sub">Savings from bringing local activation spend under governance — currently $0 of this is tracked</div>
-          </div>
-          <div class="srb-val" id="roi-sam-recovery">$0</div>
-        </div>
-        <div class="bucket-savings-row">
-          <div class="bucket-savings-card ap">
-            <div class="bucket-savings-num ap" id="roi-ap-save">$0</div>
-            <div class="bucket-savings-lbl">Brand A&amp;P savings<br>Benchmarking + vendor consolidation</div>
-          </div>
-          <div class="bucket-savings-card sam">
-            <div class="bucket-savings-num sam" id="roi-sam-save">$0</div>
-            <div class="bucket-savings-lbl">SAM savings<br>Governance + pricing guardrails</div>
-          </div>
-          <div class="bucket-savings-card cop">
-            <div class="bucket-savings-num cop" id="roi-cop-save">$0</div>
-            <div class="bucket-savings-lbl">Co-op savings<br>Program reconciliation + efficiency</div>
-          </div>
-        </div>
-        <div class="calc-output">
-          <div class="output-headline">
-            <div>
-              <div class="output-label">Total Estimated Annual Recovery — All Three Buckets</div>
-              <div class="output-total" id="roi-total-v">$0</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">% of total spend recovered</div>
-              <div style="font-size:28px;font-weight:900;color:var(--blue)" id="roi-savings-pct">0%</div>
-            </div>
-          </div>
-          <div class="savings-highlight">
-            <div>
-              <div class="sh-label">More brand presence. Same total spend.</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:3px">Every recovered dollar goes back into programs, not overhead</div>
-            </div>
-            <div class="sh-val" id="roi-mo-v">+$0/mo</div>
-          </div>
-          <div class="calc-note">Savings rates: Brand A&amp;P 15–20% (benchmarking + consolidation) · SAM 25–28% (governance recovery) · Co-op 10–12% (program efficiency). Based on brandhub client averages.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  function fmtM(v){
-    if(v>=1000000) return '$'+(v/1000000).toFixed(1)+'M';
-    return '$'+(v/1000).toFixed(0)+'K';
-  }
-  function fmtD(v){
-    if(v>=1000000) return '$'+(v/1000000).toFixed(2)+'M';
-    return '$'+(v/1000).toFixed(0)+'K';
-  }
-  window.updateROI = function(){
-    var ap  = parseInt(document.getElementById('ap-slider').value);
-    var sam = parseInt(document.getElementById('sam-slider').value);
-    var cop = parseInt(document.getElementById('cop-slider').value);
-    document.getElementById('ap-disp').textContent  = fmtM(ap);
-    document.getElementById('sam-disp').textContent = fmtM(sam);
-    document.getElementById('cop-disp').textContent = fmtM(cop);
-    var apSave  = ap  * 0.175;
-    var samSave = sam * 0.265;
-    var copSave = cop * 0.11;
-    var samRec  = sam * 0.15;
-    var total   = apSave + samSave + copSave;
-    var pct     = Math.round((total / (ap + sam + cop)) * 100);
-    document.getElementById('roi-sam-recovery').textContent = fmtD(samRec);
-    document.getElementById('roi-ap-save').textContent      = fmtD(apSave);
-    document.getElementById('roi-sam-save').textContent     = fmtD(samSave);
-    document.getElementById('roi-cop-save').textContent     = fmtD(copSave);
-    document.getElementById('roi-total-v').textContent      = fmtD(total);
-    document.getElementById('roi-savings-pct').textContent  = pct + '%';
-    document.getElementById('roi-mo-v').textContent         = '+' + fmtD(total/12) + '/mo';
-  };
-  updateROI();
-})();
-</script>
-
-<!-- CASE STUDIES -->
 
 <section id="case-studies" style="background:var(--bg)">
   <div class="wrap">
@@ -3524,15 +3108,6 @@ const CLIENT = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!-- RECAP BREAK -->
-<div class="act-break act-break--dark" id="recap-break">
-  <div class="act-break-inner">
-    <div class="act-break-num">RECAP</div>
-    <div class="act-break-title">Where We've Been</div>
-    <div class="act-break-sub">What you told us · What brandhub does · What it means for Heaven Hill</div>
-  </div>
-
 <section id="srs-transition">
   <div class="wrap">
     <div class="label fade-up" style="text-align:left">The Transition Question</div>
@@ -3609,136 +3184,7 @@ const CLIENT = {
   </div>
 </section>
 
-</div>
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!-- PRICING RATE CARD -->
-<section id="pricing">
-  <div class="wrap">
-    <div class="label fade-up">Pricing</div>
-    <h2 class="sec-title fade-up">Modular pricing.<br><span style="color:var(--blue)">Built around how you actually work.</span></h2>
-    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;max-width:780px">Start with the Platform Base and add only what you need — or choose a bundle for the best rate. No per-seat surprises. No hidden fees.</p>
-
-    <div class="rc-toggle-bar fade-up">
-      <div style="font-size:13px;color:var(--muted)">Platform Base &nbsp;·&nbsp; 3 modules &nbsp;·&nbsp; 2 bundles</div>
-      <button class="rc-toggle-btn" id="rc-toggle-btn" onclick="togglePricing()" aria-expanded="false">
-        <span>View full rate card</span>
-        <span class="rc-arrow">&#9660;</span>
-      </button>
-    </div>
-    <div class="rc-pricing-body" id="rc-pricing-body">
-    <!-- PLATFORM BASE -->
-    <div class="rc-base-card fade-up">
-      <div class="rc-base-pill">PLATFORM BASE &nbsp;·&nbsp; REQUIRED FOR ALL MODULES &amp; BUNDLES</div>
-      <div style="display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-top:8px">
-        <div style="flex-shrink:0">
-          <div class="rc-base-price">$48,000<span>/year</span></div>
-          <div style="font-size:12.5px;color:var(--muted);margin-top:6px">100 users &nbsp;·&nbsp; 500 SKUs &nbsp;·&nbsp; distributor portal included</div>
-        </div>
-        <div style="flex:1;min-width:280px">
-          <div style="font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;text-transform:uppercase">What's included</div>
-          <div class="rc-includes-grid">
-            <div class="rc-include-item"><div class="rc-include-dot"></div>Order Windows &amp; programs</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>POs &amp; invoicing</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>SAM ordering &amp; approvals</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>Reporting &amp; analytics</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>Product portfolio management</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>Distributor Portal</div>
-            <div class="rc-include-item"><div class="rc-include-dot"></div>Onboarding &amp; setup</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODULES -->
-    <div class="rc-section-label fade-up">&agrave; la carte modules &nbsp;&mdash;&nbsp; add to Platform Base</div>
-    <div class="rc-modules-grid fade-up" style="grid-template-columns:repeat(3,1fr)">
-
-
-      <div class="rc-module-card">
-        <div class="rc-module-bar" style="background:var(--blue)"></div>
-        <div class="rc-module-name">PriceCheck</div>
-        <div class="rc-module-price" style="color:var(--blue)">$20,000<span class="rc-module-yr">/yr</span></div>
-        <div class="rc-module-desc">AI-powered POS asset classification and competitive price benchmarking for smarter sourcing decisions.</div>
-        <span class="rc-tag" style="color:var(--blue);border-color:rgba(48,180,230,.25);background:rgba(48,180,230,.07)">Price Intel</span>
-        <span class="rc-tag" style="color:var(--blue);border-color:rgba(48,180,230,.25);background:rgba(48,180,230,.07)">AI Classification</span>
-      </div>
-
-      <div class="rc-module-card">
-        <div class="rc-module-bar" style="background:var(--orange)"></div>
-        <div class="rc-module-name">RFQ Management</div>
-        <div class="rc-module-price" style="color:var(--orange)">$10,000<span class="rc-module-yr">/yr</span></div>
-        <div class="rc-module-desc">Streamlined vendor RFQ workflows, bid comparison, and award tracking — all in one place.</div>
-        <span class="rc-tag" style="color:var(--orange);border-color:rgba(255,145,25,.25);background:rgba(255,145,25,.07)">Vendor Bids</span>
-        <span class="rc-tag" style="color:var(--orange);border-color:rgba(255,145,25,.25);background:rgba(255,145,25,.07)">Procurement</span>
-      </div>
-
-      <div class="rc-module-card">
-        <div class="rc-module-bar" style="background:var(--purple)"></div>
-        <div class="rc-module-name">DemandIQ</div>
-        <div class="rc-module-price" style="color:var(--purple)">$20,000<span class="rc-module-yr">/yr</span></div>
-        <div class="rc-module-desc">Predictive demand intelligence using field signals and historical patterns to right-size production orders.</div>
-        <span class="rc-tag" style="color:var(--purple);border-color:rgba(155,111,232,.25);background:rgba(155,111,232,.07)">Forecasting</span>
-        <span class="rc-tag" style="color:var(--purple);border-color:rgba(155,111,232,.25);background:rgba(155,111,232,.07)">Demand Signals</span>
-      </div>
-
-    </div>
-
-    <!-- BUNDLES -->
-    <div class="rc-section-label fade-up">Pre-built bundles &nbsp;&mdash;&nbsp; save 20% vs. individual · Base required</div>
-    <div class="rc-bundles-grid fade-up" style="grid-template-columns:repeat(2,1fr)">
-
-
-      <div class="rc-bundle-card">
-        <div class="rc-bundle-name">Procurement</div>
-        <div class="rc-bundle-price" style="color:var(--blue)">$62,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(48,180,230,.1);color:var(--blue)">Save $16K/yr</span>
-        <div class="rc-bundle-includes">Includes</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>Platform Base</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>PriceCheck</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--blue)"></div>RFQ Management</div>
-        <div class="rc-bundle-best">Best for: sourcing &amp; vendor teams</div>
-      </div>
-
-      <div class="rc-bundle-card rc-featured">
-        <div class="rc-bundle-pop" style="background:var(--purple);color:#fff">MOST POPULAR</div>
-        <div class="rc-bundle-name">brandhubAI</div>
-        <div class="rc-bundle-price" style="color:var(--purple)">$78,000</div>
-        <span class="rc-bundle-savings" style="background:rgba(155,111,232,.12);color:var(--purple)">Save $20K/yr</span>
-        <div class="rc-bundle-includes">Includes</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>Platform Base</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>PriceCheck</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>RFQ Management</div>
-        <div class="rc-bundle-item"><div class="rc-bundle-dot" style="background:var(--purple)"></div>DemandIQ</div>
-        <div class="rc-bundle-best">Best for: full intelligence stack</div>
-      </div>
-
-
-    </div>
-
-    <!-- ADD-ONS -->
-    <div class="rc-addons-strip fade-up">
-      <div class="rc-addon-block">
-        <div class="rc-addon-label">Add-on &nbsp;·&nbsp; User Expansion</div>
-        <div class="rc-addon-val">+$6,000 / year</div>
-        <div class="rc-addon-desc">Per additional 100 users beyond the base 100</div>
-      </div>
-      <div class="rc-addon-divider"></div>
-      <div class="rc-addon-block">
-        <div class="rc-addon-label">Select Production Credit</div>
-        <div class="rc-addon-val">$12K &ndash; $24K credit</div>
-        <div class="rc-addon-desc">$12,000 credit at $400K+ production through Select &nbsp;&nbsp;&bull;&nbsp;&nbsp; $24,000 credit at $800K+ production</div>
-      </div>
-    </div>
-
-
-    </div><!-- /rc-pricing-body -->
-  </div>
-</section>
-
-<!-- NEXT STEPS --><section id="next-steps" style="background:var(--surface)">
+<section id="next-steps" style="background:var(--surface)">
   <div class="wrap">
     <div class="label fade-up">Next Steps</div>
     <h2 class="sec-title fade-up">What's the right<br><span style="color:var(--blue)">next step for you?</span></h2>
@@ -3792,6 +3238,364 @@ const CLIENT = {
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- ACT 3 BREAK -->
+<div class="act-break act-break--dark act-break--toggle" id="act3-break" onclick="toggleAct3()">
+  <div class="act-break-inner">
+    <div class="act-break-num">ACT 3</div>
+    <div class="act-break-title">Your Numbers</div>
+    <div class="act-break-sub">ROI, real stories, and what happens next</div>
+  </div>
+  <div class="act3-caret" id="act3-caret">&#9650;</div>
+</div>
+<div id="act3-content" style="display:none">
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+<section id="calculator" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="label fade-up" style="text-align:center">The Real Comparison</div>
+    <h2 class="sec-title fade-up" style="text-align:center">Why per-unit price is the wrong metric.<br><span style="color:var(--orange)">See how right-sizing orders and reducing management overhead outperforms chasing a lower per-unit price.</span></h2>
+
+    <div class="calc-wrap fade-up">
+      <div class="calc-card" style="padding:0;overflow:hidden">
+
+        <!-- Baseline inputs -->
+        <div style="background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);padding:32px 40px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px">Your Current Setup &nbsp;·&nbsp; Baseline</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+            <div class="bucket-input-card" style="margin:0">
+              <div class="bucket-input-label ap" style="margin-bottom:8px;font-size:11px">Units ordered</div>
+              <div class="bucket-input-disp ap" id="rc-units-disp" style="font-size:28px">10,000</div>
+              <input type="range" id="rc-units" min="1000" max="50000" step="500" value="10000" oninput="updateRC()">
+              <div class="range-row"><span>1K</span><span>50K</span></div>
+            </div>
+            <div class="bucket-input-card" style="margin:0">
+              <div class="bucket-input-label sam" style="margin-bottom:8px;font-size:11px">Price per unit ($)</div>
+              <div class="bucket-input-disp sam" id="rc-ppu-disp" style="font-size:28px">$1.50</div>
+              <input type="range" id="rc-ppu" min="25" max="1000" step="5" value="150" oninput="updateRC()">
+              <div class="range-row"><span>$0.25</span><span>$10</span></div>
+            </div>
+            <div class="bucket-input-card" style="margin:0">
+              <div class="bucket-input-label cop" style="margin-bottom:8px;font-size:11px">Waste %</div>
+              <div class="bucket-input-disp cop" id="rc-waste-disp" style="font-size:28px">30%</div>
+              <input type="range" id="rc-waste" min="0" max="60" step="5" value="30" oninput="updateRC()">
+              <div class="range-row"><span>0%</span><span>60%</span></div>
+            </div>
+            <div class="bucket-input-card" style="margin:0">
+              <div class="bucket-input-label" style="margin-bottom:8px;font-size:11px;color:var(--blue)">Managed service fee %</div>
+              <div class="bucket-input-disp" id="rc-mgmt-disp" style="font-size:28px;color:var(--blue)">15%</div>
+              <input type="range" id="rc-mgmt" min="0" max="30" step="1" value="15" oninput="updateRC()">
+              <div class="range-row"><span>0%</span><span>30%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Three columns comparison -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+
+          <!-- Baseline result -->
+          <div style="padding:32px 32px 36px;border-right:1px solid rgba(255,255,255,.07)">
+            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px">Baseline</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Product cost</span>
+                <span id="b-prod" style="font-weight:700">$15.0K</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Management fee</span>
+                <span id="b-mgmt" style="font-weight:700">$2.3K</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Units in-market</span>
+                <span id="b-inmarket" style="font-weight:700">7,000 units</span>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:16px 20px">
+              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
+              <div id="b-total" style="font-size:32px;font-weight:900;color:var(--text)">$17.3K</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">Your baseline</div>
+            </div>
+          </div>
+
+          <!-- Option 1: Price Shopping -->
+          <div style="padding:32px 32px 36px;border-right:1px solid rgba(255,255,255,.07);background:rgba(255,80,80,.03)">
+            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FF6060;margin-bottom:18px">Option 1 — Price Shopping &nbsp;·&nbsp; Unit Cost −10%</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Units ordered</span>
+                <span id="p1-units" style="font-weight:700">10,000</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Price per unit −10%</span>
+                <span id="p1-ppu" style="font-weight:700;color:#FF8080">$1.35</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Product cost</span>
+                <span id="p1-prod" style="font-weight:700">$13.5K</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Management fee</span>
+                <span id="p1-mgmt" style="font-weight:700">$2.0K</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Units in-market</span>
+                <span id="p1-inmarket" style="font-weight:700">7,000 units</span>
+              </div>
+            </div>
+            <div style="background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:10px;padding:16px 20px">
+              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
+              <div id="p1-total" style="font-size:32px;font-weight:900;color:var(--text)">$15.5K</div>
+              <div id="p1-save" style="font-size:12px;color:#FF8080;margin-top:4px">↓ Save $1.7K (10% less)</div>
+            </div>
+          </div>
+
+          <!-- Option 2: brandhub -->
+          <div style="padding:32px 32px 36px;background:rgba(48,230,130,.03)">
+            <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#30E682;margin-bottom:18px">brandhub Platform &nbsp;·&nbsp; Smart Ordering</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Units ordered <span style="color:#30E682;font-size:11px">right-sized ↓</span></span>
+                <span id="p2-units" style="font-weight:700">7,778</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Price per unit</span>
+                <span id="p2-ppu" style="font-weight:700">$1.50</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Waste <span id="p2-waste-arrow" style="color:#30E682;font-size:11px">→ 10%</span></span>
+                <span id="p2-waste" style="font-weight:700;color:#30E682">10%</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Product cost</span>
+                <span id="p2-prod" style="font-weight:700">$11.7K</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Managed service fee <span id="p2-mgmt-arrow" style="color:#30E682;font-size:11px">→ 5%</span></span>
+                <span id="p2-mgmt" style="font-weight:700;color:#30E682">$583</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:10px">
+                <span style="color:var(--muted)">Units in-market</span>
+                <span id="p2-inmarket" style="font-weight:700">7,000 units</span>
+              </div>
+            </div>
+            <div style="background:rgba(48,230,130,.08);border:1px solid rgba(48,230,130,.25);border-radius:10px;padding:16px 20px">
+              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">Total Cost</div>
+              <div id="p2-total" style="font-size:32px;font-weight:900;color:#30E682">$12.3K</div>
+              <div id="p2-save" style="font-size:12px;color:#30E682;margin-top:4px">↓ Save $5.0K (29% less)</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer note -->
+        <div style="padding:20px 40px;background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06)">
+          <div class="calc-note" style="margin:0">brandhub's smart ordering targets 10% waste through demand forecasting + right-sized runs. Management overhead drops from ~15% to ~5% when ordering is centralized and automated. Same units in-market — dramatically lower total cost.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  function fmtK(v){
+    if(v>=1000) return '$'+(v/1000).toFixed(1)+'K';
+    return '$'+Math.round(v);
+  }
+  function fmtU(v){ return Math.round(v).toLocaleString(); }
+
+  window.updateRC = function(){
+    var units = parseInt(document.getElementById('rc-units').value);
+    var ppuCents = parseInt(document.getElementById('rc-ppu').value);
+    var ppu = ppuCents / 100;
+    var wastePct = parseInt(document.getElementById('rc-waste').value) / 100;
+    var mgmtPct = parseInt(document.getElementById('rc-mgmt').value) / 100;
+
+    document.getElementById('rc-units-disp').textContent = units.toLocaleString();
+    document.getElementById('rc-ppu-disp').textContent = '$' + ppu.toFixed(2);
+    document.getElementById('rc-waste-disp').textContent = Math.round(wastePct*100) + '%';
+    document.getElementById('rc-mgmt-disp').textContent = Math.round(mgmtPct*100) + '%';
+
+    // Baseline
+    var bProd = units * ppu;
+    var bMgmt = bProd * mgmtPct;
+    var bTotal = bProd + bMgmt;
+    var bInmarket = Math.round(units * (1 - wastePct));
+
+    document.getElementById('b-prod').textContent = fmtK(bProd);
+    document.getElementById('b-mgmt').textContent = fmtK(bMgmt);
+    document.getElementById('b-total').textContent = fmtK(bTotal);
+    document.getElementById('b-inmarket').textContent = fmtU(bInmarket) + ' units';
+
+    // Option 1: price shopping — same order qty, -10% ppu, same waste & mgmt
+    var p1Ppu = ppu * 0.90;
+    var p1Prod = units * p1Ppu;
+    var p1Mgmt = p1Prod * mgmtPct;
+    var p1Total = p1Prod + p1Mgmt;
+    var p1Saving = bTotal - p1Total;
+    var p1Pct = Math.round((p1Saving / bTotal) * 100);
+
+    document.getElementById('p1-units').textContent = fmtU(units);
+    document.getElementById('p1-ppu').textContent = '$' + p1Ppu.toFixed(2);
+    document.getElementById('p1-prod').textContent = fmtK(p1Prod);
+    document.getElementById('p1-mgmt').textContent = fmtK(p1Mgmt);
+    document.getElementById('p1-total').textContent = fmtK(p1Total);
+    document.getElementById('p1-inmarket').textContent = fmtU(bInmarket) + ' units';
+    document.getElementById('p1-save').textContent = '↓ Save ' + fmtK(p1Saving) + ' (' + p1Pct + '% less)';
+
+    // Option 2: brandhub — right-sized order (waste → max 10%), same ppu, mgmt → max 5%
+    // brandhub only improves waste/mgmt — never makes them worse
+    var p2WastePct = Math.min(wastePct, 0.10);
+    var p2MgmtPct = Math.min(mgmtPct, 0.05);
+    // Right-sized: order exactly enough so that (1 - p2WastePct) * order = bInmarket
+    var p2Units = (p2WastePct < 1) ? Math.ceil(bInmarket / (1 - p2WastePct)) : units;
+    var p2Prod = p2Units * ppu;
+    var p2Mgmt = p2Prod * p2MgmtPct;
+    var p2Total = p2Prod + p2Mgmt;
+    var p2Saving = bTotal - p2Total;
+    var p2Pct = Math.round((p2Saving / bTotal) * 100);
+    var p2WasteLabel = Math.round(p2WastePct * 100) + '%';
+    var p2MgmtLabel = Math.round(p2MgmtPct * 100) + '%';
+
+    document.getElementById('p2-units').textContent = fmtU(p2Units);
+    document.getElementById('p2-ppu').textContent = '$' + ppu.toFixed(2);
+    document.getElementById('p2-waste').textContent = p2WasteLabel;
+    document.getElementById('p2-prod').textContent = fmtK(p2Prod);
+    document.getElementById('p2-mgmt').textContent = fmtK(p2Mgmt);
+    document.getElementById('p2-total').textContent = fmtK(p2Total);
+    document.getElementById('p2-inmarket').textContent = fmtU(bInmarket) + ' units';
+    // Update arrow labels dynamically
+    var wEl = document.getElementById('p2-waste-arrow');
+    var mEl = document.getElementById('p2-mgmt-arrow');
+    if(wEl) wEl.textContent = '→ ' + p2WasteLabel;
+    if(mEl) mEl.textContent = '→ ' + p2MgmtLabel;
+    if(p2Saving >= 0){
+      document.getElementById('p2-save').textContent = '↓ Save ' + fmtK(p2Saving) + ' (' + p2Pct + '% less)';
+      document.getElementById('p2-save').style.color = '#30E682';
+    } else {
+      document.getElementById('p2-save').textContent = '↑ Costs ' + fmtK(-p2Saving) + ' more (' + (-p2Pct) + '% more)';
+      document.getElementById('p2-save').style.color = '#FF8080';
+    }
+  };
+  updateRC();
+})();
+</script>
+<!-- THREE BUCKET ROI CALCULATOR -->
+<section id="roi-calculator" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="label fade-up" style="text-align:center">Your Three-Bucket ROI</div>
+    <h2 class="sec-title fade-up" style="text-align:center">How much are you leaving<br><span style="color:var(--orange)">across all three spend layers?</span></h2>
+    <p class="sec-sub fade-up" style="text-align:center;margin:0 auto 40px">Enter your estimated spend across each bucket. We'll show you what brandhub recovers from each — including the SAM spend that's currently completely dark.</p>
+    <div class="calc-wrap fade-up">
+      <div class="calc-card">
+        <div class="bucket-calc-grid">
+          <div class="bucket-input-card">
+            <div class="bucket-input-label ap">Brand A&amp;P POS Spend</div>
+            <div class="bucket-input-disp ap" id="ap-disp">$15.0M</div>
+            <input type="range" id="ap-slider" min="500000" max="50000000" step="500000" value="15000000" oninput="updateROI()">
+            <div class="range-row"><span>$500K</span><span>$50M</span></div>
+            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">National programs through procurement</div>
+          </div>
+          <div class="bucket-input-card">
+            <div class="bucket-input-label sam">Estimated SAM Local Spend</div>
+            <div class="bucket-input-disp sam" id="sam-disp">$3.0M</div>
+            <input type="range" id="sam-slider" min="100000" max="15000000" step="100000" value="3000000" class="sam-slider" oninput="updateROI()">
+            <div class="range-row"><span>$100K</span><span>$15M</span></div>
+            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">Local sales activation — currently untracked</div>
+          </div>
+          <div class="bucket-input-card">
+            <div class="bucket-input-label cop">Distributor Co-op Spend</div>
+            <div class="bucket-input-disp cop" id="cop-disp">$1.5M</div>
+            <input type="range" id="cop-slider" min="100000" max="10000000" step="100000" value="1500000" class="cop-slider" oninput="updateROI()">
+            <div class="range-row"><span>$100K</span><span>$10M</span></div>
+            <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4">Co-op activations — currently unmonitored</div>
+          </div>
+        </div>
+        <div class="sam-recovery-banner">
+          <div>
+            <div class="srb-label">SAM Budget Recovery</div>
+            <div class="srb-sub">Savings from bringing local activation spend under governance — currently $0 of this is tracked</div>
+          </div>
+          <div class="srb-val" id="roi-sam-recovery">$0</div>
+        </div>
+        <div class="bucket-savings-row">
+          <div class="bucket-savings-card ap">
+            <div class="bucket-savings-num ap" id="roi-ap-save">$0</div>
+            <div class="bucket-savings-lbl">Brand A&amp;P savings<br>Benchmarking + vendor consolidation</div>
+          </div>
+          <div class="bucket-savings-card sam">
+            <div class="bucket-savings-num sam" id="roi-sam-save">$0</div>
+            <div class="bucket-savings-lbl">SAM savings<br>Governance + pricing guardrails</div>
+          </div>
+          <div class="bucket-savings-card cop">
+            <div class="bucket-savings-num cop" id="roi-cop-save">$0</div>
+            <div class="bucket-savings-lbl">Co-op savings<br>Program reconciliation + efficiency</div>
+          </div>
+        </div>
+        <div class="calc-output">
+          <div class="output-headline">
+            <div>
+              <div class="output-label">Total Estimated Annual Recovery — All Three Buckets</div>
+              <div class="output-total" id="roi-total-v">$0</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">% of total spend recovered</div>
+              <div style="font-size:28px;font-weight:900;color:var(--blue)" id="roi-savings-pct">0%</div>
+            </div>
+          </div>
+          <div class="savings-highlight">
+            <div>
+              <div class="sh-label">More brand presence. Same total spend.</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">Every recovered dollar goes back into programs, not overhead</div>
+            </div>
+            <div class="sh-val" id="roi-mo-v">+$0/mo</div>
+          </div>
+          <div class="calc-note">Savings rates: Brand A&amp;P 15–20% (benchmarking + consolidation) · SAM 25–28% (governance recovery) · Co-op 10–12% (program efficiency). Based on brandhub client averages.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  function fmtM(v){
+    if(v>=1000000) return '$'+(v/1000000).toFixed(1)+'M';
+    return '$'+(v/1000).toFixed(0)+'K';
+  }
+  function fmtD(v){
+    if(v>=1000000) return '$'+(v/1000000).toFixed(2)+'M';
+    return '$'+(v/1000).toFixed(0)+'K';
+  }
+  window.updateROI = function(){
+    var ap  = parseInt(document.getElementById('ap-slider').value);
+    var sam = parseInt(document.getElementById('sam-slider').value);
+    var cop = parseInt(document.getElementById('cop-slider').value);
+    document.getElementById('ap-disp').textContent  = fmtM(ap);
+    document.getElementById('sam-disp').textContent = fmtM(sam);
+    document.getElementById('cop-disp').textContent = fmtM(cop);
+    var apSave  = ap  * 0.175;
+    var samSave = sam * 0.265;
+    var copSave = cop * 0.11;
+    var samRec  = sam * 0.15;
+    var total   = apSave + samSave + copSave;
+    var pct     = Math.round((total / (ap + sam + cop)) * 100);
+    document.getElementById('roi-sam-recovery').textContent = fmtD(samRec);
+    document.getElementById('roi-ap-save').textContent      = fmtD(apSave);
+    document.getElementById('roi-sam-save').textContent     = fmtD(samSave);
+    document.getElementById('roi-cop-save').textContent     = fmtD(copSave);
+    document.getElementById('roi-total-v').textContent      = fmtD(total);
+    document.getElementById('roi-savings-pct').textContent  = pct + '%';
+    document.getElementById('roi-mo-v').textContent         = '+' + fmtD(total/12) + '/mo';
+  };
+  updateROI();
+})();
+</script>
+
+
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -4181,6 +3985,72 @@ const CLIENT = {
   <details>
     <summary style="font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:16px 0;">▼ Appendix — Additional Detail</summary>
     <div id="appendix-content">
+
+<!-- APPENDIX: YOUR SPEND REALITY -->
+<section id="spend-layers">
+  <div class="wrap">
+    <div class="label fade-up" style="text-align:left">Your Spend Reality</div>
+    <h2 class="sec-title fade-up">The money isn't gone.<br><span style="color:var(--orange)">It's just invisible.</span></h2>
+    <p class="sec-sub fade-up" style="text-align:left;margin-left:0;max-width:900px;white-space:nowrap">You have three separate buckets of trade spend — and today only one of them is visible. brandhub connects all three.</p>
+    <div class="bucket-grid fade-up">
+
+      <!-- Bucket 1: Brand A&P -->
+      <div class="bucket-card">
+        <div class="bucket-hdr dark1">
+          <div class="bucket-tag known">Tracked</div>
+          <div class="bucket-title">Brand A&amp;P Nationals</div>
+          <div class="bucket-subtitle">Managed by Lynn's procurement team</div>
+          <div class="bucket-amt known">Known spend</div>
+        </div>
+        <div class="bucket-body">
+          <div class="bucket-item"><span class="bucket-ck">✓</span><span>Multi-bid process in place</span></div>
+          <div class="bucket-item"><span class="bucket-ck">✓</span><span>Runs through SRS / procurement</span></div>
+          <div class="bucket-item"><span class="bucket-ck">✓</span><span>National brand standards applied</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No benchmark vs. market — pricing taken on faith on one-offs</span></div>
+        </div>
+      </div>
+
+      <!-- Bucket 2: SAM Local -->
+      <div class="bucket-card">
+        <div class="bucket-hdr dark2">
+          <div class="bucket-tag dark">Untracked ⚠</div>
+          <div class="bucket-title">Local SAM Buys</div>
+          <div class="bucket-subtitle">Sales teams, local budgets, no visibility</div>
+          <div class="bucket-amt unknown">$??? dark spend</div>
+        </div>
+        <div class="bucket-body">
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Sales bypasses procurement when they hear "no"</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Locally produced materials, no brand standards</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Charged to SAM budgets, never recapped</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No visibility for Lynn's team or brand directors</span></div>
+        </div>
+      </div>
+
+      <!-- Bucket 3: Distributor Co-op -->
+      <div class="bucket-card">
+        <div class="bucket-hdr dark3">
+          <div class="bucket-tag dark">Unmonitored ⚠</div>
+          <div class="bucket-title">Distributor Co-op</div>
+          <div class="bucket-subtitle">Third-party funding, zero reconciliation</div>
+          <div class="bucket-amt unknown">$??? third layer</div>
+        </div>
+        <div class="bucket-body">
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Co-op dollars activated without central tracking</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>No reconciliation against brand goals</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Disconnected from national program reporting</span></div>
+          <div class="bucket-item"><span class="bucket-xx">✗</span><span>Nobody owns the consolidated view</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="bucket-connector fade-up">
+      <div style="background:var(--blue);color:#0A0D1A;font-size:12px;font-weight:800;padding:8px 24px;border-radius:20px;position:relative;z-index:1;letter-spacing:.5px">brandhub unifies all three</div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- APPENDIX: WHY NOT JUST USE WHAT YOU HAVE -->
 <section style="background:var(--bg);padding:80px 0">
@@ -5196,6 +5066,14 @@ function spGoTo(n) {
     btn.querySelector('span:first-child').textContent = open ? 'Collapse rate card' : 'View full rate card';
   }
 
+
+  function toggleAct3() {
+    var content = document.getElementById('act3-content');
+    var caret   = document.getElementById('act3-caret');
+    var open    = content.style.display === 'none' || content.style.display === '';
+    content.style.display = open ? 'block' : 'none';
+    caret.style.transform = open ? 'translateY(-50%) rotate(0deg)' : 'translateY(-50%) rotate(180deg)';
+  }
 </script>
 </body>
 </html>
